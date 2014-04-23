@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+    <title>hetio &middot; Heterogeneous Networks</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../../css/bootstrap-theme.css" rel="stylesheet">
+
+<style type="text/css" title="currentStyle">
+  /* Move down content because we have a fixed navbar that is 50px tall */
+  body {
+    padding-top: 50px;
+  }
+</style>
+
+</head>
+
+<body>
+
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="../../">Home</a>
+          </li>
+          <li>
+            <a href="../../hnlp">HNLP</a>
+          </li>
+          
+          <li class="active" class="dropdown">
+            <a href="../" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="../">About</a>
+              </li>
+              <li>
+                <a href="../browse">Browse</a>
+              </li>
+              <li class="active">
+                <a href="../downloads">Downloads</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="../../media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1>Downloads <small>Disease-Associated Genes</small></h1>
+    <p></p>
+  </div>
+</div>
+
+
+<div class="container">
+
+
+<h2>predictions</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Gene × Disease Prediction Table</h4>
+  <p>Predicted probabilities of association between all genes and diseases.</p>
+  <p><a href="./files/prediction-table.txt" download>prediction-table.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Model Coefficient Table</h4>
+  <p>Standardized and unstandardized coefficients from the logistic ridge regression model.</p>
+  <p><a href="./files/coefficients.txt" download>coefficients.txt</a></p>
+</div>
+</div>
+<h2>resources</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Protein-coding genes</h4>
+  <p>Information on the included protein-coding genes, derived from the HGNC database.</p>
+  <p><a href="./files/genes.txt" download>genes.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Tissue Specific Gene Expression</h4>
+  <p>Tissue-specific gene expression levels derived from the GNF BodyMap. Genes were converted to HGNC symbols and tissues were converted to BRENDA Tissue Ontology terms.</p>
+  <p><a href="./files/expression.txt" download>expression.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Disease-Associated Genes</h4>
+  <p>The associated gene-disease pairs derived from the GWAS Catalog.</p>
+  <p><a href="./files/associations.txt" download>associations.txt</a></p>
+</div>
+</div>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Disease-Associated Regions</h4>
+  <p>The associated gene-disease regions derived from the GWAS Catalog.</p>
+  <p><a href="./files/associationed-regions.txt" download>associationed-regions.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Disease-Tissue Co-occurence</h4>
+  <p>Literature co-occurence between diseases and tissues calculated using CoPub 5.0. </p>
+  <p><a href="./files/disease-tissue-cooccurence.txt" download>disease-tissue-cooccurence.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Disease Similarities</h4>
+  <p>Semantic similarity between Disease Ontology terms calculated using the Lin instrinsic similarity metric.</p>
+  <p><a href="./files/disease-similarity.txt" download>disease-similarity.txt</a></p>
+</div>
+</div>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Protein-Protein Interactions</h4>
+  <p>Protein-protein interactions processed from iRefIndex using ppiTrim. ppiTrim converts to gene space, consolidates duplicate interactions, and removes complexes.</p>
+  <p><a href="./files/protein-interactions.txt" download>protein-interactions.txt</a></p>
+</div>
+</div>
+<h2></h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4></h4>
+  <p></p>
+  <p><a href="./files/" download></a></p>
+</div>
+
+<div class="col-md-4">
+  <h4></h4>
+  <p></p>
+  <p><a href="./files/" download></a></p>
+</div>
+</div>
+<h2>network</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Serialized Network</h4>
+  <p>JSON representation of the heterogeneous network.</p>
+  <p><a href="./files/network.json" download>network.json</a></p>
+</div>
+</div>
+<h2>graphics</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Vector Images</h4>
+  <p>Manuscript images in vector format.</p>
+  <p><a href="./files/vector-graphics.tar.gz" download>vector-graphics.tar.gz</a></p>
+</div>
+</div>
+
+  
+</div>
+
+
+<script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+<script src="../../js/bootstrap.min.js"></script>
+
+</body>
+</html>
+

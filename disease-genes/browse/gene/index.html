@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hetio &middot; Disease-Associated Genes</title>
+    <link href="../favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../../../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../../../css/bootstrap-theme.css" rel="stylesheet">
+
+    <style type="text/css" title="currentStyle">
+        @import "../css/demo_page.css";
+        @import "../css/demo_table_jui.css";
+        @import "../css/jquery-ui-1.8.4.custom.css";
+    body {
+      padding-top: 50px;
+    }
+    </style>
+
+</head>
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="../../../">Home</a>
+          </li>
+          <li>
+            <a href="../../../hnlp">HNLP</a>
+          </li>
+          
+          <li class="active" class="dropdown">
+            <a href="../../" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="../../">About</a>
+              </li>
+              <li class="active">
+                <a href="../">Browse</a>
+              </li>
+              <li>
+                <a href="../../downloads">Downloads</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="../../../media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+
+<div class="container">
+<div id="heading">Gene Heading</div>
+<div id="gene_info">Gene Info</div>
+<div id="table_description">Table usage description</div>
+<div id="dynamic_gene">Generating Table...</div>
+<div class="spacer"></div>
+
+<h2>Prediction Components</h2>
+<p>The barchart shows the contribution of features towards the overall prediction. The contribution equals the feature coefficient from the logistic ridge regression times the feature value between the specified gene and disease.</p>
+<div id="barchart" style="width: 900px; height: 800px;">Activate barchart by clicking a row...</div>
+</div>
+
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/jquery.csv-0.71.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/tablefxns.js"></script>
+
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+
+<script type='text/javascript'>
+    var url_vars = getUrlVars();
+    var hgnc_code = url_vars['gene'];
+    if (! hgnc_code) {window.location = './';}
+
+    google.load('visualization', '1', {packages:['corechart']});
+    var info_path = '../data/gene-info/{0}.json'.f(hgnc_code);
+    jQuery.getJSON(info_path, success=function( json ) {
+        console.log(json)
+        var gene_symbol = json['symbol'];
+        // prepare heading
+        jQuery('#heading').html('<h2>Predictions for <i>{0}</i><br><small>{1}</small></h2>'.f(gene_symbol, json['name']));
+
+        // prepare gene information list
+        var html_list = [];
+        html_list.push('<dl class="dl-horizontal">');
+        var aliases = json['aliases'].join(', ')
+        if (aliases) {html_list.push('<dt>Aliases</dt><dd>{0}</dd>'.format(aliases));}
+        var hgnc_id = json['hgnc_id']
+        var hgnc_link = 'http://www.genenames.org/cgi-bin/gene_symbol_report?hgnc_id={0}'.f(hgnc_id.slice(5));
+        html_list.push('<dt>HGNC</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(hgnc_link, hgnc_id));
+        var entrez = json['entrez'];
+        if (entrez) {
+        var entrez_link = 'http://www.ncbi.nlm.nih.gov/gene/{0}'.f(entrez);
+        html_list.push('<dt>Entrez</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(entrez_link, entrez));
+        }
+        var ensembl = json['ensembl'];
+        if (ensembl) {
+        var ensembl_link = 'http://www.ensembl.org/Gene/Summary?g={0}'.f(ensembl);
+        html_list.push('<dt>Ensembl</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(ensembl_link, ensembl));
+        }
+        var uniprot = json['uniprot'];
+        if (uniprot) {
+        var uniprot_link = 'http://www.uniprot.org/uniprot/{0}'.f(uniprot);
+        html_list.push('<dt>Uniprot</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(uniprot_link, uniprot));
+        }
+        html_list.push('</dl>');
+        jQuery('#gene_info').html(html_list.join(''));
+        // prepare table usage paragraph
+        var table_description = "<p>The table shows the predicted probability that <i>{0}</i> is associated with each complex disease. Clicking the disease name loads all predictions for that disease. Clicking on the disease code opens an external link with additional disease information. Clicking elsewhere on the row displays a barchart below showing each feature's contribution to the overall prediction. Our manual disease classifications are displayed in the disease category column. Status indicates whether a GWAS-reported association exists and was included in the network. Other associations shows the number of genes, excluding <i>{0}</i>, that the disease is associated with.</p>".f(gene_symbol);
+        jQuery('#table_description').html(table_description);
+    }).error(function() {window.location = '../';});
+
+    // Create Table
+    var table_path = '../data/gene-tables/{0}.txt'.f(hgnc_code);
+    table_identity = {hgnc_code: hgnc_code};
+    dynamicTableFromURL('gene', table_path, aoColumnDefs, table_identity);
+</script>
+
+</body>
+</html>

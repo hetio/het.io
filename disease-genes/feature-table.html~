@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>hetio &middot; Disease-Associated Genes</title>
+    <link href="../favicon.ico" rel="icon" type="image/x-icon"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../css/bootstrap-theme.css" rel="stylesheet">
+
+    <style type="text/css" title="currentStyle">
+        @import "css/demo_page.css";
+        @import "css/demo_table_jui.css";
+        @import "css/jquery-ui-1.8.4.custom.css";
+    body {
+      padding-top: 50px;
+    }
+    </style>
+
+</head>
+<body>
+
+<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<div class="container">
+<div class="navbar-header">
+  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+    <span class="sr-only">Toggle navigation</span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+    <span class="icon-bar"></span>
+  </button>
+  <a class="navbar-brand" href="#">het.io</a>
+</div>
+<div class="navbar-collapse collapse">
+<ul class="nav navbar-nav">
+ <li><a href="../">Home</a></li>
+ <li><a href="../hnlp">HNLP</a></li>
+ <li class="active"><a href="./">Disease Genes</a></li>
+ <li><a href="../media">Media</a></li>
+ <li class="dropdown">
+    <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+       Baranzini Lab
+       <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+       <li><a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a></li>
+       <li class="divider"></li>
+       <li><a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a></li>
+       <li><a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a></li>
+       <li><a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a></li>
+       <li><a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a></li>
+       <li><a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a></li>
+    </ul>
+ </li>
+</ul>
+</div><!--/.navbar-collapse -->
+</div>
+</div>
+
+
+<div class="container">
+<div id="heading">Feature Heading</div>
+<div id="feature_info">Feature Info</div>
+
+
+<div id="dynamic_feature">Generating Table...</div>
+<div class="spacer"></div>
+</div>
+
+
+<script type="text/javascript" charset="utf-8" src="js/jquery-2.1.0.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/jquery.csv-0.71.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="js/tablefxns.js"></script>
+
+<script type='text/javascript'>
+    var url_vars = getUrlVars()
+    var feature = url_vars['feature']
+
+
+    var info_path = 'data/feature-info/{0}.json'.f(feature);
+    if (! fso.FolderExists(info_path)) {window.location = './';}
+    jQuery.getJSON(info_path, success=function( json ) {
+        console.log(json);
+		html_heading = '<h2>Performance of the <i>{0}</i> Feature'.f(json['easy_name'])
+        jQuery('#heading').html(html_heading);
+
+		var html_metapath = json['metapath_long']
+		html_metapath = html_metapath.split('-').join(') <small> ');
+		html_metapath = html_metapath.split('~').join(' </small> (');
+		html_metapath = '({0})'.f(html_metapath)
+
+
+
+        var html_list = [];
+        html_list.push('<dl class="dl-horizontal">');
+
+        html_list.push('<dt>Metric</dt><dd>{0}</dd>'.format(json['metric']));
+        html_list.push('<dt>Metapath</dt><dd>{0}</dd>'.format(html_metapath));
+        html_list.push('<dt>Description</dt><dd>{0}</dd>'.format(json['description']));
+
+        html_list.push('</dl>');
+        jQuery('#feature_info').html(html_list.join(''));
+    });
+
+
+
+    var file_path = 'data/feature-tables/{0}.txt'.f(feature)
+    dynamicTableFromURL('feature', file_path, aoColumnDefs)
+</script>
+
+</body></html>

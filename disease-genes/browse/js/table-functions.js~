@@ -1,0 +1,6 @@
+function tableFromURL(tsv_url) {
+var disease_summary_tsv = jQuery.get(tsv_url);
+}
+
+var disease_summary_tsv = jQuery.get("data/disease-summary-table.txt");
+$.csv.function(disease_summary_tsv, {seperator}, callback);

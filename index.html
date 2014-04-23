@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link href="./favicon.ico" rel="icon" type="image/x-icon" />
+  <title>hetio &middot; Heterogeneous Networks</title>
+
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="css/bootstrap-theme.css" rel="stylesheet">
+
+  <style type="text/css" title="currentStyle">
+    /* Move down content because we have a fixed navbar that is 50px tall */
+    body {
+      padding-top: 50px;
+    }
+    .glyphicon-rat {
+      background-image: url("fonts/rat-14x14.png");
+      background-position: center center;
+      height: 14px;
+      width: 14px;
+    }
+    .glyphicon-bug {
+      background-image: url("fonts/bug-14x14.png");
+      background-position: center center;
+      height: 14px;
+      width: 14px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="active">
+            <a href="./">Home</a>
+          </li>
+          <li>
+            <a href="hnlp">HNLP</a>
+          </li>
+
+
+          <li class="dropdown">
+            <a href="disease-genes" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="disease-genes">About</a>
+              </li>
+              <li>
+                <a href="disease-genes/browse">Browse</a>
+              </li>
+              <li>
+                <a href="disease-genes/downloads">Downloads</a>
+              </li>
+            </ul>
+          </li>
+
+
+
+
+          <li>
+            <a href="media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Heterogeneous Networks
+        <small>for bioinformatics</small>
+      </h1>
+      <p>Heterogeneous (information) networks are graphs with multiple node and edge types. They provide a scalable, intuitive, and frictionless data structure for intergrating diverse information domains.</p>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <!-- HNLP -->
+      <div class="col-md-12">
+        <h2>Heterogeneous Network Link Prediction</h2>
+        <p>The goal of HNLP is to produce biologically-meaningful predictions by integrating multiple high-throughput data sources. The approach computes features describing the network topology connecting two nodes. These features are used as input to a machine learning method which predicts the probability that an edge exists. Through evaluating the informativeness of each feature, the relevance of included domains can be compared providing insight into the underlying forces driving the process of interest.</p>
+        <p>
+          <a class="btn btn-default" href="hnlp" role="button">View details &raquo;</a>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <!-- Disease-Associated Genes -->
+      <div class="col-md-12">
+        <h2>Disease-Associated Genes</h2>
+        <p>Using heterogeneous network link prediction on a network with 22 node types (metanodes) and 24 edge types (metaedges), we predict the probability that each protein-coding gene is associated with each of 23 complex human diseases. Reported associations from the
+<a href="http://www.genome.gov/gwastudies/" target="_blank">GWAS Catalog</a>
+          were used to train the model. Potential applications include prioritizing GWAS analyses, determining the causal gene within a genomic region, identifying genes of biological interest, and comparing the ability of various information domains to identify pathogenic variants.</p>
+        <p>
+          <a class="btn btn-default" href="disease-genes" role="button">View details &raquo;</a>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <!-- publications and media -->
+      <div class="col-md-6">
+        <h2>Publications &amp; Media</h2>
+        <p>Browse the collection of media relating to the project. Check back here for citation information.</p>
+        <p>
+          <a class="btn btn-default" href="media" role="button">View details &raquo;</a>
+        </p>
+      </div>
+      <!-- code -->
+      <div class="col-md-6">
+        <h2>Code</h2>
+        <p>Our python implementation of a framework for representing heterogeneous networks. Over time we plan to release additional code related to this project. We welcome contributions from the open source community.</p>
+        <p>
+          <a class="btn btn-default" href="http://github.com/dhimmels/hetio" target="_blank" role="button">View details &raquo;</a>
+        </p>
+      </div>
+    </div>
+    <div class="row">
+      <!-- about -->
+      <div class="col-md-6">
+        <h2>About</h2>
+        <p>This project was developed by
+          <a href="http://dhimmel.com/" target="_blank">Daniel Himmelstein</a>
+and
+          <a href="http://profiles.ucsf.edu/sergio.baranzini" target="_blank">Sergio Baranzini</a>
+from the
+          <a href="http://baranzinilab.ucsf.edu/" target="_blank">Baranzini Lab</a>
+at
+          <a href="http://www.ucsf.edu/" target="_blank">UCSF</a>. This material is based upon work supported by the National Science Foundation Graduate Research Fellowship under Grant No. 1144247. Any opinion, findings, and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the National Science Foundation.</p>
+      </div>
+      <!-- contact -->
+      <div class="col-md-6">
+        <h2>Contact</h2>
+        <p>Contact
+          <a href="mailto:Sergio Baranzini <sergio.baranzini@ucsf.edu>" target="_blank">Sergio Baranzini</a>
+          or
+          <a href="mailto:Daniel Himmelstein <daniel.himmelstein@gmail.com>" target="_blank">Daniel Himmelstein</a>
+          by email. Ask questions and please report any
+          <span class="glyphicon glyphicon-bug"></span>
+          or
+          <span class="glyphicon glyphicon-rat"></span>
+          you find.</p>
+      </div>
+    </div>
+  </div>
+
+
+  <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hetio &middot; Disease-Associated Genes</title>
+  <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../css/bootstrap-theme.css" rel="stylesheet">
+
+  <style type="text/css" title="currentStyle">
+    /* Move down content because we have a fixed navbar that is 50px tall */
+    body {
+      padding-top: 50px;
+    }
+    .glyphicon-rat {
+      background-image: url("./icons/rat-14x14.png");
+      background-position: center center;
+      height: 14px;
+      width: 14px;
+    }
+    .glyphicon-bug {
+      background-image: url("./icons/bug-14x14.png");
+      background-position: center center;
+      height: 14px;
+      width: 14px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="../">Home</a>
+          </li>
+          <li>
+            <a href="../hnlp">HNLP</a>
+          </li>
+          
+          <li class="active" class="dropdown">
+            <a href="./" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li class="active">
+                <a href="./">About</a>
+              </li>
+              <li>
+                <a href="./browse">Browse</a>
+              </li>
+              <li>
+                <a href="./downloads">Downloads</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="../media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Prioritizing Disease-Associated Genes
+        <small>with Heterogeneous Network Link Prediction.</small>
+      </h1>
+    </div>
+  </div>
+
+
+  <div class="container">
+    <div class="row">
+      <!-- HNLP -->
+      <div class="col-md-12">
+        <h2>About</h2>
+        <p>The first decade of Genome Wide Association Studies (GWAS) has uncovered a wealth of disease-associated variants. Two important tasks will be translating this information into a multiscale understanding of pathogenic variants, and increasing the power of existing and future studies through prioritization. We show that heterogeneous network link prediction accomplishes both these tasks. First we constructed a network with 22 node types and 24 edge types from high-throughput publicly-available resources. From this network we extracted features describing the topology between specific genes and diseases. Using a machine learning approach that relies on GWAS-discovered associations for positives, we predicted the probability of association between each protein-coding gene and each of 23 diseases. These predictions achieved a testing AUROC of 0.845 and a 200-fold enrichment in precision at 10% recall. We compared the informativeness of each included network component. The full model outperformed any individual domain, highlighting the benefit of integrative approaches. For multiple sclerosis (MS), we predicted 5 novel susceptibility genes, 4 of which (JAK2, TNFAIP3, REL, RUNX3) achieved Bonferroni validation on a 9,772-case GWAS masked from our analysis. Regions containing two of these genes were uncovered in a recent MS ImmunoChip-based study highlighting our ability to identify the causal gene within a locus.</p>
+      </div>
+      <!-- Disease-Associated Genes -->
+      <div class="col-md-12">
+        <h2>Browse</h2>
+        <p>View the results of our analysis. Browse predictions by gene or disease and learn more about the network-based features. Results include context-specific summaries and performance assessments. Applications of interest include:
+<ul>
+  <li>Using the predications as prior probabilities of association to increase the power of GWAS analysis.</li>
+  <li>Determining candidate causal genes within genomic regions identified by GWAS.</li>
+  <li>Identifying genes of biological interest for a specific disease.</li>
+  <li>Identifying diseases of interest for a specific gene.</li>
+  <li>Exploring a high-confidence, gene-centric translation of the GWAS Catalog.</li>
+  <li>Comparing the informativeness of various information domains for identifying pathogenic variants.</li>
+  <li>Viewing the contibution of each network-based feature composing an association prediction.</li>
+</ul>
+
+</p>
+        <p>
+          <a class="btn btn-default" href="./browse" role="button">View details &raquo;</a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h2>Downloads</h2>
+        <p>Download an extensive collection of files related to the project. Available downloads include our predictions, positive set of disease-associated genes, vector graphics, serialized networks, and processed data sources.</p>
+        <p>
+          <a class="btn btn-default" href="./downloads" role="button">View details &raquo;</a>
+        </p>
+      </div>
+      <div class="col-md-6">
+        <h2>Media</h2>
+        <p>Browse the collection of media relating to the project. Check back here for citation information.</p>
+        <p>
+          <a class="btn btn-default" href="../media" role="button">View details &raquo;</a>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script type="text/javascript" charset="utf-8" src="http://code.jquery.com/jquery-2.1.0.min.js"></script>
+  <script src="../js/bootstrap.min.js"></script>
+
+</body>
+
+</html>
+

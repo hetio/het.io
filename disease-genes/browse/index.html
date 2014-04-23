@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hetio &middot; Disease-Associated Genes</title>
+  <link href="../../favicon.ico" rel="icon" type="image/x-icon" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../../css/bootstrap-theme.css" rel="stylesheet">
+
+
+  <style type="text/css" title="currentStyle">
+    @import "css/demo_page.css";
+    @import "css/demo_table_jui.css";
+    @import "css/jquery-ui-1.8.4.custom.css";
+    body {
+      padding-top: 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="../../">Home</a>
+          </li>
+          <li>
+            <a href="../../hnlp">HNLP</a>
+          </li>
+          
+          <li class="active" class="dropdown">
+            <a href="../" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="../">About</a>
+              </li>
+              <li class="active">
+                <a href="./">Browse</a>
+              </li>
+              <li>
+                <a href="../downloads">Downloads</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="../../media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Disease-Associated Gene Browser
+      </h1>
+      <p>View predictions and performance assessments.</p>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <h2>Browse by</h2>
+    <form>
+      <div class="btn-group btn-group-justified" id="table_select_button" data-toggle="buttons">
+        <label class="btn btn-default active">
+          <input type="radio" value="disease" name="selected_table" id="disease">Disease</label>
+        <label class="btn btn-default">
+          <input type="radio" value="gene" name="selected_table" id="gene">Gene</label>
+        <label class="btn btn-default">
+          <input type="radio" value="feature" name="selected_table" id="feature">Feature</label>
+      </div>
+    </form>
+    <br>
+    <div id="dynamic_description">
+      <p>Table Description...</p>
+    </div>
+    <div id="dynamic_visible">Generating Table...</div>
+
+  </div>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../js/bootstrap.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery.csv-0.71.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/tablefxns.js"></script>
+
+
+  <script type="text/javascript">
+    description_dict = {
+      disease: "<p>Use this table to navigate to your disease of interest or to explore disease-specific performance. Clicking a disease name loads the predicted probabilities of association between that disease and each protein-coding gene. Clicking a disease code opens an external webpage with additional disease information. Disease category shows our manual disease classification. The associations column indicates the number of associated genes we extracted from the GWAS Catalog for each disease. The model's ability to rank associated genes over unassociated genes for a specific disease is dispayed by the AUROC &#8212; area under the ROC curve &#8212; column.</p>",
+      gene: "<p>Use this table to navigate to your gene of interest. Clicking a gene symbol loads the predicted probabilities of association between that gene and each complex disease. Clicking a gene code opens an external link with additional gene information. Associations referns to the number of diseases a gene is associated with. Mean prediction shows a gene's average prediction accross all diseases.</p>",
+      feature: "<p>Explore the features, their individual performance, and their contribution in the logistic ridge regression model. Brackets enclosing a metapath abbreviate an MSigDB Collection based feature. Clicking on a metapath opens a page describing the feature and showing its disease-specific performance. Metric indicates whether the feature is calculated using <i>degree wieghted path count</i> or simply <i>path count</i>. The AUROC &#8212; area under the ROC curve &#8212; column indicates the feature's ability to rank associated gene-disease pairs higher than unassoicated gene-disease pairs. The standardized coefficient indicates the effect size attributed to that feature by the logistic ridge regression model.</p>"
+    };
+
+    $("#dynamic_description").html(description_dict['disease']);
+    dynamicTableFromURL('visible', 'data/disease-summary-table.txt', aoColumnDefs);
+
+    $('body').on('mousedown', '#table_select_button .btn', function(event) {
+      event.stopPropagation(); // prevent default bootstrap behavior
+      console.log(this)
+      if ($(this).attr('data-toggle') != 'button') { // don't toggle if data-toggle="button"
+        $(this).button('toggle')
+      }
+      var myRadio = $('input[name=selected_table]');
+      var checked_value = myRadio.filter(':checked').val();
+      //console.log(checked_value)
+      console.log(description_dict[checked_value])
+      $("#dynamic_description").html(description_dict[checked_value]);
+      $("#dynamic_visible").html('<div id="dynamic_visible">Generating Table...</div>');
+      dynamicTableFromURL('visible', 'data/{0}-summary-table.txt'.f(checked_value), aoColumnDefs);
+    });
+  </script>
+
+</body>
+
+</html>
