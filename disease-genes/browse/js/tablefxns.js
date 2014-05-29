@@ -74,6 +74,14 @@ function renderPropability(data, type, row) {
     return percent.toString().slice(0, 6) + '%';
 }
 
+status_to_sort = {'-': 0, 'LCL': 1, 'LCA': 2, 'HCL': 3, 'HCA': 4}
+function renderStatus(data, type, row) {
+    if (type == 'display') {return data;}
+    console.log(data.slice(-3))
+    return status_to_sort[data.slice(-3)];
+}
+
+
 
 aoColumnDefs = [{aTargets: ['disease_name'], mRender: renderDiseaseName},
                 {aTargets: ['disease_code'], mRender: renderDiseaseCode, sType: 'numeric'},
@@ -82,7 +90,9 @@ aoColumnDefs = [{aTargets: ['disease_name'], mRender: renderDiseaseName},
                 {aTargets: ['metapath'], mRender: renderMetaPath},
                 {aTargets: ['gene_code'], sType: 'numeric', mRender: renderGeneCode},
                 {aTargets: ['disease_category']},
+                {aTargets: ['pathophysiology']},
                 {aTargets: ['positives'], sType: 'numeric'},
+                {aTargets: ['status'], sType: 'numeric', mRender: renderStatus},
                 {aTargets: ['associations'], sType: 'numeric'},
                 {aTargets: ['auroc'], sType: 'numeric'},
                 {aTargets: ['mean_prediction'], sType: 'numeric'},

@@ -114,7 +114,7 @@
 </div>
 
 <script type="text/javascript" charset="utf-8" src="../../../js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="../../../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../../js/bootstrap.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="../js/jquery.dataTables.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="../js/jquery.csv-0.71.min.js"></script>
 <script type="text/javascript" charset="utf-8" src="../js/tablefxns.js"></script>
@@ -160,7 +160,7 @@
         html_list.push('</dl>');
         jQuery('#gene_info').html(html_list.join(''));
         // prepare table usage paragraph
-        var table_description = "<p>The table shows the predicted probability that <i>{0}</i> is associated with each complex disease. Clicking the disease name loads all predictions for that disease. Clicking on the disease code opens an external link with additional disease information. Clicking elsewhere on the row displays a barchart below showing each feature's contribution to the overall prediction. Our manual disease classifications are displayed in the disease category column. Status indicates whether a GWAS-reported association exists and was included in the network. Other associations shows the number of genes, excluding <i>{0}</i>, that the disease is associated with.</p>".f(gene_symbol);
+        var table_description = "<p>The table shows the predicted probability that <i>{0}</i> is associated with each complex disease. Clicking the disease name loads all predictions for that disease. Clicking on the disease code opens an external link with additional disease information. Clicking elsewhere on the row displays a barchart below showing each feature's contribution to the overall prediction. Our manual disease classifications are displayed in the disease category column. Status indicates whether a GWAS-reported association exists that is linked to (&plusmn; HCL) or is (+ HCA) a high confidence association or is linked to (&plusmn; LCL) or is (&plusmn; LCA) a low confidence association. Other associations shows the number of genes, excluding <i>{0}</i>, that the disease is associated with.</p>".f(gene_symbol);
         jQuery('#table_description').html(table_description);
     }).error(function() {window.location = '../';});
 

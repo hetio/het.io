@@ -147,7 +147,7 @@
       var html_list = [];
       html_list.push('<dl class="dl-horizontal">');
       var doid_link = 'http://www.disease-ontology.org/term/DOID%3A{0}/'.f(doid_code.slice(5));
-      html_list.push('<dt>Disease Ontology</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(doid_link, json['doid_code']));
+      html_list.push('<dt>Disease Ontology</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(doid_link, json['disease_code']));
       var efo_term = 'EFO:' + json['xref']['EFO'][0];
       var efo_link = 'http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=EFO&termId={0}'.f(efo_term);
       html_list.push('<dt>EFO</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(efo_link, efo_term));
@@ -158,7 +158,7 @@
       html_list.push('</dl>');
       jQuery('#disease_info').html(html_list.join(''));
       // prepare table usage paragraph
-      var table_description = "<p>The table shows the predicted probability that <i>{0}</i> is associated with each protein-coding gene. Clicking the gene symbol loads all predictions for that gene. Clicking on the gene code opens an external link with additional gene information. Clicking elsewhere on the row displays a barchart below showing each feature's contribution to the overall prediction. Status indicates whether a GWAS-reported association exists and was included in the network. Other associations shows the number of diseases, excluding <i>{0}</i>, that the gene is associated with. The average prediction across all diseases for a gene is showed by mean prediction.</p>".f(disease_name);
+      var table_description = "<p>The table shows the predicted probability that <i>{0}</i> is associated with each protein-coding gene. Clicking the gene symbol loads all predictions for that gene. Clicking on the gene code opens an external link with additional gene information. Clicking elsewhere on the row displays a barchart below showing each feature's contribution to the overall prediction. Status indicates whether a GWAS-reported association exists that is linked to (&plusmn; HCL) or is (+ HCA) a high confidence association or is linked to (&plusmn; LCL) or is (&plusmn; LCA) a low confidence association. Other associations shows the number of diseases, excluding <i>{0}</i>, that the gene is associated with. The average prediction across all diseases for a gene is showed by mean prediction.</p>".f(disease_name);
       jQuery('#table_description').html(table_description);
     }).error(function() {
       window.location = './';
