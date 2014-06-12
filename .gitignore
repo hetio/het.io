@@ -3,6 +3,7 @@
 
 # Disease-gene data dynamically displayed on webpages
 disease-genes/browse/data/
+disease-genes/browse/data-old/
 
 # Downloads
 disease-genes/downloads/files/
