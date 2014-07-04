@@ -63,22 +63,21 @@ function renderGeneName(data, type, row) {
 function renderMetaPath(data, type, row) {
     if (type != 'display') {return data;}
     var display_text = data;
-    if (! (data.slice(0, 1) == 'G' && data.slice(-1) == 'D')) {display_text = '{' + data + '}'}
+    //if (! (data.slice(0, 1) == 'G' && data.slice(-1) == 'D')) {display_text = '{' + data + '}'}
     var html_snip = '<a href="/disease-genes/browse/feature/?feature={0}">{1}</a>';
     return html_snip.format(row[0], display_text);
 }
 
 function renderPropability(data, type, row) {
     if (type != 'display') {return data;}
-    var percent = data * 100;
-    return percent.toString().slice(0, 6) + '%';
+    return data + '%';
 }
 
-status_to_sort = {'-': 0, 'LCL': 1, 'LCA': 2, 'HCL': 3, 'HCA': 4}
+status_to_sort = {'-': 0, 'LC-S': 1, 'LC-P': 2, 'HC-S': 3, 'HC-P': 4}
 function renderStatus(data, type, row) {
     if (type == 'display') {return data;}
     console.log(data.slice(-3))
-    return status_to_sort[data.slice(-3)];
+    return status_to_sort[data.slice(-4)];
 }
 
 
@@ -95,7 +94,7 @@ aoColumnDefs = [{aTargets: ['disease_name'], mRender: renderDiseaseName},
                 {aTargets: ['status'], sType: 'numeric', mRender: renderStatus},
                 {aTargets: ['associations'], sType: 'numeric'},
                 {aTargets: ['auroc'], sType: 'numeric'},
-                {aTargets: ['mean_prediction'], sType: 'numeric'},
+                {aTargets: ['mean_prediction'], sType: 'numeric', mRender: renderPropability},
                 {aTargets: ['prediction'], sType: 'numeric', mRender: renderPropability},
                 {aTargets: ['standardized_coefficient'], sType: 'numeric'}];
 
