@@ -173,13 +173,3 @@ function termChart(doid_code, hgnc_code, title_name) {
     });
 }
 
-
-
-
-
-
-
-
-
-
-
