@@ -54,7 +54,7 @@
             <a href="../">Home</a>
           </li>
           <li>
-            <a href="../hnlp">HNLP</a>
+            <a href="../hnep">HNEP</a>
           </li>
           
           <li class="active" class="dropdown">
@@ -116,7 +116,7 @@
   <div class="jumbotron">
     <div class="container">
       <h1>Prioritizing Disease-Associated Genes
-        <small>with Heterogeneous Network Link Prediction.</small>
+        <small>with Heterogeneous Network Edge Prediction.</small>
       </h1>
     </div>
   </div>
@@ -124,11 +124,11 @@
 
   <div class="container">
     <div class="row">
-      <!-- HNLP -->
+      <!-- HNEP -->
       <div class="col-md-12">
         <h2>About</h2>
-          <p>The first decade of Genome Wide Association Studies (GWAS) has uncovered a wealth of disease-associated variants. Two important tasks will be translating this information into a multiscale understanding of pathogenic variants, and increasing the power of existing and future studies through prioritization. We show that link prediction on heterogeneous networks&#8212;graphs with multiple node and edge types&#8212;accomplishes both tasks. Given a heterogeneous network comprised of diverse information sources, our technique elegantly learns the importance of each connection type.</p>
-          <p>First we constructed a network with 18 node types&#8212;genes, diseases, tissues, pathophysiologies, and 14 MSigDB collections&#8212;and 19 edge types from high-throughput publicly-available resources. From this network we extracted features describing the topology between specific genes and diseases. Using a machine learning approach that relied on GWAS-discovered associations as positives during model training, we predicted the probability of association between each protein-coding gene and each of 29 diseases. These predictions achieved a testing AUROC of 0.83 and a 285-fold enrichment in precision at 10% recall. We quantified the performance of each network component and identified pleiotropy, transcriptional signatures of perturbations, polygenicity, pathways, and protein interactions as the most predictive domains. The full model greatly outperformed any individual domain, highlighting the benefit of integrative approaches.</p>
+          <p>The first decade of Genome Wide Association Studies (GWAS) has uncovered a wealth of disease-associated variants. Two important derivations will be the translation of this information into a multiscale understanding of pathogenic variants, and leveraging existing data to increase the power of existing and future studies through prioritization. We explore edge prediction on heterogeneous networks&#8212;graphs with multiple node and edge types&#8212;for accomplishing both tasks.</p>
+          <p>First we constructed a network with 18 node types&#8212;genes, diseases, tissues, pathophysiologies, and 14 MSigDB (molecular signatures database) collections&#8212;and 19 edge types from high-throughput publicly-available resources. From this network composed of 40,343 nodes and 1,608,168 edges, we extracted features that describe the topology between specific genes and diseases. Next, we trained a model from GWAS associations and predicted the probability of association between each protein-coding gene and each of 29 well-studied complex diseases. The model, which achieved 132-fold enrichment in precision at 10% recall, outperformed any individual domain, highlighting the benefit of integrative approaches. We identified pleiotropy, transcriptional signatures of perturbations, pathways, and protein interactions as fundamental mechanisms explaining pathogenesis.</p>
       </div>
     </div>
     
