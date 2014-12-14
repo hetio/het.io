@@ -105,8 +105,30 @@ body {
       <p>We adapted an alorithm originally developed for social network analysis called <i>PathPredict</i>
 [<a href="http://www.cs.uiuc.edu/homes/hanj/pdf/asonam11_ysun.pdf" target="new">pdf</a>,
 <a href="http://dx.doi.org/10.1109/ASONAM.2011.112" target="new">doi</a>].
-</p>     </div>
+Our <a href="http://dx.doi.org/10.1101/011569" target="new">extensions to this method</a> focused on scalability and performance.
+</p>
+    </div>
   </div>
+
+  <div class="row">
+    <!-- HNEP -->
+    <div class="col-md-12">
+      <h2>Methodology <small>of Metapath-Based Edge Prediction</small></h2>
+      <p>Here we show the process of calculating features that describe the network topology between two nodes. Features are used as predictors for subsequent modeling.</p>
+      <img src="methodology.png" alt="Visualization of HNEP Methodology" width="600" />
+      <ol type="A">
+        <li>We constructed the network according to a schema, called a metagraph, which is composed of metanodes (node types) and metaedges (edge types).</li>
+        <li>The network topology connecting a gene and disease node is measured along metapaths (types of paths). Starting on Gene and ending on Disease, all metapaths length three or less are computed by traversing the metagraph.</li>
+        <li>A hypothetical graph subset showing select nodes and edges surrounding <i>IRF1</i> and multiple sclerosis. To characterize this relationship, features are computed that measure the prevalence of a specific metapath between <i>IRF1</i> and multiple sclerosis.</li>
+        <li>Two features (for the <i>GeTlD</i> and <i>GiGaD</i> metapaths) are calculated to describe the relationship between <i>IRF1</i> and multiple sclerosis. The metric underlying the features is degree-weighted path count (<i>DWPC</i>). First, for the specified metapath, all paths are extracted from the network. Next, each path receives a path-degree product measuring its specificity (calculated from node-degrees along the path, <i>D<sub>path</sub></i>). This step requires a damping exponent (here <i>w</i> = 0.5), which adjusts how severely high-degree paths are downweighted. Finally, the path-degree products are summed to produce the <i>DWPC</i>.</li>
+      
+      </ol>
+     </div>
+  </div>
+
+
+
+
 </div>
 
 
