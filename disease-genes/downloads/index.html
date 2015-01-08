@@ -117,14 +117,20 @@
 <div class="row">
 
 <div class="col-md-4">
-  <h4>Gene × Disease Prediction Table</h4>
-  <p>Predicted probabilities of association between all genes and diseases.</p>
-  <p><a href="./files/prediction-table.txt" download>prediction-table.txt</a></p>
+  <h4>Predictions</h4>
+  <p>Predicted probabilities of association between all genes (rows) and diseases (columns).</p>
+  <p><a href="./files/predictions.txt.gz" download>predictions.txt.gz</a></p>
 </div>
 
 <div class="col-md-4">
-  <h4>Model Coefficient Table</h4>
-  <p>Standardized and unstandardized coefficients from the logistic ridge regression model.</p>
+  <h4>Features</h4>
+  <p>Features. The features (columns) computed for each gene-disease pair (rows). Column names with beginning with ‘XB’ refer to standardized features.</p>
+  <p><a href="./files/features.txt.gz" download>features.txt.gz</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Model Coefficients</h4>
+  <p>Standardized and unstandardized coefficients from the ridge and lasso logistic regression models.</p>
   <p><a href="./files/coefficients.txt" download>coefficients.txt</a></p>
 </div>
 </div>
@@ -134,41 +140,41 @@
 <div class="row">
 
 <div class="col-md-4">
-  <h4>Protein-coding genes</h4>
+  <h4>Protein-coding Genes</h4>
   <p>Information on the included protein-coding genes, derived from the HGNC database.</p>
   <p><a href="./files/genes.txt" download>genes.txt</a></p>
 </div>
 
 <div class="col-md-4">
-  <h4>Tissue Specific Gene Expression</h4>
-  <p>Tissue-specific gene expression levels derived from the GNF BodyMap. Genes were converted to HGNC symbols and tissues were converted to BRENDA Tissue Ontology terms.</p>
-  <p><a href="./files/expression.txt" download>expression.txt</a></p>
+  <h4>Complex Diseases</h4>
+  <p>All diseases with at least one GWAS-Catalog-extracted association. The manual pathophysiology classification is included.</p>
+  <p><a href="./files/diseases.txt" download>diseases.txt</a></p>
 </div>
 
 <div class="col-md-4">
-  <h4>Disease-Associated Genes</h4>
-  <p>The associated gene-disease pairs derived from the GWAS Catalog.</p>
-  <p><a href="./files/associations.txt" download>associations.txt</a></p>
+  <h4>Tissue-specific Gene Expression</h4>
+  <p>Tissue-specific gene expression levels derived from the GNF BodyMap. Genes were converted to HGNC symbols and tissues were converted to BRENDA Tissue Ontology terms.</p>
+  <p><a href="./files/expression.txt.gz" download>expression.txt.gz</a></p>
 </div>
 </div>
 <div class="row">
 
 <div class="col-md-4">
-  <h4>Disease-Associated Regions</h4>
-  <p>The associated gene-disease regions derived from the GWAS Catalog.</p>
-  <p><a href="./files/associationed-regions.txt" download>associationed-regions.txt</a></p>
+  <h4>Gene-Disease Associations</h4>
+  <p>The associated gene-disease pairs derived from the GWAS Catalog.</p>
+  <p><a href="./files/gene-associations.txt" download>gene-associations.txt</a></p>
 </div>
 
 <div class="col-md-4">
-  <h4>Disease-Tissue Co-occurence</h4>
-  <p>Literature co-occurence between diseases and tissues calculated using CoPub 5.0. </p>
-  <p><a href="./files/disease-tissue-cooccurence.txt" download>disease-tissue-cooccurence.txt</a></p>
+  <h4>Processed GWAS Catalog Loci</h4>
+  <p>The associated gene-disease loci (regions) derived from the GWAS Catalog.</p>
+  <p><a href="./files/loci-associations.txt" download>loci-associations.txt</a></p>
 </div>
 
 <div class="col-md-4">
-  <h4>Disease Similarities</h4>
-  <p>Semantic similarity between Disease Ontology terms calculated using the Lin instrinsic similarity metric.</p>
-  <p><a href="./files/disease-similarity.txt" download>disease-similarity.txt</a></p>
+  <h4>Disease Localization</h4>
+  <p>Literature co-occurrence between diseases and tissues calculated using CoPub 5.0. </p>
+  <p><a href="./files/disease-localization.txt" download>disease-localization.txt</a></p>
 </div>
 </div>
 <div class="row">
@@ -176,7 +182,7 @@
 <div class="col-md-4">
   <h4>Protein-Protein Interactions</h4>
   <p>Protein-protein interactions processed from iRefIndex using ppiTrim. ppiTrim converts to gene space, consolidates duplicate interactions, and removes complexes.</p>
-  <p><a href="./files/protein-interactions.txt" download>protein-interactions.txt</a></p>
+  <p><a href="./files/protein-interactions.txt.gz" download>protein-interactions.txt.gz</a></p>
 </div>
 </div>
 
@@ -187,18 +193,18 @@
 <div class="col-md-4">
   <h4>Serialized Network</h4>
   <p>JSON representation of the heterogeneous network.</p>
-  <p><a href="./files/network.json" download>network.json</a></p>
+  <p><a href="./files/network.json.gz" download>network.json.gz</a></p>
 </div>
 </div>
 
 <hr>
-<h2>graphics</h2>
+<h2>vizualization</h2>
 <div class="row">
 
 <div class="col-md-4">
   <h4>Vector Images</h4>
-  <p>Manuscript images in vector format.</p>
-  <p><a href="./files/vector-graphics.tar.gz" download>vector-graphics.tar.gz</a></p>
+  <p>Manuscript figures in vector format.</p>
+  <p><a href="./files/figures.tar.gz" download>figures.tar.gz</a></p>
 </div>
 </div>
 <!-- python generated download html ends here -->
