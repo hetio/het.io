@@ -124,7 +124,7 @@
 
 <div class="col-md-4">
   <h4>Features</h4>
-  <p>Features. The features (columns) computed for each gene-disease pair (rows). Column names with beginning with ‘XB’ refer to standardized features.</p>
+  <p>The features (columns) computed for each gene-disease pair (rows). Column names with beginning with 'XB' refer to standardized features.</p>
   <p><a href="./files/features.txt.gz" download>features.txt.gz</a></p>
 </div>
 
@@ -153,7 +153,7 @@
 
 <div class="col-md-4">
   <h4>Tissue-specific Gene Expression</h4>
-  <p>Tissue-specific gene expression levels derived from the GNF BodyMap. Genes were converted to HGNC symbols and tissues were converted to BRENDA Tissue Ontology terms.</p>
+  <p>A processed version of the GNF BodyMap providing a gene's (row, HGNC symbols) expression value for each of 77 tissues (columns, BRENDA Tissue Ontology IDs).</p>
   <p><a href="./files/expression.txt.gz" download>expression.txt.gz</a></p>
 </div>
 </div>
@@ -161,7 +161,7 @@
 
 <div class="col-md-4">
   <h4>Gene-Disease Associations</h4>
-  <p>The associated gene-disease pairs derived from the GWAS Catalog.</p>
+  <p>All gene-disease associations extracted from the GWAS catalog for the four categories of association.</p>
   <p><a href="./files/gene-associations.txt" download>gene-associations.txt</a></p>
 </div>
 
@@ -192,8 +192,14 @@
 
 <div class="col-md-4">
   <h4>Serialized Network</h4>
-  <p>JSON representation of the heterogeneous network.</p>
+  <p>A JSON formatted text file storing the complete network. The top level is an JSON object with four pairs (metanodes, metaedges, nodes, edges). The value for each pair is a JSON array containing the corresponding items.</p>
   <p><a href="./files/network.json.gz" download>network.json.gz</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Network Tables</h4>
+  <p>A table of network edges (sif format) and a table of node attributes.</p>
+  <p><a href="./files/network-tables.zip" download>network-tables.zip</a></p>
 </div>
 </div>
 
@@ -203,8 +209,8 @@
 
 <div class="col-md-4">
   <h4>Vector Images</h4>
-  <p>Manuscript figures in vector format.</p>
-  <p><a href="./files/figures.tar.gz" download>figures.tar.gz</a></p>
+  <p>PDF formatted versions of the figures.</p>
+  <p><a href="./files/figures.zip" download>figures.zip</a></p>
 </div>
 </div>
 <!-- python generated download html ends here -->
