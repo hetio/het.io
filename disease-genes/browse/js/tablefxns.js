@@ -37,8 +37,8 @@ function renderGeneCode(data, type, full) {
 
 function renderDiseaseCode(data, type, full) {
     if (type != 'display') {return data.slice(5);}
-    var html_snip = '<a href="http://www.disease-ontology.org/term/DOID%3A{0}/" target="_blank">{1}</a>';
-    return html_snip.format(data.slice(5), data);
+    var html_snip = '<a href="http://www.disease-ontology.org/?id={0}" target="_blank">{1}</a>';
+    return html_snip.format(data, data);
 }
 
 function renderDiseaseName(data, type, row) {

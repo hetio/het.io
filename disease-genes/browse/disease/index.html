@@ -146,8 +146,7 @@
       // prepare disease information list
       var html_list = [];
       html_list.push('<dl class="dl-horizontal">');
-      var doid_link = 'http://www.disease-ontology.org/term/DOID%3A{0}/'.f(doid_code.slice(5));
-      html_list.push('<dt>Disease Ontology</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(doid_link, json['disease_code']));
+      html_list.push('<dt>Disease Ontology</dt><dd><a href="http://www.disease-ontology.org/?id={0}" target="_blank">{0}</a></dd>'.format(json['disease_code']));
       var efo_term = 'EFO:' + json['xref']['EFO'][0];
       var efo_link = 'http://www.ebi.ac.uk/ontology-lookup/browse.do?ontName=EFO&termId={0}'.f(efo_term);
       html_list.push('<dt>EFO</dt><dd><a href="{0}" target="_blank">{1}</a></dd>'.format(efo_link, efo_term));
