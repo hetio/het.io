@@ -1,3 +1,6 @@
+// allow Cross Origin AJAX requests http://www.ajax-cross-origin.com/
+jQuery.getScript("https://github.com/dhimmel/het.io/raw/gh-pages/disease-genes/browse/js/jquery.ajax-cross-origin.min.js")
+
 var barchart_description = "<p>The barchart shows the contribution of each feature towards the overall prediction. The contribution equals the feature coefficient from the logistic ridge regression model times the feature value computed between the specified gene and disease.</p>";
 
 var base_data_url = "https://github.com/dhimmel/het.io-dag-data/raw/54dd91f7c3c378b4064e8a99b022d4c637fe413f/browser/"
@@ -109,7 +112,11 @@ function dynamicTableFromURL(table_name, tsv_url, aoColumnDefs, identity) {
 
     jQuery(document).ready(function() {
         console.log(tsv_url);
-        jQuery.get(tsv_url, data='', dataType='text', success=function(tsv_string) {
+        jQuery.ajax({
+          url: tsv_url,
+          dataType: 'text',
+          crossOrigin: true,
+          success: function(tsv_string) {
             var table_array = jQuery.csv.toArrays(tsv_string, {'separator': '\t'});
             var fieldnames = table_array[0];
             table_array = table_array.slice(1);
@@ -126,12 +133,11 @@ function dynamicTableFromURL(table_name, tsv_url, aoColumnDefs, identity) {
             jQuery('#dynamic_' + table_name).html(table_html);
             var otab = jQuery('#table_' + table_name).dataTable({'aaData': table_array, 'bProcessing': true, 'bJQueryUI': true, bAutoWidth: true, 'iDisplayLength': 25, 'aoColumnDefs': aoColumnDefs, sPaginationType: 'full_numbers', aaSorting:[[default_sort_index, 'desc']]});
 
-
             jQuery('#table_' + table_name).on('click', 'tr', function(event){
                 var pred_col = fieldnames.indexOf('prediction');
                 var doid_col = fieldnames.indexOf('disease_code');
                 var hgnc_col = fieldnames.indexOf('gene_code');
-				var row_array = otab.fnGetData( this );
+				        var row_array = otab.fnGetData( this );
                 if (pred_col != -1 && row_array != null) {
                     //var prediction = row_array[pred_col]
                     if (doid_col != -1) {
@@ -148,8 +154,8 @@ function dynamicTableFromURL(table_name, tsv_url, aoColumnDefs, identity) {
                     google.setOnLoadCallback(termChart(doid_code, hgnc_code, title_name));
                 }
             });
-
-        }).error(function() {
+        } // ends success
+      }).error(function() {
           window.location = '/disease-genes/browse';
         });;
 
