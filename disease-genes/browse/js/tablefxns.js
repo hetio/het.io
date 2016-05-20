@@ -1,9 +1,11 @@
 // allow Cross Origin AJAX requests http://www.ajax-cross-origin.com/
 jQuery.getScript("https://github.com/dhimmel/het.io/raw/gh-pages/disease-genes/browse/js/jquery.ajax-cross-origin.min.js")
+// https://cdnjs.cloudflare.com/ajax/libs/jquery-ajaxtransport-xdomainrequest/1.0.3/jquery.xdomainrequest.min.js
 
 var barchart_description = "<p>The barchart shows the contribution of each feature towards the overall prediction. The contribution equals the feature coefficient from the logistic ridge regression model times the feature value computed between the specified gene and disease.</p>";
 
-var base_data_url = "https://github.com/dhimmel/het.io-dag-data/raw/54dd91f7c3c378b4064e8a99b022d4c637fe413f/browser/"
+// var base_data_url = "https://github.com/dhimmel/het.io-dag-data/raw/54dd91f7c3c378b4064e8a99b022d4c637fe413f/browser/"
+var base_data_url = "https://rawgithub.com/dhimmel/het.io-dag-data/54dd91f7c3c378b4064e8a99b022d4c637fe413f/browser/"
 
 jQuery('#barchart_description').html(barchart_description);
 
