@@ -47,7 +47,7 @@
           <li>
             <a href="../../../hnlp">HNLP</a>
           </li>
-          
+
           <li class="active" class="dropdown">
             <a href="../../" class="dropdown-toggle" data-toggle="dropdown">
               Disease Genes
@@ -124,7 +124,7 @@
      var feature = url_vars['feature']
 
 
-    var info_path = '../data/feature-info/{0}.json'.f(feature);
+    var info_path = base_data_url.concat('feature-info/{0}.json'.f(feature));
     jQuery.getJSON(info_path, success = function(json) {
       console.log(json);
       html_heading = '<h2>Performance of the <i>{0}</i> Feature'.f(json['easy_name'])
@@ -150,7 +150,7 @@
 
 
 
-    var file_path = '../data/feature-tables/{0}.txt'.f(feature)
+    var file_path = base_data_url.concat('feature-tables/{0}.txt'.f(feature))
      dynamicTableFromURL('feature', file_path, aoColumnDefs)
   </script>
 

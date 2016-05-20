@@ -1,5 +1,7 @@
 var barchart_description = "<p>The barchart shows the contribution of each feature towards the overall prediction. The contribution equals the feature coefficient from the logistic ridge regression model times the feature value computed between the specified gene and disease.</p>";
 
+var base_data_url = "https://github.com/dhimmel/het.io-dag-data/raw/54dd91f7c3c378b4064e8a99b022d4c637fe413f/browser/"
+
 jQuery('#barchart_description').html(barchart_description);
 
 function getUrlVars() {
@@ -106,11 +108,12 @@ function dynamicTableFromURL(table_name, tsv_url, aoColumnDefs, identity) {
     if(typeof(identity) === 'undefined') identity = {};
 
     jQuery(document).ready(function() {
-        jQuery.get(tsv_url, dataType='text', success=function(tsv_string) {
+        console.log(tsv_url);
+        jQuery.get(tsv_url, data='', dataType='text', success=function(tsv_string) {
             var table_array = jQuery.csv.toArrays(tsv_string, {'separator': '\t'});
             var fieldnames = table_array[0];
             table_array = table_array.slice(1);
-            
+
             var default_sort_index;
             for (i=0; i < default_sort.length; i++) {
                 default_sort_index = fieldnames.indexOf(default_sort[i]);
@@ -146,7 +149,9 @@ function dynamicTableFromURL(table_name, tsv_url, aoColumnDefs, identity) {
                 }
             });
 
-        }).error(function() {window.location = '/disease-genes/browse';});;
+        }).error(function() {
+          window.location = '/disease-genes/browse';
+        });;
 
     });
 }
@@ -155,7 +160,7 @@ function dynamicTableFromURL(table_name, tsv_url, aoColumnDefs, identity) {
 
 function termChart(doid_code, hgnc_code, title_name) {
     jQuery(document).ready(function() {
-    var term_path = '../data/prediction-terms/{0}/{1}.txt'.f(doid_code, hgnc_code);
+    var term_path = base_data_url.concat('prediction-terms/{0}/{1}.txt'.f(doid_code, hgnc_code));
     jQuery.get(term_path, dataType='text', success=function(tsv_string) {
         var table_array = jQuery.csv.toArrays(tsv_string, {'separator': '\t'});
         for (i = 1; i < table_array.length; i++) {
@@ -172,4 +177,3 @@ function termChart(doid_code, hgnc_code, title_name) {
     });
     });
 }
-

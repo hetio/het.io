@@ -46,7 +46,7 @@
           <li>
             <a href="../../hnep">HNEP</a>
           </li>
-          
+
           <li class="active" class="dropdown">
             <a href="../" class="dropdown-toggle" data-toggle="dropdown">
               Disease Genes
@@ -149,7 +149,7 @@
     };
 
     $("#dynamic_description").html(description_dict['disease']);
-    dynamicTableFromURL('visible', 'data/disease-summary-table.txt', aoColumnDefs);
+    dynamicTableFromURL('visible', base_data_url.concat('disease-summary-table.txt'), aoColumnDefs);
 
     $('body').on('mousedown', '#table_select_button .btn', function(event) {
       event.stopPropagation(); // prevent default bootstrap behavior
@@ -163,7 +163,7 @@
       console.log(description_dict[checked_value])
       $("#dynamic_description").html(description_dict[checked_value]);
       $("#dynamic_visible").html('<div id="dynamic_visible">Generating Table...</div>');
-      dynamicTableFromURL('visible', 'data/{0}-summary-table.txt'.f(checked_value), aoColumnDefs);
+      dynamicTableFromURL('visible', base_data_url.concat('{0}-summary-table.txt').f(checked_value), aoColumnDefs);
     });
   </script>
 

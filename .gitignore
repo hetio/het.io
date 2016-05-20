@@ -1,13 +1,2 @@
 ### Linux ###
 *~
-
-# Disease-gene data dynamically displayed on webpages
-disease-genes/browse/data/
-disease-genes/browse/data-old/
-disease-genes/browse/data-select/
-
-# Downloads
-disease-genes/downloads/files/
-
-# Zip file
-het.io.zip

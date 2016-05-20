@@ -45,7 +45,7 @@
           <li>
             <a href="../../../hnep">HNEP</a>
           </li>
-          
+
           <li class="active" class="dropdown">
             <a href="../../" class="dropdown-toggle" data-toggle="dropdown">
               Disease Genes
@@ -127,7 +127,7 @@
     if (! hgnc_code) {window.location = './';}
 
     google.load('visualization', '1', {packages:['corechart']});
-    var info_path = '../data/gene-info/{0}.json'.f(hgnc_code);
+    var info_path = base_data_url.concat('gene-info/{0}.json'.f(hgnc_code));
     jQuery.getJSON(info_path, success=function( json ) {
         console.log(json)
         var gene_symbol = json['symbol'];
@@ -165,7 +165,7 @@
     }).error(function() {window.location = '../';});
 
     // Create Table
-    var table_path = '../data/gene-tables/{0}.txt'.f(hgnc_code);
+    var table_path = base_data_url.concat('gene-tables/{0}.txt'.f(hgnc_code));
     table_identity = {hgnc_code: hgnc_code};
     dynamicTableFromURL('gene', table_path, aoColumnDefs, table_identity);
 </script>

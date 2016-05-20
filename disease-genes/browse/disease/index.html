@@ -47,7 +47,7 @@
           <li>
             <a href="../../../hnep">HNEP</a>
           </li>
-          
+
           <li class="active" class="dropdown">
             <a href="../../" class="dropdown-toggle" data-toggle="dropdown">
               Disease Genes
@@ -137,7 +137,7 @@
       packages: ['corechart']
     });
 
-    var info_path = '../data/disease-info/{0}.json'.f(doid_code);
+    var info_path = base_data_url.concat('disease-info/{0}.json'.f(doid_code));
     jQuery.getJSON(info_path, success = function(json) {
       console.log(json);
       var disease_name = json['name'];
@@ -164,7 +164,7 @@
       window.location = './';
     });
 
-    var table_path = '../data/disease-tables/{0}.txt'.f(doid_code)
+    var table_path = base_data_url.concat('disease-tables/{0}.txt'.f(doid_code))
      table_identity = {
       doid_code: doid_code
     };
