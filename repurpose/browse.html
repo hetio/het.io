@@ -10,10 +10,9 @@
   <title>hetio &middot; Disease-Associated Genes</title>
   <link href="../../favicon.ico" rel="icon" type="image/x-icon" />
 
-  <!-- Bootstrap core CSS -->
-  <link href="../../css/bootstrap.min.css" rel="stylesheet">
-  <!-- Custom styles for this template -->
-  <link href="../../css/bootstrap-theme.css" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
 
   <style type="text/css" title="currentStyle">
     /*@import "../css/demo_page.css";
@@ -42,32 +41,34 @@
       <div class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
           <li>
-            <a href="../../../">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="../../../hnep">HNEP</a>
+            <a href="/hnep">HNEP</a>
           </li>
-
-          <li class="active" class="dropdown">
-            <a href="../../" class="dropdown-toggle" data-toggle="dropdown">
+          <li class='active'>
+            <a href="/repurpose">Drug Repurposing</a>
+          </li>
+          <li class="dropdown">
+            <a href="/disease-genes" class="dropdown-toggle" data-toggle="dropdown">
               Disease Genes
               <b class="caret"></b>
             </a>
             <ul class="dropdown-menu">
               <li>
-                <a href="../../">About</a>
+                <a href="/disease-genes">About</a>
               </li>
               <li class="active">
-                <a href="../">Browse</a>
+                <a href="/disease-genes/browse">Browse</a>
               </li>
               <li>
-                <a href="../../downloads">Downloads</a>
+                <a href="/disease-genes/downloads">Downloads</a>
               </li>
             </ul>
           </li>
 
           <li>
-            <a href="../../../media">Media</a>
+            <a href="/media">Media</a>
           </li>
           <li class="dropdown">
             <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
@@ -102,7 +103,6 @@
     </div>
   </div>
 
-
   <div class="container">
 
     <div id="heading">Heading</div>
@@ -129,13 +129,14 @@
 
   </div>
 
-  <script type="text/javascript" charset="utf-8" src="../../js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery-2.2.4.min.js"></script>
   <script type="text/javascript" charset="utf-8" src="../../js/bootstrap.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.js"></script>
   <script type="text/javascript" src="js/clipboard.min.js"></script>
   <script type="text/javascript" src="js/utilities.js"></script>
 
   <script type='text/javascript'>
+    $('.dropdown-toggle').dropdown();
 
     new Clipboard('.btn');
 
