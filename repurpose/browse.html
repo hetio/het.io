@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hetio &middot; Disease-Associated Genes</title>
+  <link href="../../favicon.ico" rel="icon" type="image/x-icon" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="../../css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../../css/bootstrap-theme.css" rel="stylesheet">
+
+  <style type="text/css" title="currentStyle">
+    /*@import "../css/demo_page.css";
+    @import "../css/demo_table_jui.css";
+    @import "../css/jquery-ui-1.8.4.custom.css";*/
+    body {
+      padding-top: 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="../../../">Home</a>
+          </li>
+          <li>
+            <a href="../../../hnep">HNEP</a>
+          </li>
+
+          <li class="active" class="dropdown">
+            <a href="../../" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="../../">About</a>
+              </li>
+              <li class="active">
+                <a href="../">Browse</a>
+              </li>
+              <li>
+                <a href="../../downloads">Downloads</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="../../../media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <div id="heading">Heading</div>
+    <div id="info_section">Info</div>
+    <div id="usage_section">Table usage description</div>
+    <div>
+      <table id="browse_table" class="display" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Prediction</th>
+            <th>Compound Pctl</th>
+            <th>Disease Pctl</th>
+            <th>Cat</th>
+            <th>Trials</th>
+            <th></th>
+            <th>synonyms</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.js"></script>
+  <script type="text/javascript" src="js/clipboard.min.js"></script>
+  <script type="text/javascript" src="js/utilities.js"></script>
+
+  <script type='text/javascript'>
+
+    new Clipboard('.btn');
+
+    var id = getUrlVars()['id'];
+    if (!id) {
+      window.location = './';
+    }
+    var request = $.getJSON(`${data_url}info.json`);
+    request.success(function(response) {
+      info = response[id]
+      console.log(info)
+      var id_type = info.type;
+      var name = info.name;
+
+      $('#heading').html(`<h2>Predictions for <i>${info['name']}</i>`);
+      id_raw = id.replace('_', ':')
+      var id_href = `<a href="${id_type == 'compound' ? 'http://www.drugbank.ca/drugs/' + id: 'http://www.disease-ontology.org/?id=' + id_raw}" title="See in ${id_type == 'compound' ? 'DrugBank': 'the Disease Ontology'}">${id_raw}</a>`;
+
+      $('#info_section').html(
+        `<p>
+        This page shows predicted treatments for ${name} (<code>${id_href}</code>) from Project Rephetio.
+        In PharmacotherapyDB v1.0, ${name} contains ${info.treats} treatments and ${info.palliates} palliative indications.
+        ${info.treats ? `The predictions prioritized the ${info.treats} treatments with AUROC = ${render_percent(info.auroc, 'display')}.` : '' }
+        In Hetionet v1.0, ${name} is connected by ${info.edges} relationships.
+        </p>`
+      );
+
+      $('#usage_section').html(
+        `<p>
+        Use the table below to browse ${id_type == 'compound' ? 'diseases' : 'compounds'}.
+        <mark>Prediction</mark> is the predicted probability that ${id_type == 'compound' ? `${name} treats the disease` : `the compound treats ${name}`}.
+        <mark>Compound Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? name : 'that compound'}.
+        <mark>Disease Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? 'that disease' : name}.
+        <mark>Cat</mark> gives the category in PharmacotherapyDB v1.0: DM refers to a disease-modifying indication, SYM refers to a symptomatic indication, NOT refers to a non-indication.
+        <mark>Trials</mark> refers to the number of trials investigating this compound–disease pair in ClinicalTrials.gov.
+        </p>
+
+        <p>
+        Additional information is available for each prediction through the Hetionet Neo4j Browser.
+        Use <button class="btn btn-xs btn-default disabled">New Browser</button> to open a new Hetionet Browser with the prediction query prefilled (you still must hit play).
+        Use <button class="btn btn-xs btn-default disabled">Copy Command</button> to copy a command to your clipboard which can be pasted into an already-open Hetionet Browser.
+        </p>`
+      );
+
+
+      function render_play(data, type, full) {
+        if (type != 'display') {return data};
+        if (id_type == 'compound') {
+          guide_url = `http://neo4j.het.io/guides/rep/${id}/${data.replace(':', '_')}.html`
+        };
+        if (id_type == 'disease') {
+          guide_url = `http://neo4j.het.io/guides/rep/${data}/${id}.html`
+        };
+        return (`
+        <a href="http://neo4j.het.io/browser/?cmd=play&arg=${guide_url}" target="_blank" class="btn btn-xs btn-default">New Browser</a>
+        <button class="btn btn-xs btn-default" data-clipboard-text=":play ${guide_url}">Copy Command</button>
+        `);
+      }
+
+      var aoColumnDefs = [
+        {aTargets: [7], bVisible: false},
+        {aTargets: [6], mRender: render_play},
+        {aTargets: [1,2,3], mRender: render_percent},
+        {aTargets: [4], mRender: render_category}
+      ];
+
+      var url = `${data_url}${id_type}/${id}.json`
+      console.log(url)
+      $('#browse_table').DataTable({
+        ajax: url,
+        aoColumnDefs: aoColumnDefs,
+        pageLength: 25,
+        order: [[1, 'desc'], [2, 'desc'], [3, 'desc']],
+      })
+    });
+
+  </script>
+
+  <!-- Piwik -->
+  <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//piwik.dhimmel.com/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 3]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><p><img src="//piwik.dhimmel.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
+</body>
+
+</html>
