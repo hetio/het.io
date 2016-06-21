@@ -44,30 +44,30 @@ body {
 <ul class="nav navbar-nav">
  <li><a href="../">Home</a></li>
  <li class="active"><a href="./">HNEP</a></li>
-
-
-          <li class="dropdown">
-            <a href="../disease-genes" class="dropdown-toggle" data-toggle="dropdown">
-              Disease Genes
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="../disease-genes">About</a>
-              </li>
-              <li>
-                <a href="../disease-genes/browse">Browse</a>
-              </li>
-              <li>
-                <a href="../disease-genes/downloads">Downloads</a>
-              </li>
-            </ul>
-          </li>
-
+ <li>
+   <a href="/repurpose">Drug Repurposing</a>
+ </li>
+  <li class="dropdown">
+    <a href="../disease-genes" class="dropdown-toggle" data-toggle="dropdown">
+      Disease Genes
+      <b class="caret"></b>
+    </a>
+    <ul class="dropdown-menu">
+      <li>
+        <a href="../disease-genes">About</a>
+      </li>
+      <li>
+        <a href="../disease-genes/browse">Browse</a>
+      </li>
+      <li>
+        <a href="../disease-genes/downloads">Downloads</a>
+      </li>
+    </ul>
+  </li>
  <li><a href="../media">Media</a></li>
  <li class="dropdown">
     <a href="http://baranzinilab.ucsf.edu/" class="dropdown-toggle" data-toggle="dropdown">
-       Baranzini Lab 
+       Baranzini Lab
        <b class="caret"></b>
     </a>
     <ul class="dropdown-menu">
@@ -121,7 +121,7 @@ Our <a href="http://dx.doi.org/10.1101/011569" target="new">extensions to this m
         <li>The network topology connecting a gene and disease node is measured along metapaths (types of paths). Starting on Gene and ending on Disease, all metapaths length three or less are computed by traversing the metagraph.</li>
         <li>A hypothetical graph subset showing select nodes and edges surrounding <i>IRF1</i> and multiple sclerosis. To characterize this relationship, features are computed that measure the prevalence of a specific metapath between <i>IRF1</i> and multiple sclerosis.</li>
         <li>Two features (for the <i>GeTlD</i> and <i>GiGaD</i> metapaths) are calculated to describe the relationship between <i>IRF1</i> and multiple sclerosis. The metric underlying the features is degree-weighted path count (<i>DWPC</i>). First, for the specified metapath, all paths are extracted from the network. Next, each path receives a path-degree product measuring its specificity (calculated from node-degrees along the path, <i>D<sub>path</sub></i>). This step requires a damping exponent (here <i>w</i> = 0.5), which adjusts how severely high-degree paths are downweighted. Finally, the path-degree products are summed to produce the <i>DWPC</i>.</li>
-      
+
       </ol>
      </div>
   </div>
@@ -151,4 +151,3 @@ Our <a href="http://dx.doi.org/10.1101/011569" target="new">extensions to this m
 
 </body>
 </html>
-

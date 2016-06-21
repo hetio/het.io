@@ -5,17 +5,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>hetio &middot; Disease-Associated Genes</title>
-  <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+  <title>hetio · Project Rephetio · Drug Repurposing</title>
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/bootstrap-theme.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
 
   <style type="text/css" title="currentStyle">
-    /*@import "../disease-genes/browse/css/demo_page.css";
-    @import "../disease-genes/browse/css/demo_table_jui.css";
-    @import "../disease-genes/browse/css/jquery-ui-1.8.4.custom.css";*/
     body {
       padding-top: 50px;
     }
@@ -56,7 +55,7 @@
               <li>
                 <a href="/disease-genes">About</a>
               </li>
-              <li class="active">
+              <li>
                 <a href="/disease-genes/browse">Browse</a>
               </li>
               <li>
@@ -105,34 +104,58 @@
   <!-- Main jumbotron for a primary marketing message or call to action -->
   <div class="jumbotron">
     <div class="container">
-      <h1>Drug Repurposing Browser
+      <h1>Project Rephetio Browser
       </h1>
-      <p>View predictions and performance assessments.</p>
+      <p>Drug repurposing predictions</p>
     </div>
   </div>
 
 
   <div class="container">
 
-    <h2>Browse </h2>
+    <h2>Project Rephetio</h2>
+    <p>
+      Project Rephetio is an open science project to predict new uses for existing compounds, which is called drug repurposing. Predictions are created from <a href="https://github.com/dhimmel/hetionet" title="Hetionet on GitHub">Hetionet v1.0</a>, an integrative network of biomedicine that contains 2,250,197 relationships of 24 types.
+    </p>
+    <p>
+      We use machine learning to systematically learn network patterns of drug efficacy. Our method translates the network paths between a compound and disease into a predicted probability of treatment. We make predictions for 1,538 approved small molecule compounds and 136 complex diseases, resulting in a total of 209,168 compound–disease pairs.
+    </p>
 
+    <h2>Browse</h2>
+
+    <p>
+    Navigate to your compound or disease of interest to see all of its predictions. <mark class="bg-info">Treatments</mark> refers to the number of disease-modifying therapies for a compound or disease. <mark class="bg-info">AUROC</mark> measures the ability of the predictions to prioritize these known treatments. <mark class="bg-info">Edges</mark> refers to the number of relationships in Hetionet v1.0 that connect the compound or disease. In general, the more edges, the more Hetionet <i>knows</i> about a node.
+    </p>
+
+    <p>
     <form>
       <div class="btn-group btn-group-justified" id="browse_by_button" data-toggle="buttons">
-        <label class="btn btn-default active">
-          <input type="radio" value="compounds" name="browse-by" id="compounds" checked="checked">Compounds</label>
         <label class="btn btn-default">
-          <input type="radio" value="diseases" name="browse-by" id="diseases">Diseases</label>
+          <input type="radio" value="compounds" name="browse-by" id="compounds">Compounds</label>
+        <label class="btn btn-default active">
+          <input type="radio" value="diseases" name="browse-by" id="diseases" checked="checked">Diseases</label>
       </div>
     </form>
+  </p>
 
     <div id="dynamic-table">Generating Table...</div>
 
-  </div>
+    <h2>More information</h2>
+    <p>
+      For more information on Project Rephetio or for feedback or help, please visit the <a href="https://thinklab.com/p/rephetio">project on Thinklab</a>.
+    </p>
 
+    <p>
+      Project Rephetio predictions are released under <a href="https://creativecommons.org/publicdomain/zero/1.0/" title="CC0 1.0 Universal · Public Domain Dedication">CC0 1.0</a>.
+    </p>
+
+  </div>
 
   <script type="text/javascript" charset="utf-8" src="/js/jquery-2.2.4.min.js"></script>
   <script src="/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
+
   <script type="text/javascript" src="js/utilities.js"></script>
 
   <script type="text/javascript">
@@ -160,7 +183,7 @@
       var table_id = 'table_' + browseby;
       var url = `${data_url}${browseby}.json`;
       var table_html = `
-      <table cellpadding="0" cellspacing="0" border="0" class="display" width="100%" id="${table_id}">
+      <table cellpadding="0" cellspacing="0" border="0" class="display table table-striped table-bordered" width="100%" id="${table_id}">
         <thead>
           <th></th>
           <th>Name</th>
@@ -180,8 +203,7 @@
       $('#' + table_id).DataTable({
         ajax: url,
         aoColumnDefs: aoColumnDefs,
-        order: [[2, 'desc'], [1, 'desc']],
-        bProcessing: true
+        order: [[2, 'desc'], [1, 'desc']]
       })
     }
 

@@ -7,17 +7,16 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>hetio &middot; Disease-Associated Genes</title>
-  <link href="../../favicon.ico" rel="icon" type="image/x-icon" />
+  <title>hetio &middot; Project Rephetio &middot; Drug Repurposing</title>
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
 
   <link rel="stylesheet" href="/css/bootstrap.min.css">
   <link rel="stylesheet" href="/css/bootstrap-theme.css">
   <link rel="stylesheet" href="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
 
   <style type="text/css" title="currentStyle">
-    /*@import "../css/demo_page.css";
-    @import "../css/demo_table_jui.css";
-    @import "../css/jquery-ui-1.8.4.custom.css";*/
     body {
       padding-top: 50px;
     }
@@ -58,7 +57,7 @@
               <li>
                 <a href="/disease-genes">About</a>
               </li>
-              <li class="active">
+              <li>
                 <a href="/disease-genes/browse">Browse</a>
               </li>
               <li>
@@ -109,7 +108,7 @@
     <div id="info_section">Info</div>
     <div id="usage_section">Table usage description</div>
     <div>
-      <table id="browse_table" class="display" cellspacing="0" width="100%">
+      <table id="browse_table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
           <tr>
             <th>Name</th>
@@ -126,6 +125,15 @@
         </tbody>
       </table>
     </div>
+
+    <h2>More information</h2>
+    <p>
+      For more information on Project Rephetio or for feedback or help, please visit the <a href="https://thinklab.com/p/rephetio">project on Thinklab</a>.
+    </p>
+
+    <p>
+      Project Rephetio predictions are released under <a href="https://creativecommons.org/publicdomain/zero/1.0/" title="CC0 1.0 Universal · Public Domain Dedication">CC0 1.0</a>.
+    </p>
 
   </div>
 
@@ -167,11 +175,11 @@
       $('#usage_section').html(
         `<p>
         Use the table below to browse ${id_type == 'compound' ? 'diseases' : 'compounds'}.
-        <mark>Prediction</mark> is the predicted probability that ${id_type == 'compound' ? `${name} treats the disease` : `the compound treats ${name}`}.
-        <mark>Compound Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? name : 'that compound'}.
-        <mark>Disease Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? 'that disease' : name}.
-        <mark>Cat</mark> gives the category in PharmacotherapyDB v1.0: DM refers to a disease-modifying indication, SYM refers to a symptomatic indication, NOT refers to a non-indication.
-        <mark>Trials</mark> refers to the number of trials investigating this compound–disease pair in ClinicalTrials.gov.
+        <mark class="bg-info">Prediction</mark> is the predicted probability that ${id_type == 'compound' ? `${name} treats the disease` : `the compound treats ${name}`}.
+        <mark class="bg-info">Compound Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? name : 'that compound'}.
+        <mark class="bg-info">Disease Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? 'that disease' : name}.
+        <mark class="bg-info">Cat</mark> gives the category in PharmacotherapyDB v1.0: DM refers to a disease-modifying indication, SYM refers to a symptomatic indication, NOT refers to a non-indication.
+        <mark class="bg-info">Trials</mark> refers to the number of trials investigating this compound–disease pair in ClinicalTrials.gov.
         </p>
 
         <p>
