@@ -193,13 +193,13 @@
       function render_play(data, type, full) {
         if (type != 'display') {return data};
         if (id_type == 'compound') {
-          guide_url = `http://neo4j.het.io/guides/rep/${id}/${data.replace(':', '_')}.html`
+          guide_url = `https://neo4j.het.io/guides/rep/${id}/${data.replace(':', '_')}.html`
         };
         if (id_type == 'disease') {
-          guide_url = `http://neo4j.het.io/guides/rep/${data}/${id}.html`
+          guide_url = `https://neo4j.het.io/guides/rep/${data}/${id}.html`
         };
         return (`
-        <a href="http://neo4j.het.io/browser/?cmd=play&arg=${guide_url}" target="_blank" class="btn btn-xs btn-default">New Browser</a>
+        <a href="https://neo4j.het.io/browser/?cmd=play&arg=${guide_url}" target="_blank" class="btn btn-xs btn-default">New Browser</a>
         <button class="btn btn-xs btn-default" data-clipboard-text=":play ${guide_url}">Copy Command</button>
         `);
       }
