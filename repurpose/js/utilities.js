@@ -1,4 +1,4 @@
-var data_url = 'https://raw.githubusercontent.com/dhimmel/het.io-rep-data/fe91cef6834e7637b88aa1f54fc54954c61d4352/browser-tables/'
+var data_url = 'https://raw.githubusercontent.com/dhimmel/het.io-rep-data/1dfe1ea82a51e2a5a2626645303a5b03c63dd376/browser-tables/'
 
 function getUrlVars() {
   var vars = {};

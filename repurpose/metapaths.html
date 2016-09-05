@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hetio · Project Rephetio · Drug Repurposing</title>
+  <meta name="description" content="Project Rephetio metapath information..">
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/bootstrap-theme.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
+
+  <style type="text/css" title="currentStyle">
+    body {
+      padding-top: 50px;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/hnep">HNEP</a>
+          </li>
+          <li class='active'>
+            <a href="/repurpose">Drug Repurposing</a>
+          </li>
+          <li class="dropdown">
+            <a href="/disease-genes" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="/disease-genes">About</a>
+              </li>
+              <li>
+                <a href="/disease-genes/browse">Browse</a>
+              </li>
+              <li>
+                <a href="/disease-genes/downloads">Downloads</a>
+              </li>
+            </ul>
+          </li>
+
+          <li>
+            <a href="/media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="http://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="http://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
+  <div class="container">
+
+    <h1>Project Rephetio Metapaths</h1>
+    <p>Browse all metapaths.</p>
+    <div>
+      <table id="metapath_table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Abbrev.</th>
+            <th>Len.</th>
+            <th>Δ AUROC</th>
+            <th>−log10(<i>p</i>)</th>
+            <th>Coef.</th>
+            <th>Metapath</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>More information</h2>
+    <p>
+      For more information on Project Rephetio or for feedback or help, please visit the <a href="https://thinklab.com/p/rephetio">project on Thinklab</a>.
+    </p>
+
+    <p>
+      Project Rephetio predictions are released under <a href="https://creativecommons.org/publicdomain/zero/1.0/" title="CC0 1.0 Universal · Public Domain Dedication">CC0 1.0</a>.
+    </p>
+
+  </div>
+
+  <script type="text/javascript" charset="utf-8" src="../../js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../../js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.js"></script>
+  <script type="text/javascript" src="js/clipboard.min.js"></script>
+  <script type="text/javascript" src="js/utilities.js"></script>
+
+  <script type='text/javascript'>
+    $('.dropdown-toggle').dropdown();
+
+    var aoColumnDefs = [
+      //{aTargets: [7], bVisible: false},
+      {aTargets: [2], mRender: render_percent}
+    ];
+
+    $('#metapath_table').DataTable({
+      ajax: `${data_url}metapaths.json`,
+      aoColumnDefs: aoColumnDefs,
+      pageLength: 25,
+      order: [[1, 'asc'], [0, 'asc']],
+    })
+  </script>
+
+  <!-- Piwik -->
+  <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//piwik.dhimmel.com/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 3]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><p><img src="//piwik.dhimmel.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
+</body>
+
+</html>
