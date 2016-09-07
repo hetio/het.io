@@ -106,7 +106,11 @@
   <div class="container">
 
     <h1>Project Rephetio Metapaths</h1>
-    <p>Browse all metapaths.</p>
+    
+    <p>
+      Below is a table of the 1,206 metapaths evaluated in Project Rephetio. <mark class="bg-info">Len.</mark> refers to number of metaedges composing the metapath. <mark class="bg-info">Δ AUROC</mark> and <mark class="bg-info">−log10(<em>p</em>)</mark> assess the performance of a metapath's DWPC in discriminating treatments from non-treatments (in the all-features stage). <em>p</em> assesses whether permutation affected AUROC. For reference, <em>p</em> = 0.05 corresponds to −log10(<em>p</em>) = 1.30. Note that several metapaths shown here provided little evidence that Δ AUROC ≠ 0 underscoring their poor ability to predict whether a compound treated a disease. <mark class="bg-info">Coef.</mark> reports a metapath's logistic regression coefficient. Metapaths removed in feature selection have missing coefficients whereas metapaths given zero-weight by the elastic net have coef. = 0.0.
+    </p>
+    
     <div>
       <table id="metapath_table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
         <thead>
