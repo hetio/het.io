@@ -14,13 +14,7 @@
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
   <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
-
-  <style type="text/css" title="currentStyle">
-    body {
-      padding-top: 50px;
-    }
-  </style>
-
+  <link rel="stylesheet" href="css/rephetio.css"/>
 </head>
 
 <body>
@@ -148,6 +142,7 @@
 
     <p>
       Project Rephetio predictions are released under <a href="https://creativecommons.org/publicdomain/zero/1.0/" title="CC0 1.0 Universal · Public Domain Dedication">CC0 1.0</a>.
+      Compounds (identifiers, names, and desciptions) are from <a href="http://www.drugbank.ca/">DrugBank</a>, while diseases are from the <a href="http://disease-ontology.org/">Disease Ontology</a>.
     </p>
 
   </div>
@@ -164,6 +159,7 @@
 
     var aoColumnDefs = [
       {aTargets: [0], mRender: renderGoto},
+      {aTargets: [1], mRender: render_name},
       {aTargets: [3], bSearchable: false},
       {aTargets: [3, 5], bVisible: false},
       {aTargets: [6], mRender: render_percent},
@@ -206,6 +202,7 @@
         aoColumnDefs: aoColumnDefs,
         order: [[2, 'desc'], [1, 'desc']]
       })
+    activate_tooltip();
     }
 
     renderTable()
