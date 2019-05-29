@@ -1,0 +1,381 @@
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Raleway:300"
+      rel="stylesheet"
+    />
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      header {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #303030;
+        width: 100%;
+        height: 568px;
+        color: #ffffff;
+        font-family: 'Raleway', sans-serif;
+        font-weight: 300;
+        font-size: 60px;
+        letter-spacing: 10px;
+        user-select: none;
+      }
+      header > span {
+        z-index: 1;
+      }
+      canvas {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <span>HET.IO</span>
+      <canvas id="deep_field"></canvas>
+    </header>
+    <script>
+      // settings
+      let dpi = 192; // resolution
+      let fps = 30; // frames per sec
+      let colors = [
+        '#f44336',
+        '#e91e63',
+        '#9c27b0',
+        '#673ab7',
+        '#3f51b5',
+        '#2196f3',
+        '#03a9f4',
+        '#00bcd4',
+        '#009688',
+        '#4caf50',
+        '#8bc34a',
+        '#cddc39',
+        '#ffeb3b',
+        '#ffc107',
+        '#ff9800',
+        '#ff5722'
+      ]; // color palette of dots
+      let radius = 6; // radius of dots
+      let number = 2; // number of dots per 100px by 100px square
+      let minSpeed = 4; // px per sec
+      let maxSpeed = 6; // px per sec
+      let minAlpha = 0.15; // resting dot opacity
+      let maxAlpha = 1; // peak dot opacity
+      let alphaSpeed = 0.1; // how fast alpha transitions, in % per frame
+      let lineColor = '#888888'; // color of connecting lines
+      let lineWidth = 2; // thickness of lines
+      let minDist = 0; // dist below which dots aren't visibly connected
+      let midDist = 10; // distance at which dots are most visibly connected
+      let maxDist = 100; // dist above which dots aren't visibly connected
+      let pathMaxLength = 6; // max number of dots in a random path
+      let pathMinDistance = 50; // min distance between dots in a path
+      let pathMaxDistance = 150; // max distance between dots in a path
+      let pathMaxAngle = 60; // max angle between to successive lines in a path
+      let pathGlowInterval = 3000; // milliseconds between path glows
+      let pathGlowTime = 2000; // time that glow lasts in milliseconds
+      let pathGlowCascade = 20; // milliseconds between path elements glowing
+      let rippleGlowSpeed = 400; // speed of ripple in px per sec
+      let rippleGlowTime = 200; // time that glow lasts in milliseconds
+
+      // global vars
+      let canvas = document.getElementById('deep_field');
+      let ctx = canvas.getContext('2d');
+      let dots = [];
+      let lines = [];
+      let width = 0;
+      let height = 0;
+
+      // dot object
+      class Dot {
+        // initialize instance
+        constructor(x, y) {
+          this.x = x || Math.random() * width;
+          this.y = y || Math.random() * height;
+          let speed = minSpeed + (maxSpeed - minSpeed) * Math.random();
+          let angle = Math.random() * 2 * Math.PI;
+          this.vx = Math.cos(angle) * speed;
+          this.vy = -Math.sin(angle) * speed;
+          this.color = colors[Math.floor(Math.random() * colors.length)];
+          this.alpha = 0;
+          this.targetAlpha = minAlpha;
+        }
+        // get distance from this dot to specified point
+        distanceTo(x, y) {
+          return Math.sqrt(Math.pow(x - this.x, 2) + Math.pow(y - this.y, 2));
+        }
+        // get angle  (in radians) from this dot to specified point
+        angleTo(x, y) {
+          return Math.atan2(y - this.y, x - this.x);
+        }
+        // get list of other dots in order of closeness to this one
+        findClosest() {
+          let list = [];
+          for (const dot of dots)
+            if (dot !== this)
+              list.push({
+                dot: dot,
+                dist: this.distanceTo(dot.x, dot.y)
+              });
+          list.sort((a, b) => a.dist - b.dist);
+          return list;
+        }
+        // calculate values
+        step() {
+          if (this.x < 0) this.vx = Math.abs(this.vx);
+          if (this.y < 0) this.vy = Math.abs(this.vy);
+          if (this.x > width) this.vx = -Math.abs(this.vx);
+          if (this.y > height) this.vy = -Math.abs(this.vy);
+
+          this.x += this.vx / fps;
+          this.y += this.vy / fps;
+
+          this.alpha += (this.targetAlpha - this.alpha) * alphaSpeed;
+        }
+        // draw instance
+        draw() {
+          ctx.globalAlpha = this.alpha;
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI);
+          ctx.fill();
+        }
+      }
+
+      // line object
+      class Line {
+        // initialize instance
+        constructor(startDot, endDot) {
+          this.startDot = startDot;
+          this.endDot = endDot;
+          this.x1;
+          this.y1;
+          this.x2;
+          this.y2;
+          this.alpha = 0;
+          this.targetAlpha = minAlpha;
+        }
+        // find line that links specified dots together
+        static lookup(dotA, dotB) {
+          for (const line of lines)
+            if (
+              (line.startDot === dotA && line.endDot === dotB) ||
+              (line.startDot === dotB && line.endDot === dotA)
+            )
+              return line;
+        }
+        // get distance from this line (midpoint) to specified point
+        distanceTo(x, y) {
+          let midX = (this.x1 + this.x2) / 2;
+          let midY = (this.y1 + this.y2) / 2;
+          return Math.sqrt(Math.pow(x - midX, 2) + Math.pow(y - midY, 2));
+        }
+        // calculate values
+        step() {
+          let dist = this.startDot.distanceTo(this.endDot.x, this.endDot.y);
+          let angle = this.startDot.angleTo(this.endDot.x, this.endDot.y);
+          this.x1 = this.startDot.x + Math.cos(angle) * radius;
+          this.y1 = this.startDot.y + Math.sin(angle) * radius;
+          this.x2 = this.endDot.x - Math.cos(angle) * radius;
+          this.y2 = this.endDot.y - Math.sin(angle) * radius;
+
+          if (this.targetAlpha !== maxAlpha) {
+            this.targetAlpha =
+              Math.min(
+                (-minDist + dist) * (2 / (midDist - minDist)),
+                (-maxDist + dist) * (2 / (midDist - maxDist))
+              ) * minAlpha;
+            this.targetAlpha = Math.max(Math.min(this.targetAlpha, 1), 0);
+          }
+
+          this.alpha += (this.targetAlpha - this.alpha) * alphaSpeed;
+        }
+        // draw instance
+        draw() {
+          ctx.globalAlpha = this.alpha;
+          ctx.strokeStyle = lineColor;
+          ctx.lineWidth = lineWidth;
+          ctx.beginPath();
+          ctx.moveTo(this.x1, this.y1);
+          ctx.lineTo(this.x2, this.y2);
+          ctx.stroke();
+        }
+      }
+
+      // create dots
+      function generateDots() {
+        dots = [];
+        let amount = ((width * height) / (100 * 100)) * number;
+        if (amount > 200) amount = 200;
+        for (let i = 0; i < amount; i++) dots.push(new Dot());
+      }
+
+      // create lines
+      function generateLines() {
+        lines = [];
+        for (let a = 0; a < dots.length; a++) {
+          let dotA = dots[a];
+          for (let b = 0; b < dots.length; b++) {
+            let dotB = dots[b];
+            if (a < b) {
+              lines.push(new Line(dotA, dotB));
+            }
+          }
+        }
+      }
+
+      // glow dots and lines in ripple outward from center
+      function rippleGlow() {
+        // reset any currently glowing elements to rest
+        dots.concat(lines).forEach((element) => {
+          if (element.targetAlpha === maxAlpha) element.targetAlpha = minAlpha;
+        });
+
+        // combine dots and lines into list
+        // only include lines that are currently visible above certain threshold
+        let elements = dots.concat(
+          lines.filter((line) => line.targetAlpha > minAlpha * 0.5)
+        );
+
+        for (const element of elements) {
+          // calc distance to center
+          let dist = element.distanceTo(width / 2, height / 2);
+          // calc delay based on dist
+          let delay = dist * (1000 / rippleGlowSpeed);
+          // glow and unglow after delays
+          window.setTimeout(() => {
+            element.targetAlpha = maxAlpha;
+            window.setTimeout(
+              () => (element.targetAlpha = minAlpha),
+              rippleGlowTime
+            );
+          }, delay);
+        }
+      }
+      canvas.addEventListener('click', rippleGlow);
+
+      // cycle between highlight and unhighlighting a random path
+      function pathGlow() {
+        let path = getGoodPath();
+        function setGlow(value) {
+          let delay = 0;
+          for (const element of path) {
+            window.setTimeout(() => (element.targetAlpha = value), delay);
+            delay += pathGlowCascade;
+          }
+        }
+        setGlow(maxAlpha);
+        window.setTimeout(() => setGlow(minAlpha), pathGlowTime);
+      }
+      window.setInterval(pathGlow, pathGlowInterval);
+
+      // get a good random path
+      function getGoodPath() {
+        // get a few random paths and pick longest
+        let paths = [];
+        for (let count = 0; count < 10; count++) paths.push(getPath());
+        paths.sort((a, b) => b.length - a.length);
+        return paths[0];
+      }
+
+      // get a random path through dots
+      function getPath() {
+        // start with randomly picked dot
+        let randomDot = dots[Math.floor(dots.length * Math.random())];
+        let path = [];
+        path.push(randomDot);
+
+        // run loop to get desired length of path
+        for (let count = 0; count < pathMaxLength; count++) {
+          // get current and previous dots
+          let thisDot = path[path.length - 1];
+          let prevDot;
+          if (count > 0) prevDot = path[count - 1];
+
+          // get list of closest dots to current dot
+          let list = thisDot.findClosest();
+
+          // remove dots that are too close or too far
+          list = list.filter(
+            (entry) =>
+              entry.dist > pathMinDistance && entry.dist < pathMaxDistance
+          );
+
+          // remove dots whose angles are too far away from previous angle
+          if (prevDot) {
+            list = list.filter((entry) => {
+              let nextDot = entry.dot;
+              // get angle between prev line and next line
+              let angle = Math.abs(
+                Math.atan2(
+                  (thisDot.x - prevDot.x) * (nextDot.y - thisDot.y) -
+                    (thisDot.y - prevDot.y) * (nextDot.x - thisDot.x),
+                  (thisDot.x - prevDot.x) * (nextDot.x - thisDot.x) +
+                    (thisDot.y - prevDot.y) * (nextDot.y - thisDot.y)
+                )
+              );
+              return angle < pathMaxAngle * (Math.PI / 180);
+            });
+          }
+
+          // if no viable dots, end path
+          if (!list || list.length < 1) break;
+
+          // add top dot candidate on list to path
+          path.push(list[0].dot);
+        }
+
+        // insert connecting lines between each pair of dots
+        for (let index = 1; index < path.length; index++) {
+          path.splice(index, 0, Line.lookup(path[index - 1], path[index]));
+          index++;
+        }
+
+        return path;
+      }
+
+      // wipe canvas to start fresh for next frame
+      function clearCanvas() {
+        ctx.clearRect(0, 0, width, height);
+      }
+
+      // update canvas DOM width/height to match CSS width/height
+      function resizeCanvas() {
+        let scaleFactor = dpi / 96;
+        width = canvas.clientWidth;
+        height = canvas.clientHeight;
+        canvas.width = width * scaleFactor;
+        canvas.height = height * scaleFactor;
+        ctx.scale(scaleFactor, scaleFactor);
+      }
+
+      // run one frame of simulation
+      function frame() {
+        clearCanvas();
+        dots.forEach((dot) => dot.step());
+        lines.forEach((line) => line.step());
+        dots.forEach((dot) => dot.draw());
+        lines.forEach((line) => line.draw());
+      }
+      window.setInterval(frame, 1000 / fps);
+
+      // start/restart simulation
+      function restart() {
+        resizeCanvas();
+        generateDots();
+        generateLines();
+      }
+      window.addEventListener('resize', (event) => {
+        restart();
+      });
+      restart();
+    </script>
+  </body>
+</html>
