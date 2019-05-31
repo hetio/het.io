@@ -3,26 +3,49 @@ body {
     margin: 0;
     padding: 0;
 }
-header {
-    position: relative;
+* {
+    font-family: 'Raleway', sans-serif;
+}
+header,
+footer {
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    position: relative;
     background: #303030;
     width: 100%;
-    height: 568px;
     color: #ffffff;
-    font-family: 'Raleway', sans-serif;
     font-weight: 300;
+    text-align: center;
+}
+header a,
+footer a {
+    color: #ffffff;
+}
+header {
+    height: 568px;
     font-size: 60px;
     letter-spacing: 10px;
-    user-select: none;
 }
-header > span {
+footer {
+    font-size: 14px;
+    padding: 20px;
+}
+header > span,
+footer > span {
     z-index: 1;
 }
-header > canvas.deep_field {
+header > canvas.deep_field,
+footer > canvas.deep_field {
     position: absolute;
     width: 100%;
     height: 100%;
+}
+section {
+    padding: 40px;
+}
+a {
+    color: #00acc1;
 }
