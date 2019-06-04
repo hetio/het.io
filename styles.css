@@ -6,6 +6,9 @@ body {
 * {
     font-family: 'Raleway', sans-serif;
 }
+body {
+    background: #f0f0f0;
+}
 header,
 footer {
     box-sizing: border-box;
@@ -16,16 +19,17 @@ footer {
     position: relative;
     background: #303030;
     width: 100%;
-    color: #ffffff;
+    color: #f0f0f0;
     font-weight: 300;
     text-align: center;
+    z-index: -2;
 }
 header a,
 footer a {
-    color: #ffffff;
+    color: #f0f0f0;
 }
 header {
-    height: 568px;
+    height: 400px;
     font-size: 60px;
     letter-spacing: 10px;
 }
@@ -33,19 +37,19 @@ footer {
     font-size: 14px;
     padding: 20px;
 }
-header > span,
-footer > span {
-    z-index: 1;
-}
-header > canvas.deep_field,
-footer > canvas.deep_field {
+header > canvas.deep_field {
     position: absolute;
     width: 100%;
     height: 100%;
+    z-index: -1;
+}
+.logo {
+    width: 150px;
+    height: 150px;
 }
 section {
     padding: 40px;
 }
 a {
-    color: #00acc1;
+    color: #02b3e4;
 }

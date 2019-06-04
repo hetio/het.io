@@ -5,15 +5,17 @@ const dpi = 192; // canvas resolution
 const fps = 30; // frames per sec
 const colors = [
     '#e91e63',
-    '#ff9800',
+    '#fa750f',
     '#ffeb3b',
     '#4caf50',
-    '#03a9f4',
-    '#9c27b0'
+    '#02b3e4',
+    '#c341d8'
 ]; // color palette of dots, from https://www.materialpalette.com/colors
 const radius = 6; // radius of dots
-const number = 2; // number of dots per 100px by 100px square
-const minSpeed = 4; // px per sec
+const spacing = 60; // starting spacing between dots, in grid
+const spacingDrift = 20; // random +/- offset off of grid spacing
+const prunePercent = 0.25; // remove this % many of dots randomly from grid
+const minSpeed = 1; // px per sec
 const maxSpeed = 6; // px per sec
 const minAlpha = 0.15; // resting dot opacity
 const maxAlpha = 1; // peak dot opacity
@@ -31,9 +33,9 @@ const pathMaxAngle = 60; // max angle between to successive lines in a path
 const pathGlowTime = 2000; // time that glow lasts in milliseconds
 const pathGlowCascade = 20; // milliseconds between path elements glowing
 const rippleGlowSpeed = 400; // speed of ripple in px per sec
-const rippleGlowTime = 200; // time that glow lasts in milliseconds
+const rippleGlowTime = 400; // time that glow lasts in milliseconds
 const glowInterval = 3000; // milliseconds between glows
-const rippleOdds = 20; // 1/n chance that glow will be ripple, not path
+const rippleOdds = 10; // 1/n chance that glow will be ripple, not path
 
 // global vars
 const canvas = document.querySelector('canvas.deep_field');
@@ -47,8 +49,16 @@ let height = 0;
 class Dot {
     // initialize instance
     constructor(x, y) {
-        this.x = x || Math.random() * width;
-        this.y = y || Math.random() * height;
+        if (x !== undefined)
+            this.x = x;
+        else
+            this.x = Math.random() * width;
+        if (y !== undefined)
+            this.y = y;
+        else
+            this.y = Math.random() * height;
+        this.initX = this.x;
+        this.initY = this.y;
         const speed = minSpeed + (maxSpeed - minSpeed) * Math.random();
         const angle = Math.random() * 2 * Math.PI;
         this.vx = Math.cos(angle) * speed;
@@ -66,33 +76,43 @@ class Dot {
         return Math.atan2(y - this.y, x - this.x);
     }
     // get list of other dots in order of closeness to this one
-    findClosest() {
-        const list = [];
-        for (const dot of dots) {
+    findClosest(list) {
+        list = list || dots;
+        const closest = [];
+        for (const dot of list) {
             if (dot !== this) {
-                list.push({
+                closest.push({
                     dot: dot,
                     dist: this.distanceTo(dot.x, dot.y)
                 });
             }
         }
-        list.sort((a, b) => a.dist - b.dist);
-        return list;
+        closest.sort((a, b) => a.dist - b.dist);
+        return closest;
     }
     // calculate values
     step() {
-        if (this.x < 0)
-            this.vx = Math.abs(this.vx);
-        if (this.y < 0)
-            this.vy = Math.abs(this.vy);
-        if (this.x > width)
-            this.vx = -Math.abs(this.vx);
-        if (this.y > height)
-            this.vy = -Math.abs(this.vy);
+        // push dot back toward initial position if too far
+        if (this.distanceTo(this.initX, this.initY) > spacingDrift / 2) {
+            this.vx += (this.initX - this.x) / 100;
+            this.vy += (this.initY - this.y) / 100;
+        }
 
+        // limit velocity
+        if (this.vx < -maxSpeed)
+            this.vx = -Math.abs(this.vx);
+        if (this.vy < -maxSpeed)
+            this.vy = -Math.abs(this.vy);
+        if (this.vx > maxSpeed)
+            this.vx = Math.abs(this.vx);
+        if (this.vy > maxSpeed)
+            this.vy = Math.abs(this.vy);
+
+        // increment position
         this.x += this.vx / fps;
         this.y += this.vy / fps;
 
+        // increment alpha
         this.alpha += (this.targetAlpha - this.alpha) * alphaSpeed;
     }
     // draw instance
@@ -168,12 +188,27 @@ class Line {
 
 // create dots
 function generateDots() {
+    // reset dots
     dots = [];
-    let amount = ((width * height) / (100 * 100)) * number;
-    if (amount > 200)
-        amount = 200;
-    for (let i = 0; i < amount; i++)
-        dots.push(new Dot());
+
+    // create dots on grid, +/- random offset
+    for (let x = -spacing; x < width + spacing; x += spacing) {
+        for (let y = -spacing; y < height + spacing; y += spacing) {
+            dots.push(
+                new Dot(
+                    x - spacingDrift + Math.random() * spacingDrift * 2,
+                    y - spacingDrift + Math.random() * spacingDrift * 2
+                )
+            );
+        }
+    }
+
+    // prune % of dots to create nice gaps
+    const limit = Math.floor(dots.length * (1 - prunePercent));
+
+    // remove dots at random until under limit
+    while (dots.length > limit)
+        dots.splice(Math.floor(Math.random() * dots.length), 1);
 }
 
 // create lines
@@ -343,4 +378,4 @@ function start() {
 window.addEventListener('resize', () => {
     start();
 });
-start();
+window.setTimeout(start, 1000);
