@@ -12,10 +12,11 @@ const colors = [
     '#c341d8'
 ]; // color palette of dots, from https://www.materialpalette.com/colors
 const radius = 6; // radius of dots
-const number = 2; // number of dots per 100px by 100px square
+const spacing = 75; // average spacing between dots
 const minSpeed = 1; // px per sec
 const maxSpeed = 6; // px per sec
-const minAlpha = 0.1; // resting dot opacity
+const contain = 3; // accel. to contain dot within bounds, px per sec^2
+const minAlpha = 0.15; // resting dot opacity
 const maxAlpha = 1; // peak dot opacity
 const alphaSpeed = 0.1; // how fast alpha transitions, in % per frame
 const lineColor = '#888888'; // color of connecting lines
@@ -42,25 +43,30 @@ let dots = [];
 let lines = [];
 let width = 0;
 let height = 0;
+let frameTimer = null;
+let glowTimer = null;
 
 // dot object
 class Dot {
     // initialize instance
     constructor(x, y) {
-        if (x !== undefined)
-            this.x = x;
-        else
-            this.x = Math.random() * width;
-        if (y !== undefined)
-            this.y = y;
-        else
-            this.y = Math.random() * height;
-        this.initX = this.x;
-        this.initY = this.y;
+        // make boundaries around initial grid point
+        this.left = x - spacing / 2 + radius;
+        this.top = y - spacing / 2 + radius;
+        this.right = x + spacing / 2 - radius;
+        this.bottom = y + spacing / 2 - radius;
+
+        // place randomly within boundaries
+        this.x = this.left + (this.right - this.left) * Math.random();
+        this.y = this.top + (this.bottom - this.top) * Math.random();
+
+        // random speed and angle
         const speed = minSpeed + (maxSpeed - minSpeed) * Math.random();
         const angle = Math.random() * 2 * Math.PI;
         this.vx = Math.cos(angle) * speed;
         this.vy = -Math.sin(angle) * speed;
+
+        // other props
         this.color = colors[Math.floor(Math.random() * colors.length)];
         this.alpha = 0;
         this.targetAlpha = minAlpha;
@@ -91,24 +97,16 @@ class Dot {
     // calculate values
     step() {
         // bounce off boundaries
-        if (this.x < 0)
-            this.vx = Math.abs(this.vx);
-        if (this.y < 0)
-            this.vy = Math.abs(this.vy);
-        if (this.x > width)
-            this.vx = -Math.abs(this.vx);
-        if (this.y > height)
-            this.vy = -Math.abs(this.vy);
+        if (this.x < this.left) this.vx += contain / fps;
+        if (this.y < this.top) this.vy += contain / fps;
+        if (this.x > this.right) this.vx -= contain / fps;
+        if (this.y > this.bottom) this.vy -= contain / fps;
 
         // limit velocity
-        if (this.vx < -maxSpeed)
-            this.vx = -Math.abs(this.vx);
-        if (this.vy < -maxSpeed)
-            this.vy = -Math.abs(this.vy);
-        if (this.vx > maxSpeed)
-            this.vx = Math.abs(this.vx);
-        if (this.vy > maxSpeed)
-            this.vy = Math.abs(this.vy);
+        if (this.vx < -maxSpeed) this.vx = -Math.abs(this.vx);
+        if (this.vy < -maxSpeed) this.vy = -Math.abs(this.vy);
+        if (this.vx > maxSpeed) this.vx = Math.abs(this.vx);
+        if (this.vy > maxSpeed) this.vy = Math.abs(this.vy);
 
         // increment position
         this.x += this.vx / fps;
@@ -178,8 +176,9 @@ class Line {
     }
     // draw instance
     draw() {
-        if (this.alpha < 0.01)
-            return;
+        // for performance, skip drawing if not/barely visible
+        if (this.alpha < 0.01) return;
+
         ctx.globalAlpha = this.alpha;
         ctx.strokeStyle = lineColor;
         ctx.lineWidth = lineWidth;
@@ -192,34 +191,49 @@ class Line {
 
 // create dots
 function generateDots() {
+    // reset
     dots = [];
-    let amount = ((width * height) / (100 * 100)) * number;
-    if (amount > 200)
-        amount = 200;
-    for (let i = 0; i < amount; i++)
-        dots.push(new Dot());
+
+    // evenly space
+    const offsetX = (width % spacing) / 2;
+    const offsetY = (height % spacing) / 2;
+    for (let x = offsetX; x < width; x += spacing) {
+        for (let y = offsetY; y < height; y += spacing)
+            dots.push(new Dot(x, y));
+    }
+
+    // hard limit dots for performance
+    while (dots.length > 300)
+        dots.splice(Math.floor(dots.length * Math.random()), 1);
 }
 
 // create lines
 function generateLines() {
+    // reset
     lines = [];
+
+    // connect each pair of dots
     for (let a = 0; a < dots.length; a++) {
         const dotA = dots[a];
         for (let b = 0; b < dots.length; b++) {
             const dotB = dots[b];
             // triangular matrix to avoid duplicates and lines to self
-            if (a < b)
-                lines.push(new Line(dotA, dotB));
+            if (a < b) lines.push(new Line(dotA, dotB));
         }
     }
+}
+
+// periodically glow
+function glow() {
+    if (Math.floor(Math.random() * rippleOdds) === 0) rippleGlow();
+    else pathGlow();
 }
 
 // glow dots and lines in ripple outward from center
 function rippleGlow() {
     // reset any currently glowing elements to rest
     dots.concat(lines).forEach((element) => {
-        if (element.targetAlpha === maxAlpha)
-            element.targetAlpha = minAlpha;
+        if (element.targetAlpha === maxAlpha) element.targetAlpha = minAlpha;
     });
 
     // combine dots and lines into list
@@ -258,20 +272,11 @@ function pathGlow() {
     window.setTimeout(() => setGlow(minAlpha), pathGlowTime);
 }
 
-// periodically glow
-window.setInterval(() => {
-    if (Math.floor(Math.random() * rippleOdds) === 0)
-        rippleGlow();
-    else
-        pathGlow();
-}, glowInterval);
-
 // get a good random path
 function getGoodPath() {
     // get a few random paths and pick longest
     const paths = [];
-    for (let count = 0; count < 10; count++)
-        paths.push(getPath());
+    for (let count = 0; count < 10; count++) paths.push(getPath());
     paths.sort((a, b) => b.length - a.length);
     return paths[0];
 }
@@ -279,6 +284,7 @@ function getGoodPath() {
 // get a random path through dots
 function getPath() {
     // start with randomly picked dot
+    if (dots.length <= 0) return [];
     const randomDot = dots[Math.floor(dots.length * Math.random())];
     const path = [];
     path.push(randomDot);
@@ -288,8 +294,7 @@ function getPath() {
         // get current and previous dots
         const thisDot = path[path.length - 1];
         let prevDot;
-        if (count > 0)
-            prevDot = path[count - 1];
+        if (count > 0) prevDot = path[count - 1];
 
         // get list of closest dots to current dot
         let list = thisDot.findClosest();
@@ -317,8 +322,7 @@ function getPath() {
         }
 
         // if no viable dots, end path
-        if (!list || list.length < 1)
-            break;
+        if (!list || list.length < 1) break;
 
         // add top dot candidate on list to path
         path.push(list[0].dot);
@@ -356,15 +360,17 @@ function frame() {
     dots.forEach((dot) => dot.draw());
     lines.forEach((line) => line.draw());
 }
-window.setInterval(frame, 1000 / fps);
 
 // start/restart simulation
 function start() {
     resizeCanvas();
     generateDots();
     generateLines();
+    window.clearInterval(frameTimer);
+    frameTimer = window.setInterval(frame, 1000 / fps);
+    window.clearInterval(glowTimer);
+    glowTimer = window.setInterval(glow, glowInterval);
+    window.removeEventListener('resize', start);
+    window.addEventListener('resize', start);
 }
-window.addEventListener('resize', () => {
-    start();
-});
 window.setTimeout(start, 1000);
