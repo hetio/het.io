@@ -12,12 +12,10 @@ const colors = [
     '#c341d8'
 ]; // color palette of dots, from https://www.materialpalette.com/colors
 const radius = 6; // radius of dots
-const spacing = 60; // starting spacing between dots, in grid
-const spacingDrift = 20; // random +/- offset off of grid spacing
-const prunePercent = 0.25; // remove this % many of dots randomly from grid
+const number = 2; // number of dots per 100px by 100px square
 const minSpeed = 1; // px per sec
 const maxSpeed = 6; // px per sec
-const minAlpha = 0.15; // resting dot opacity
+const minAlpha = 0.1; // resting dot opacity
 const maxAlpha = 1; // peak dot opacity
 const alphaSpeed = 0.1; // how fast alpha transitions, in % per frame
 const lineColor = '#888888'; // color of connecting lines
@@ -92,11 +90,15 @@ class Dot {
     }
     // calculate values
     step() {
-        // push dot back toward initial position if too far
-        if (this.distanceTo(this.initX, this.initY) > spacingDrift / 2) {
-            this.vx += (this.initX - this.x) / 100;
-            this.vy += (this.initY - this.y) / 100;
-        }
+        // bounce off boundaries
+        if (this.x < 0)
+            this.vx = Math.abs(this.vx);
+        if (this.y < 0)
+            this.vy = Math.abs(this.vy);
+        if (this.x > width)
+            this.vx = -Math.abs(this.vx);
+        if (this.y > height)
+            this.vy = -Math.abs(this.vy);
 
         // limit velocity
         if (this.vx < -maxSpeed)
@@ -176,6 +178,8 @@ class Line {
     }
     // draw instance
     draw() {
+        if (this.alpha < 0.01)
+            return;
         ctx.globalAlpha = this.alpha;
         ctx.strokeStyle = lineColor;
         ctx.lineWidth = lineWidth;
@@ -188,27 +192,12 @@ class Line {
 
 // create dots
 function generateDots() {
-    // reset dots
     dots = [];
-
-    // create dots on grid, +/- random offset
-    for (let x = -spacing; x < width + spacing; x += spacing) {
-        for (let y = -spacing; y < height + spacing; y += spacing) {
-            dots.push(
-                new Dot(
-                    x - spacingDrift + Math.random() * spacingDrift * 2,
-                    y - spacingDrift + Math.random() * spacingDrift * 2
-                )
-            );
-        }
-    }
-
-    // prune % of dots to create nice gaps
-    const limit = Math.floor(dots.length * (1 - prunePercent));
-
-    // remove dots at random until under limit
-    while (dots.length > limit)
-        dots.splice(Math.floor(Math.random() * dots.length), 1);
+    let amount = ((width * height) / (100 * 100)) * number;
+    if (amount > 200)
+        amount = 200;
+    for (let i = 0; i < amount; i++)
+        dots.push(new Dot());
 }
 
 // create lines
