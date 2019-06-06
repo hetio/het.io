@@ -19,6 +19,10 @@ body {
     opacity: 0.75;
     z-index: -1;
 }
+a {
+    color: #81E3FE;
+    font-weight: 500;
+}
 main {
     box-sizing: border-box;
     width: 100%;
@@ -96,8 +100,4 @@ main {
 .nav_button[title]:hover:before,
 .nav_button[title]:focus:before {
     opacity: 1;
-}
-a {
-    color: #81E3FE;
-    font-weight: 500;
 }

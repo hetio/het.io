@@ -21,7 +21,7 @@ const maxSpeed = 6; // px per sec
 const contain = 4; // accel. to contain dot within bounds, px per sec^2
 const minAlpha = 0.25; // resting dot opacity
 const maxAlpha = 1; // peak dot opacity
-const alphaSpeed = 0.2; // how fast alpha transitions, in % per frame
+const alphaSpeed = 0.1; // how fast alpha transitions, in % per frame
 const minDist = 10; // dist below which dots aren't visibly connected
 const midDist = 30; // distance at which dots are most visibly connected
 const maxDist = 100; // dist above which dots aren't visibly connected
@@ -32,8 +32,8 @@ const pathMaxDistance = 150; // max distance between dots in a path
 const pathMaxAngle = 60; // max angle between to successive lines in a path
 const pathGlowTime = 2000; // time that glow lasts in milliseconds
 const pathGlowCascade = 20; // milliseconds between path elements glowing
-const rippleGlowSpeed = 400; // speed of ripple in px per sec
-const rippleGlowTime = 400; // time that glow lasts in milliseconds
+const rippleGlowSpeed = 300; // speed of ripple in px per sec
+const rippleGlowTime = 500; // time that glow lasts in milliseconds
 const glowInterval = 5000; // milliseconds between glows
 const rippleOdds = 7; // 1/n chance that glow will be ripple, not path
 
@@ -52,10 +52,10 @@ class Dot {
     // initialize instance
     constructor(x, y) {
         // make boundaries around initial grid point
-        this.left = x - spacing / 2;
-        this.top = y - spacing / 2;
-        this.right = x + spacing / 2;
-        this.bottom = y + spacing / 2;
+        this.left = x - spacing / 2 + radius;
+        this.top = y - spacing / 2 + radius;
+        this.right = x + spacing / 2 - radius;
+        this.bottom = y + spacing / 2 - radius;
 
         // place randomly within boundaries
         this.x = this.left + (this.right - this.left) * Math.random();
