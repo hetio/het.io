@@ -4,7 +4,7 @@ body {
     padding: 0;
 }
 * {
-    font-family: 'Raleway', sans-serif;
+    font-family: 'Montserrat', 'Raleway', sans-serif;
 }
 body {
     background: #f0f0f0;
@@ -16,25 +16,19 @@ footer {
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    text-align: center;
     position: relative;
-    background: #303030;
     width: 100%;
     color: #f0f0f0;
-    font-weight: 300;
-    text-align: center;
+    background: #303030;
+    padding: 20px;
 }
 header a,
 footer a {
     color: #f0f0f0;
 }
-header {
-    height: 400px;
-    font-size: 60px;
-    letter-spacing: 10px;
-}
-footer {
-    font-size: 14px;
-    padding: 20px;
+.semibold {
+    font-weight: 600;
 }
 .deep_field {
     position: absolute;
@@ -44,11 +38,79 @@ footer {
 .logo {
     width: 150px;
     height: 150px;
+    margin-top: 40px;
     z-index: 1;
 }
-header > span {
+.title_text {
+    margin-bottom: 10px;
+    font-size: 50px;
+    letter-spacing: 10px;
     z-index: 1;
-
+}
+nav {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+.nav_button {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    /* background: rgba(255, 255, 255, 0.05); */
+    text-decoration: none;
+    width: 100px;
+    margin: 5px;
+    padding: 10px 20px;
+    font-weight: 500;
+    transition: background 0.25s ease;
+}
+.nav_button:hover[data-color='blue'],
+.nav_button:focus[data-color='blue'] {
+    background: rgba(2, 179, 228, 0.25);
+}
+.nav_button:hover[data-color='red'],
+.nav_button:focus[data-color='red'] {
+    background: rgba(233, 30, 99, 0.25);
+}
+.nav_button:hover[data-color='orange'],
+.nav_button:focus[data-color='orange'] {
+    background: rgba(250, 117, 15, 0.25);
+}
+.nav_button:after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: #808080;
+    transition: background 0.25s ease, left 0.25s ease, right 0.25s ease;
+}
+.nav_button:hover:after,
+.nav_button:focus:after {
+    left: 50%;
+    right: 50%;
+    background: transparent;
+}
+.nav_button:before {
+    content: attr(data-tooltip);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    top: 100%;
+    min-width: 200px;
+    background: #303030;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    z-index: 2;
+    pointer-events: none;
+}
+.nav_button:hover:before,
+.nav_button:focus:before {
+    opacity: 1;
 }
 section {
     padding: 40px;

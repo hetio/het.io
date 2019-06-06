@@ -32,15 +32,15 @@
         }
         @keyframes draw_lines {
             0% {
-                stroke-dasharray: 25;
-                stroke-dashoffset: 25;
+                stroke-dasharray: 26;
+                stroke-dashoffset: 26;
             }
             75% {
-                stroke-dasharray: 25;
-                stroke-dashoffset: 25;
+                stroke-dasharray: 26;
+                stroke-dashoffset: 26;
             }
             100% {
-                stroke-dasharray: 25;
+                stroke-dasharray: 26;
                 stroke-dashoffset: 0;
             }
         }

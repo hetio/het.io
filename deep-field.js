@@ -13,9 +13,10 @@ const colors = [
 ]; // color palette of dots, from https://www.materialpalette.com/colors
 const radius = 6; // radius of dots
 const spacing = 75; // average spacing between dots
+const limitNumber = 500; // dot hard limit for performance
 const minSpeed = 1; // px per sec
 const maxSpeed = 6; // px per sec
-const contain = 3; // accel. to contain dot within bounds, px per sec^2
+const contain = 4; // accel. to contain dot within bounds, px per sec^2
 const minAlpha = 0.15; // resting dot opacity
 const maxAlpha = 1; // peak dot opacity
 const alphaSpeed = 0.1; // how fast alpha transitions, in % per frame
@@ -33,7 +34,7 @@ const pathGlowTime = 2000; // time that glow lasts in milliseconds
 const pathGlowCascade = 20; // milliseconds between path elements glowing
 const rippleGlowSpeed = 400; // speed of ripple in px per sec
 const rippleGlowTime = 400; // time that glow lasts in milliseconds
-const glowInterval = 3000; // milliseconds between glows
+const glowInterval = 10000; // milliseconds between glows
 const rippleOdds = 10; // 1/n chance that glow will be ripple, not path
 
 // global vars
@@ -51,10 +52,10 @@ class Dot {
     // initialize instance
     constructor(x, y) {
         // make boundaries around initial grid point
-        this.left = x - spacing / 2 + radius;
-        this.top = y - spacing / 2 + radius;
-        this.right = x + spacing / 2 - radius;
-        this.bottom = y + spacing / 2 - radius;
+        this.left = x - spacing / 2;
+        this.top = y - spacing / 2;
+        this.right = x + spacing / 2;
+        this.bottom = y + spacing / 2;
 
         // place randomly within boundaries
         this.x = this.left + (this.right - this.left) * Math.random();
@@ -97,16 +98,24 @@ class Dot {
     // calculate values
     step() {
         // bounce off boundaries
-        if (this.x < this.left) this.vx += contain / fps;
-        if (this.y < this.top) this.vy += contain / fps;
-        if (this.x > this.right) this.vx -= contain / fps;
-        if (this.y > this.bottom) this.vy -= contain / fps;
+        if (this.x < this.left)
+            this.vx += contain / fps;
+        if (this.y < this.top)
+            this.vy += contain / fps;
+        if (this.x > this.right)
+            this.vx -= contain / fps;
+        if (this.y > this.bottom)
+            this.vy -= contain / fps;
 
         // limit velocity
-        if (this.vx < -maxSpeed) this.vx = -Math.abs(this.vx);
-        if (this.vy < -maxSpeed) this.vy = -Math.abs(this.vy);
-        if (this.vx > maxSpeed) this.vx = Math.abs(this.vx);
-        if (this.vy > maxSpeed) this.vy = Math.abs(this.vy);
+        if (this.vx < -maxSpeed)
+            this.vx = -Math.abs(this.vx);
+        if (this.vy < -maxSpeed)
+            this.vy = -Math.abs(this.vy);
+        if (this.vx > maxSpeed)
+            this.vx = Math.abs(this.vx);
+        if (this.vy > maxSpeed)
+            this.vy = Math.abs(this.vy);
 
         // increment position
         this.x += this.vx / fps;
@@ -177,7 +186,8 @@ class Line {
     // draw instance
     draw() {
         // for performance, skip drawing if not/barely visible
-        if (this.alpha < 0.01) return;
+        if (this.alpha < 0.01)
+            return;
 
         ctx.globalAlpha = this.alpha;
         ctx.strokeStyle = lineColor;
@@ -203,7 +213,7 @@ function generateDots() {
     }
 
     // hard limit dots for performance
-    while (dots.length > 300)
+    while (dots.length > limitNumber)
         dots.splice(Math.floor(dots.length * Math.random()), 1);
 }
 
@@ -218,22 +228,26 @@ function generateLines() {
         for (let b = 0; b < dots.length; b++) {
             const dotB = dots[b];
             // triangular matrix to avoid duplicates and lines to self
-            if (a < b) lines.push(new Line(dotA, dotB));
+            if (a < b)
+                lines.push(new Line(dotA, dotB));
         }
     }
 }
 
 // periodically glow
 function glow() {
-    if (Math.floor(Math.random() * rippleOdds) === 0) rippleGlow();
-    else pathGlow();
+    if (Math.floor(Math.random() * rippleOdds) === 0)
+        rippleGlow();
+    else
+        pathGlow();
 }
 
 // glow dots and lines in ripple outward from center
 function rippleGlow() {
     // reset any currently glowing elements to rest
     dots.concat(lines).forEach((element) => {
-        if (element.targetAlpha === maxAlpha) element.targetAlpha = minAlpha;
+        if (element.targetAlpha === maxAlpha)
+            element.targetAlpha = minAlpha;
     });
 
     // combine dots and lines into list
@@ -276,7 +290,8 @@ function pathGlow() {
 function getGoodPath() {
     // get a few random paths and pick longest
     const paths = [];
-    for (let count = 0; count < 10; count++) paths.push(getPath());
+    for (let count = 0; count < 10; count++)
+        paths.push(getPath());
     paths.sort((a, b) => b.length - a.length);
     return paths[0];
 }
@@ -284,7 +299,8 @@ function getGoodPath() {
 // get a random path through dots
 function getPath() {
     // start with randomly picked dot
-    if (dots.length <= 0) return [];
+    if (dots.length <= 0)
+        return [];
     const randomDot = dots[Math.floor(dots.length * Math.random())];
     const path = [];
     path.push(randomDot);
@@ -294,7 +310,8 @@ function getPath() {
         // get current and previous dots
         const thisDot = path[path.length - 1];
         let prevDot;
-        if (count > 0) prevDot = path[count - 1];
+        if (count > 0)
+            prevDot = path[count - 1];
 
         // get list of closest dots to current dot
         let list = thisDot.findClosest();
@@ -322,7 +339,8 @@ function getPath() {
         }
 
         // if no viable dots, end path
-        if (!list || list.length < 1) break;
+        if (!list || list.length < 1)
+            break;
 
         // add top dot candidate on list to path
         path.push(list[0].dot);
