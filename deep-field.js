@@ -13,17 +13,17 @@ const colors = [
 ]; // color palette of dots, from https://www.materialpalette.com/colors
 const radius = 6; // radius of dots
 const spacing = 75; // average spacing between dots
+const lineWidth = 2; // thickness of lines
 const limitNumber = 500; // dot hard limit for performance
+const greyColor = '#808080'; // color of resting dots and connecting lines
 const minSpeed = 1; // px per sec
 const maxSpeed = 6; // px per sec
 const contain = 4; // accel. to contain dot within bounds, px per sec^2
-const minAlpha = 0.15; // resting dot opacity
+const minAlpha = 0.25; // resting dot opacity
 const maxAlpha = 1; // peak dot opacity
-const alphaSpeed = 0.1; // how fast alpha transitions, in % per frame
-const lineColor = '#888888'; // color of connecting lines
-const lineWidth = 2; // thickness of lines
-const minDist = 0; // dist below which dots aren't visibly connected
-const midDist = 10; // distance at which dots are most visibly connected
+const alphaSpeed = 0.2; // how fast alpha transitions, in % per frame
+const minDist = 10; // dist below which dots aren't visibly connected
+const midDist = 30; // distance at which dots are most visibly connected
 const maxDist = 100; // dist above which dots aren't visibly connected
 // special animation settings
 const pathMaxLength = 6; // max number of dots in a random path
@@ -34,8 +34,8 @@ const pathGlowTime = 2000; // time that glow lasts in milliseconds
 const pathGlowCascade = 20; // milliseconds between path elements glowing
 const rippleGlowSpeed = 400; // speed of ripple in px per sec
 const rippleGlowTime = 400; // time that glow lasts in milliseconds
-const glowInterval = 10000; // milliseconds between glows
-const rippleOdds = 10; // 1/n chance that glow will be ripple, not path
+const glowInterval = 5000; // milliseconds between glows
+const rippleOdds = 7; // 1/n chance that glow will be ripple, not path
 
 // global vars
 const canvas = document.querySelector('canvas.deep_field');
@@ -126,8 +126,10 @@ class Dot {
     }
     // draw instance
     draw() {
+        const blendAmount = (this.alpha - minAlpha) / (maxAlpha - minAlpha);
+        const color = blendColors(greyColor, this.color, blendAmount);
         ctx.globalAlpha = this.alpha;
-        ctx.fillStyle = this.color;
+        ctx.fillStyle = color;
         ctx.beginPath();
         ctx.arc(this.x, this.y, radius, 0, 2 * Math.PI);
         ctx.fill();
@@ -190,7 +192,7 @@ class Line {
             return;
 
         ctx.globalAlpha = this.alpha;
-        ctx.strokeStyle = lineColor;
+        ctx.strokeStyle = greyColor;
         ctx.lineWidth = lineWidth;
         ctx.beginPath();
         ctx.moveTo(this.x1, this.y1);
@@ -353,6 +355,22 @@ function getPath() {
     }
 
     return path;
+}
+
+// blend two hex colors together by an amount
+function blendColors(colorA, colorB, amount) {
+    const [rA, gA, bA] = colorA.match(/\w\w/g).map((c) => parseInt(c, 16));
+    const [rB, gB, bB] = colorB.match(/\w\w/g).map((c) => parseInt(c, 16));
+    const r = Math.round(rA + (rB - rA) * amount)
+        .toString(16)
+        .padStart(2, '0');
+    const g = Math.round(gA + (gB - gA) * amount)
+        .toString(16)
+        .padStart(2, '0');
+    const b = Math.round(bA + (bB - bA) * amount)
+        .toString(16)
+        .padStart(2, '0');
+    return '#' + r + g + b;
 }
 
 // wipe canvas to start fresh for next frame

@@ -4,117 +4,100 @@ body {
     padding: 0;
 }
 * {
+    /* use Montserrat for numbers, Raleyway for everything else */
     font-family: 'Montserrat', 'Raleway', sans-serif;
 }
 body {
-    background: #f0f0f0;
-}
-header,
-footer {
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-    position: relative;
-    width: 100%;
     color: #f0f0f0;
     background: #303030;
-    padding: 20px;
-}
-header a,
-footer a {
-    color: #f0f0f0;
-}
-.semibold {
-    font-weight: 600;
+    position: relative;
 }
 .deep_field {
     position: absolute;
     width: 100%;
     height: 100%;
+    opacity: 0.75;
+    z-index: -1;
 }
-.logo {
-    width: 150px;
-    height: 150px;
-    margin-top: 40px;
-    z-index: 1;
+main {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 100px 20px;
 }
-.title_text {
-    margin-bottom: 10px;
+.row {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.logo_row {
+    height: 120px;
+}
+.logo_row img {
+    height: 100%;
+}
+.title_row {
     font-size: 50px;
-    letter-spacing: 10px;
-    z-index: 1;
+    letter-spacing: 5px;
 }
-nav {
-    margin-top: 10px;
-    margin-bottom: 20px;
-    z-index: 1;
+.intro_row {
+    max-width: 640px;
+    margin-top: 50px;
+    margin-bottom: 50px;
 }
 .nav_button {
     display: inline-flex;
     justify-content: center;
     align-items: center;
     position: relative;
-    /* background: rgba(255, 255, 255, 0.05); */
+    color: #f0f0f0;
     text-decoration: none;
-    width: 100px;
+    width: 80px;
     margin: 5px;
     padding: 10px 20px;
     font-weight: 500;
     transition: background 0.25s ease;
 }
-.nav_button:hover[data-color='blue'],
-.nav_button:focus[data-color='blue'] {
-    background: rgba(2, 179, 228, 0.25);
-}
-.nav_button:hover[data-color='red'],
-.nav_button:focus[data-color='red'] {
-    background: rgba(233, 30, 99, 0.25);
-}
-.nav_button:hover[data-color='orange'],
-.nav_button:focus[data-color='orange'] {
-    background: rgba(250, 117, 15, 0.25);
+.nav_button:hover,
+.nav_button:focus {
+    background: rgba(255, 255, 255, 0.25);
 }
 .nav_button:after {
     content: '';
     position: absolute;
-    height: 1px;
+    height: 1.5px;
     bottom: 0;
     left: 0;
     right: 0;
-    background: #808080;
-    transition: background 0.25s ease, left 0.25s ease, right 0.25s ease;
+    background: rgba(255, 255, 255, 0.25);
+    opacity: 1;
+    transition: opacity 0.25s ease, left 0.25s ease, right 0.25s ease;
 }
 .nav_button:hover:after,
 .nav_button:focus:after {
     left: 50%;
     right: 50%;
-    background: transparent;
+    opacity: 0;
 }
-.nav_button:before {
-    content: attr(data-tooltip);
+.nav_button[title]:before {
+    font-size: 0.75em;
+    box-sizing: border-box;
+    content: attr(title);
     position: absolute;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    top: 100%;
-    min-width: 200px;
-    background: #303030;
+    /* padding: 10px; */
+    left: 0;
+    top: calc(100% + 5px);
     opacity: 0;
     transition: opacity 0.25s ease;
     z-index: 2;
     pointer-events: none;
 }
-.nav_button:hover:before,
-.nav_button:focus:before {
+.nav_button[title]:hover:before,
+.nav_button[title]:focus:before {
     opacity: 1;
 }
-section {
-    padding: 40px;
-}
 a {
-    color: #02b3e4;
+    color: #b3e8f7;
+    font-weight: 500;
 }
