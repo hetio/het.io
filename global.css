@@ -66,6 +66,9 @@ nav {
     font-weight: 500;
     transition: background 0.25s ease;
 }
+.nav_button[data-active] {
+    background: rgba(255, 255, 255, 0.1);
+}
 .nav_button:hover,
 .nav_button:focus {
     background: rgba(255, 255, 255, 0.25);
