@@ -44,8 +44,7 @@ let dots = [];
 let lines = [];
 let width = 0;
 let height = 0;
-let frameTimer = null;
-let glowTimer = null;
+let resizeTimer = null;
 
 // dot object
 class Dot {
@@ -397,16 +396,22 @@ function frame() {
     lines.forEach((line) => line.draw());
 }
 
+// when window is resized
+function onResize() {
+    window.clearTimeout(resizeTimer);
+    resizeTimer = window.setTimeout(start, 100);
+}
+
 // start/restart simulation
 function start() {
+    window.clearTimeout(resizeTimer);
     resizeCanvas();
     generateDots();
     generateLines();
-    window.clearInterval(frameTimer);
-    frameTimer = window.setInterval(frame, 1000 / fps);
-    window.clearInterval(glowTimer);
-    glowTimer = window.setInterval(glow, glowInterval);
-    window.removeEventListener('resize', start);
-    window.addEventListener('resize', start);
 }
+
+// start app
+window.setInterval(glow, glowInterval);
+window.setInterval(frame, 1000 / fps);
+window.addEventListener('resize', onResize);
 window.setTimeout(start, 1000);

@@ -2,6 +2,7 @@
 /* use Montserrat for numbers, Raleyway for everything else */
 @import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&text=0123456789');
 @import url('https://fonts.googleapis.com/css?family=Raleway:400,500,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:500');
 
 /* Font Awesome */
 @import url('https://use.fontawesome.com/releases/v5.8.2/css/all.css');
@@ -152,6 +153,12 @@ a {
     color: #41c6eb;
     color: #02b3e4;
     font-weight: 500;
+}
+code {
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    background: #e0e0e0;
+    padding: 0 5px;
 }
 .title_section {
     background: #e0e0e0;
