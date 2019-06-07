@@ -2,6 +2,7 @@
     <head>
         <!-- metatags - https://metatags.io/ -->
         <title>Hetionet - An integrative network of biomedical knowledge</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
             name="title"
             property="og:title"
@@ -18,7 +19,12 @@
             name="keywords"
             content="heterogeneous, network, hetnet, graph, gene, compound, anatomy, disease, symptom, side effect, biological process, cellular component, molecular function, pathway, pharmacologic class"
         />
-        <meta name="language" content="English" />
+
+        <!-- global styles -->
+        <link href="global.css" rel="stylesheet" />
+
+        <!-- page styles -->
+        <link href="page.css" rel="stylesheet" />
 
         <!-- favicons - https://realfavicongenerator.net/ -->
         <link
@@ -43,85 +49,66 @@
         <meta name="msapplication-TileColor" content="#02b3e4" />
         <meta name="theme-color" content="#02b3e4" />
         <meta property="og:image" content="share-thumbnail.png" />
-
-        <!-- styles and links -->
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <!-- use Montserrat for numbers, Raleyway for everything else  -->
-        <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:400,500,700&text=0123456789"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css?family=Raleway:400,500,700"
-            rel="stylesheet"
-        />
-        <link href="styles.css" rel="stylesheet" />
-        <link
-            href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
-            rel="stylesheet"
-        />
     </head>
     <body>
-        <canvas class="deep_field"></canvas>
-        <main>
-            <div class="row logo_row">
-                <img src="logo-animated.svg" />
-            </div>
-            <div class="row title_row">
-                HETIONET
-            </div>
-            <div class="row intro_row">
-                <div>
-                    <b>Hetionet</b> is an integrative
-                    <a
-                        href="https://www.google.com/search?q=heterogeneous+information+network"
-                        >network</a
-                    >
-                    of biomedical knowledge assembled from
-                    <a href="info">29 different databases</a> of genes,
-                    compounds, diseases, and more. The network combines over 50
-                    years of biomedical information into a single resource,
-                    consisting of <b>47,031 nodes</b> (11 types) and
-                    <b>2,250,197</b> relationships (24 types).<br />
-                    <br />
-                    Hetionet enables scientists and biologists to formulate new
-                    hypotheses, predictions, and other valuable insights from
-                    existing data.
-                </div>
-            </div>
-            <div class="row nav_row">
+        <canvas></canvas>
+        <div class="row" id="logo">
+            <img src="logo-animated.svg" />
+            <h1>HETIONET</h1>
+        </div>
+        <div class="row" id="intro">
+            <div>
+                <b>Hetionet</b> is an integrative
                 <a
-                    href="use"
+                    href="https://www.google.com/search?q=heterogeneous+information+network"
+                    >network</a
+                >
+                of biomedical knowledge assembled from
+                <a href="info">29 different databases</a> of genes, compounds,
+                diseases, and more. The network combines over 50 years of
+                biomedical information into a single resource, consisting of
+                <b>47,031 nodes</b> (11 types) and
+                <b>2,250,197</b> relationships (24 types).<br />
+                <br />
+                Hetionet enables scientists and biologists to formulate new
+                hypotheses, predictions, and other valuable insights from the
+                existing body of medical data.
+            </div>
+        </div>
+        <div class="row" id="nav">
+            <nav>
+                <a
+                    href="../about"
+                    class="nav_button"
+                    title="Learn more about the network"
+                    >About<i class="fas fa-book-open fa-xs" data-right></i
+                ></a>
+                <a
+                    href="../explore"
                     class="nav_button"
                     title="View, search, and play with the network"
-                    >Explore</a
-                >
+                    >Explore<i class="fas fa-search fa-xs" data-right></i
+                ></a>
                 <a
-                    href="studies"
+                    href="../studies"
                     class="nav_button"
                     title="Analyses and papers done using the network"
-                    >Studies</a
-                >
+                    >Studies<i class="fas fa-microscope fa-xs" data-right></i
+                ></a>
                 <a
-                    href="software"
+                    href="../software"
                     class="nav_button"
                     title="Tools used to make the network"
-                    >Software</a
-                >
+                    >Software<i class="fas fa-code fa-xs" data-right></i
+                ></a>
                 <a
-                    href="info"
-                    class="nav_button"
-                    title="Learn more about the network and its authors"
-                    >Info</a
-                >
-                <a
-                    href="info"
+                    href="../media"
                     class="nav_button"
                     title="Articles, publications, videos, and other related media"
-                    >Media</a
-                >
-            </div>
-        </main>
+                    >Media<i class="fas fa-feather-alt fa-xs" data-right></i
+                ></a>
+            </nav>
+        </div>
         <script src="deep-field.js"></script>
     </body>
 </html>

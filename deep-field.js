@@ -38,7 +38,7 @@ const glowInterval = 5000; // milliseconds between glows
 const rippleOdds = 7; // 1/n chance that glow will be ripple, not path
 
 // global vars
-const canvas = document.querySelector('canvas.deep_field');
+const canvas = document.querySelector('canvas');
 const ctx = canvas.getContext('2d');
 let dots = [];
 let lines = [];
