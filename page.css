@@ -1,6 +1,9 @@
 body {
     background: #303030;
     color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 canvas {
     position: absolute;
@@ -11,7 +14,6 @@ canvas {
 }
 #logo {
     text-align: center;
-    padding-top: 100px;
     flex-direction: column;
 }
 #logo img {

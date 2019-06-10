@@ -26,17 +26,14 @@
         <!-- page styles -->
         <link href="page.css" rel="stylesheet" />
 
+        <!-- scripts -->
+        <script src="../anchors.js"></script>
+
         <!-- favicons - https://realfavicongenerator.net/ -->
         <link
             rel="apple-touch-icon"
             sizes="180x180"
             href="apple-touch-icon.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="favicon-32x32.png"
         />
         <link
             rel="icon"
@@ -52,63 +49,68 @@
     </head>
     <body>
         <canvas></canvas>
-        <div class="row" id="logo">
-            <img src="logo-animated.svg" />
-            <h1>HETIONET</h1>
-        </div>
-        <div class="row" id="intro">
-            <div>
-                <b>Hetionet</b> is an integrative
-                <a
-                    href="https://www.google.com/search?q=heterogeneous+information+network"
-                    >network</a
-                >
-                of biomedical knowledge assembled from
-                <a href="info">29 different databases</a> of genes, compounds,
-                diseases, and more. The network combines over 50 years of
-                biomedical information into a single resource, consisting of
-                <b>47,031 nodes</b> (11 types) and
-                <b>2,250,197</b> relationships (24 types).<br />
-                <br />
-                Hetionet enables scientists and biologists to formulate new
-                hypotheses, predictions, and other valuable insights from the
-                existing body of medical data.
+        <main>
+            <div class="row" id="logo">
+                <img src="logo-animated.svg" />
+                <h1>HETIONET</h1>
             </div>
-        </div>
-        <div class="row" id="nav">
-            <nav>
-                <a
-                    href="about"
-                    class="nav_button"
-                    title="Learn more about the network"
-                    >About<i class="fas fa-book-open fa-xs" data-right></i
-                ></a>
-                <a
-                    href="explore"
-                    class="nav_button"
-                    title="View, search, and play with the network"
-                    >Explore<i class="fas fa-search fa-xs" data-right></i
-                ></a>
-                <a
-                    href="studies"
-                    class="nav_button"
-                    title="Analyses and papers related to the network"
-                    >Studies<i class="fas fa-microscope fa-xs" data-right></i
-                ></a>
-                <a
-                    href="software"
-                    class="nav_button"
-                    title="Tools used to make the network"
-                    >Software<i class="fas fa-code fa-xs" data-right></i
-                ></a>
-                <a
-                    href="media"
-                    class="nav_button"
-                    title="Publications, articles, and other related media"
-                    >Media<i class="fas fa-feather-alt fa-xs" data-right></i
-                ></a>
-            </nav>
-        </div>
+            <div class="row" id="intro">
+                <div>
+                    <b>Hetionet</b> is an integrative
+                    <a
+                        href="https://www.google.com/search?q=heterogeneous+information+network"
+                        >network</a
+                    >
+                    of biomedical knowledge assembled from
+                    <a href="info">29 different databases</a> of genes,
+                    compounds, diseases, and more. The network combines over 50
+                    years of biomedical information into a single resource,
+                    consisting of <b>47,031 nodes</b> (11 types) and
+                    <b>2,250,197</b> relationships (24 types).<br />
+                    <br />
+                    Hetionet enables scientists and biologists to formulate new
+                    hypotheses, predictions, and other valuable insights from
+                    the existing body of medical data.
+                </div>
+            </div>
+            <div class="row" id="nav">
+                <nav>
+                    <a
+                        href="about"
+                        class="nav_button"
+                        title="Learn more about the network"
+                        >About<i class="fas fa-book-open fa-xs" data-right></i
+                    ></a>
+                    <a
+                        href="explore"
+                        class="nav_button"
+                        title="View, search, and play with the network"
+                        >Explore<i class="fas fa-search fa-xs" data-right></i
+                    ></a>
+                    <a
+                        href="studies"
+                        class="nav_button"
+                        title="Analyses and papers related to the network"
+                        >Studies<i
+                            class="fas fa-microscope fa-xs"
+                            data-right
+                        ></i
+                    ></a>
+                    <a
+                        href="software"
+                        class="nav_button"
+                        title="Tools used to make the network"
+                        >Software<i class="fas fa-code fa-xs" data-right></i
+                    ></a>
+                    <a
+                        href="media"
+                        class="nav_button"
+                        title="Publications, articles, and other related media"
+                        >Media<i class="fas fa-feather-alt fa-xs" data-right></i
+                    ></a>
+                </nav>
+            </div>
+        </main>
         <script src="deep-field.js"></script>
     </body>
 </html>

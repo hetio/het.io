@@ -124,6 +124,9 @@ nav {
     background: none;
 }
 @media screen and (max-width: 720px) {
+    .nav_button_logo {
+        margin: 10px 0;
+    }
     .nav_button {
         width: 100% !important;
     }
@@ -184,4 +187,32 @@ code {
 .link_button:hover {
     background: #c0ecf8;
     color: #303030;
+}
+.anchor {
+    margin-left: 10px;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+h3:hover .anchor,
+.anchor:focus {
+    opacity: 1;
+}
+@media (hover: none) {
+    .anchor {
+        opacity: 1;
+    }
+}
+[data-glow='true'] {
+    animation: highlight_glow 2s;
+}
+@keyframes highlight_glow {
+    0% {
+        background: none;
+    }
+    10% {
+        background: #c0ecf8;
+    }
+    100% {
+        background: none;
+    }
 }
