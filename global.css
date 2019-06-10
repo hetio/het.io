@@ -123,7 +123,7 @@ nav {
 .nav_button_logo:hover {
     background: none;
 }
-@media screen and (max-width: 720px) {
+@media screen and (max-width: 740px) {
     .nav_button_logo {
         margin: 10px 0;
     }
