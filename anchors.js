@@ -15,15 +15,7 @@ function createAnchors() {
         link.classList.add('anchor');
         link.innerHTML = '<i class="fas fa-link fa-sm"></i>';
         link.href = '#' + id;
-
-        // make sure anchor doesn't wrap to its own line
-        const span = document.createElement('span');
-        span.style.whiteSpace = 'nowrap';
-        const text = header.innerText.split(' ');
-        span.innerHTML += text.pop();
-        span.appendChild(link);
-        header.innerHTML = text.join(' ') + ' ';
-        header.appendChild(span);
+        header.appendChild(link);
     }
 }
 

@@ -202,6 +202,14 @@ h3:hover .anchor,
         opacity: 1;
     }
 }
+/* prevent anchor from wrapping to new line alone */
+.anchor {
+    white-space: nowrap
+}
+/* prevent anchor from wrapping to new line alone */
+.anchor:before {
+    content: '';
+}
 [data-glow='true'] {
     animation: highlight_glow 2s;
 }
