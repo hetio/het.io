@@ -202,14 +202,6 @@ h3:hover .anchor,
         opacity: 1;
     }
 }
-/* prevent anchor from wrapping to new line alone */
-.anchor {
-    white-space: nowrap
-}
-/* prevent anchor from wrapping to new line alone */
-.anchor:before {
-    content: '';
-}
 [data-glow='true'] {
     animation: highlight_glow 2s;
 }
@@ -223,4 +215,12 @@ h3:hover .anchor,
     100% {
         background: none;
     }
+}
+/* prevent icon from wrapping to new line alone */
+.icon {
+    white-space: nowrap
+}
+/* prevent icon from wrapping to new line alone */
+.icon:before {
+    content: '';
 }
