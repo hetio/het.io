@@ -94,14 +94,9 @@ nav {
     text-decoration: none;
     width: 110px;
     height: 50px;
+    margin: 0 5px;
     font-weight: 500;
     transition: background 0.25s ease;
-}
-.nav_button:not(:first-child) {
-    margin-left: 5px;
-}
-.nav_button:not(:last-child) {
-    margin-right: 5px;
 }
 .nav_button[data-active='true'] {
     background: rgba(255, 255, 255, 0.1);
@@ -153,7 +148,6 @@ nav {
     }
     .nav_button {
         width: 100%;
-        margin: 0;
     }
 }
 h1 {
