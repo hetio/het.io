@@ -62,22 +62,9 @@ hr {
     box-sizing: border-box;
     display: block;
     width: 75px;
-    width: calc(110px * 5 + 10px * 4);
     height: 75px;
-    margin: 0 auto;
+    margin: 0 auto 10px auto;
     padding: 10px;
-}
-.logo_button:hover,
-.logo_button:focus {
-    background: linear-gradient(
-        90deg,
-        rgba(2, 179, 228, 0.15) 0%,
-        rgba(250, 117, 15, 0.15) 25%,
-        rgba(233, 30, 99, 0.15) 50%,
-        rgba(2, 179, 228, 0.15) 75%
-    );
-    background-size: 1000% 100%;
-    animation: gradient_animation 1s forwards linear;
 }
 .logo_button img {
     height: 100%;
@@ -107,9 +94,14 @@ nav {
     text-decoration: none;
     width: 110px;
     height: 50px;
-    margin: 0 5px;
     font-weight: 500;
     transition: background 0.25s ease;
+}
+.nav_button:not(:first-child) {
+    margin-left: 5px;
+}
+.nav_button:not(:last-child) {
+    margin-right: 5px;
 }
 .nav_button[data-active='true'] {
     background: rgba(255, 255, 255, 0.1);
