@@ -62,7 +62,7 @@ hr {
     box-sizing: border-box;
     display: block;
     width: 75px;
-    width: calc(110px * 5);
+    width: calc(110px * 5 + 10px * 4);
     height: 75px;
     margin: 0 auto;
     padding: 10px;
@@ -107,6 +107,7 @@ nav {
     text-decoration: none;
     width: 110px;
     height: 50px;
+    margin: 0 5px;
     font-weight: 500;
     transition: background 0.25s ease;
 }
@@ -116,9 +117,6 @@ nav {
 .nav_button:hover,
 .nav_button:focus {
     background: rgba(255, 255, 255, 0.25);
-}
-.nav_button[data-spacing='true'] {
-    margin: 0 5px;
 }
 .nav_button:before {
     content: '';
