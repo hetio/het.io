@@ -1,9 +1,6 @@
 body {
     background: #303030;
     color: #f0f0f0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
 }
 canvas {
     position: absolute;

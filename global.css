@@ -21,6 +21,13 @@ body {
     color: #303030;
     position: relative;
     min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+main {
+    flex-grow: 1;
 }
 header,
 footer {
@@ -33,6 +40,12 @@ header a,
 footer a {
     color: #f0f0f0;
 }
+header,
+main,
+footer {
+    box-sizing: border-box;
+    width: 100%;
+}
 hr {
     background: #e0e0e0;
     border: none;
@@ -44,6 +57,22 @@ hr {
     margin: 0 auto;
     max-width: 640px;
     padding: 30px;
+}
+.logo_button {
+    box-sizing: border-box;
+    display: block;
+    width: 75px;
+    height: 75px;
+    margin: 0 auto;
+    padding: 10px;
+    transition: background 0.25s ease;
+}
+.logo_button:hover,
+.logo_button:focus {
+    background: rgba(255, 255, 255, 0.1);
+}
+.logo_button img {
+    height: 100%;
 }
 nav {
     display: flex;
@@ -61,8 +90,8 @@ nav {
     color: #f0f0f0;
     text-decoration: none;
     width: 110px;
-    height: 40px;
-    margin: 5px;
+    height: 50px;
+    margin: 0 5px;
     font-weight: 500;
     transition: background 0.25s ease;
 }
@@ -110,22 +139,9 @@ nav {
 .nav_button[title]:focus:after {
     opacity: 1;
 }
-.nav_button_logo {
-    margin-right: 20px;
-    width: unset;
-}
-.nav_button_logo:before {
-    opacity: 0;
-}
-.nav_button_logo img {
-    height: 40px;
-}
-.nav_button_logo:hover {
-    background: none;
-}
 @media screen and (max-width: 740px) {
-    .nav_button_logo {
-        margin: 10px 0;
+    .logo_button {
+        width: 100% !important;
     }
     .nav_button {
         width: 100% !important;
@@ -218,7 +234,7 @@ h3:hover .anchor,
 }
 /* prevent icon from wrapping to new line alone */
 .icon {
-    white-space: nowrap
+    white-space: nowrap;
 }
 /* prevent icon from wrapping to new line alone */
 .icon:before {

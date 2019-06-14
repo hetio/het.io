@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <!-- metatags - https://metatags.io/ -->
+        <title>Hetionet - {{ page.title }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="title"
+            property="og:title"
+            content="Hetionet - {{ page.title }}"
+        />
+        <meta property="og:type" content="website" />
+
+        <!-- global styles -->
+        <link href="../global.css" rel="stylesheet" />
+
+        <!-- page styles -->
+        <link href="page.css" rel="stylesheet" />
+
+        <!-- scripts -->
+        <script src="../scripts.js"></script>
+    </head>
+    <body>
+        {% include header.html %}
+        <main>
+            <section class="title_section">
+                <div class="row">
+                    <h2>
+                        {{ page.title
+                        }}<i class="{{ page.icon }} fa-sm" data-right></i>
+                    </h2>
+                </div>
+            </section>
+            {{ content }}
+        </main>
+        {% include footer.html %}
+    </body>
+</html>
