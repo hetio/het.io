@@ -123,10 +123,13 @@ nav {
     opacity: 0;
 }
 .nav_button[title]:after {
-    font-size: 0.75em;
     box-sizing: border-box;
     content: attr(title);
+    display: flex;
+    font-size: 0.85em;
     text-align: center;
+    justify-content: center;
+    align-items: center;
     position: absolute;
     left: 0;
     right: 0;
@@ -148,6 +151,16 @@ nav {
     }
     .nav_button {
         width: 100%;
+    }
+    .nav_button:hover,
+    .nav_button:focus {
+        background: none;
+    }
+    .nav_button[title]:after {
+        left: 0;
+        top: 0;
+        right: 0;
+        bottom: 0;
     }
 }
 h1 {
