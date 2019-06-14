@@ -62,17 +62,33 @@ hr {
     box-sizing: border-box;
     display: block;
     width: 75px;
+    width: calc(110px * 5);
     height: 75px;
     margin: 0 auto;
     padding: 10px;
-    transition: background 0.25s ease;
 }
 .logo_button:hover,
 .logo_button:focus {
-    background: rgba(255, 255, 255, 0.1);
+    background: linear-gradient(
+        90deg,
+        rgba(2, 179, 228, 0.15) 0%,
+        rgba(250, 117, 15, 0.15) 25%,
+        rgba(233, 30, 99, 0.15) 50%,
+        rgba(2, 179, 228, 0.15) 75%
+    );
+    background-size: 1000% 100%;
+    animation: gradient_animation 1s forwards linear;
 }
 .logo_button img {
     height: 100%;
+}
+@keyframes gradient_animation {
+    from {
+        background-position: 0% 50%;
+    }
+    to {
+        background-position: 100% 50%;
+    }
 }
 nav {
     display: flex;
@@ -91,16 +107,18 @@ nav {
     text-decoration: none;
     width: 110px;
     height: 50px;
-    margin: 0 5px;
     font-weight: 500;
     transition: background 0.25s ease;
 }
-.nav_button[data-active] {
+.nav_button[data-active='true'] {
     background: rgba(255, 255, 255, 0.1);
 }
 .nav_button:hover,
 .nav_button:focus {
     background: rgba(255, 255, 255, 0.25);
+}
+.nav_button[data-spacing='true'] {
+    margin: 0 5px;
 }
 .nav_button:before {
     content: '';
@@ -129,7 +147,7 @@ nav {
     right: 0;
     top: 100%;
     background: #303030;
-    padding: 10px 5px 5px 5px;
+    padding: 10px 3px;
     opacity: 0;
     transition: opacity 0.25s ease;
     z-index: 2;
@@ -141,10 +159,11 @@ nav {
 }
 @media screen and (max-width: 740px) {
     .logo_button {
-        width: 100% !important;
+        width: 100%;
     }
     .nav_button {
-        width: 100% !important;
+        width: 100%;
+        margin: 0;
     }
 }
 h1 {
