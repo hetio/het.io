@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <path
+    fill="none"
+    stroke="currentColor"
+    stroke-width="20"
+    stroke-linecap="square"
+    transform="translate(50,50) scale(0.4) translate(-50,-50) translate(-44,0)"
+    d="
+      M 25 10
+      L 60 10
+      A 20 20 0 0 1 60 50
+      A 20 20 0 0 1 60 90
+      L 25 90
+      Z
+      M 30 50
+      L 60 50
+    "
+  ></path>
+  <path
+    fill="none"
+    stroke="currentColor"
+    stroke-width="20"
+    stroke-linecap="square"
+    transform="translate(50,50) scale(0.4) translate(-50,-50) translate(44,0)"
+    d="
+      M 25 90
+      L 25 10
+      L 60 10
+      A 20 20 0 0 1 60 50
+      L 30 50
+    "
+  ></path>
+</svg>
