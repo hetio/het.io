@@ -196,9 +196,9 @@ nav {
   .nav_button {
     width: 100%;
   }
-  .nav_button:hover,
-  .nav_button:focus {
-    background: none;
+  .nav_button:hover,.blue_button {
+  .nav_button:focus   color: #02b3e4;
+    background: none}
   }
   .nav_button[title]:after {
     left: 0;
@@ -231,7 +231,7 @@ button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin: 5px;
+  /* margin: 5px; */
   padding: 5px 10px;
   border: none;
   background: none;
@@ -270,9 +270,6 @@ button > svg:not(:last-child) {
 .sort_button > svg {
   margin-left: 5px;
 }
-.text_button {
-  color: #02b3e4;
-}
 .checkbox_button {
   width: 15px;
   height: 15px;
@@ -287,13 +284,15 @@ button > svg:not(:last-child) {
 /* -------------------------------------------------- */
 /* general utility styles */
 /* -------------------------------------------------- */
-
 .small {
   font-size: 0.75em;
 }
 .light {
   color: #808080;
 }
+.blue {
+    color: #02b3e4;
+  }
 .left {
   text-align: left !important;
   justify-content: left !important;
