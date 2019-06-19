@@ -103,6 +103,7 @@ footer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
   margin-top: 20px;
   margin-bottom: 20px;
 }
