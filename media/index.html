@@ -44,11 +44,32 @@ category: media
 <section id="videos">
   <div class="section">
     <h3>Videos</h3>
-    text text text text text text text text text text text text text text text
-    text text text text text text text text text text text text text text text
-    text text text text text text text text text text text text text text text
-    text text text text text text text text text text text text text text text
-    text text text text text text text text text text text text text text text
-    text text text text text text text text text text text text text
+    <iframe
+      src="https://www.youtube.com/embed/GPAvruPpZ3A"
+      width="100%"
+      height="240px"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+    caption caption caption caption caption caption caption caption
+    <iframe
+      src="https://www.youtube.com/embed/sNqp0IZQkB0"
+      width="100%"
+      height="240px"
+      frameborder="0"
+      allowfullscreen
+    ></iframe>
+    caption caption caption caption caption caption caption caption
   </div>
+  <script>
+    const videos = document.querySelectorAll('iframe');
+    for (const video of videos) {
+      video.addEventListener('load', () => sizeVideo(video));
+      window.addEventListener('resize', () => sizeVideo(video));
+    }
+    function sizeVideo(video) {
+      const aspectRatio = 16 / 9;
+      video.style.height = video.getBoundingClientRect().width / aspectRatio;
+    }
+  </script>
 </section>
