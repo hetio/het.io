@@ -6,12 +6,9 @@ category: media
 ---
 
 <style>
+  /* override bad altmetric popup css */
   .altmetric-embed {
     border-radius: 0 !important;
-  }
-  .altmetric_details,
-  .close-popover {
-    color: #02b3e4 !important;
   }
   .altmetric-popover-inner,
   .altmetric-popover-content {
@@ -19,6 +16,13 @@ category: media
   }
   .altmetric_arrow {
     border-top-color: #f0f0f0 !important;
+  }
+  .altmetric-popover-content > div > a {
+    top: 15px !important;
+    right: 15px !important;
+  }
+  .altmetric-popover-content > div > div:last-of-type {
+    display: none !important;
   }
 </style>
 <section id="publications">
@@ -45,8 +49,34 @@ category: media
         <div
           class="altmetric-embed"
           data-badge-popover="top"
-          data-badge-type="medium-bar"
+          data-badge-type="donut"
           data-altmetric-id="26437680"
+        ></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col_text small">
+        <span class="semibold"
+          >Heterogeneous Network Edge Prediction: A Data Integration Approach to
+          Prioritize Disease-Associated Genes</span
+        ><br />
+        Himmelstein DS, Baranzini SE<br />
+        <i>PLOS Computational Biology</i> (2015)
+        <a
+          href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004259"
+          >doi:10.1371/journal.pcbi.1004259</a
+        >
+      </div>
+      <div class="col_image">
+        <script
+          type="text/javascript"
+          src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"
+        ></script>
+        <div
+          class="altmetric-embed"
+          data-badge-popover="top"
+          data-badge-type="donut"
+          data-altmetric-id="4259520"
         ></div>
       </div>
     </div>
@@ -55,7 +85,7 @@ category: media
 <hr />
 <section id="articles">
   <div class="section">
-    <h3>Articles, Posters, and Other</h3>
+    <h3>Articles and Posters</h3>
     <figure style="width: 250px">
       <a
         href="http://biomedicalcomputationreview.org/content/unlocking-genetics-complex-diseases-gwas-and-beyond"
