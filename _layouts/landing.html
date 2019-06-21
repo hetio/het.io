@@ -1,48 +1,44 @@
 <html>
-    <head>
-        <!-- metatags - https://metatags.io/ -->
-        <title>{{ page.title }}</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="title" property="og:title" content="{{ page.title }}" />
-        <meta
-            name="description"
-            property="og:description"
-            content="{{ page.description }}"
-        />
-        <meta name="keywords" content="{{ page.keywords }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://het.io/" />
+  <head>
+    <!-- metatags - https://metatags.io/ -->
+    <title>{{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="title" property="og:title" content="{{ page.title }}" />
+    <meta
+      name="description"
+      property="og:description"
+      content="{{ page.description }}"
+    />
+    <meta name="keywords" content="{{ page.keywords }}" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://het.io/" />
 
-        <!-- global styles -->
-        <link href="global.css" rel="stylesheet" />
+    <!-- global styles -->
+    <link href="global.css" rel="stylesheet" />
 
-        <!-- page styles -->
-        <link href="page.css" rel="stylesheet" />
+    <!-- page styles -->
+    <link href="page.css" rel="stylesheet" />
 
-        <!-- scripts -->
-        <script src="scripts.js"></script>
+    <!-- scripts -->
+    <script src="scripts.js"></script>
 
-        <!-- favicons - https://realfavicongenerator.net/ -->
-        <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="apple-touch-icon.png"
-        />
-        <link
-            rel="icon"
-            type="image/png"
-            sizes="192x192"
-            href="favicon-192x192.png"
-        />
-        <link rel="manifest" href="site.webmanifest" />
-        <link rel="mask-icon" href="safari-pinned-tab.svg" color="#02b3e4" />
-        <meta name="msapplication-TileColor" content="#02b3e4" />
-        <meta name="theme-color" content="#02b3e4" />
-        <meta property="og:image" content="share-thumbnail.png" />
-    </head>
-    <body>
-        <canvas></canvas>
-        {{ content }}
-        <script src="deep-field.js"></script>
-    </body>
+    <!-- favicons - https://realfavicongenerator.net/ -->
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="192x192"
+      href="favicon-192x192.png"
+    />
+    <link rel="manifest" href="site.webmanifest" />
+    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#02b3e4" />
+    <meta name="msapplication-TileColor" content="#02b3e4" />
+    <meta name="theme-color" content="#02b3e4" />
+    <meta property="og:image" content="share-thumbnail.png" />
+  </head>
+  <body>
+    <canvas></canvas>
+    {{ content }}
+    <script src="deep-field.js"></script>
+  </body>
 </html>
