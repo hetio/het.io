@@ -281,7 +281,7 @@ button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  /* margin: 5px; */
+  margin: 2px;
   padding: 5px 10px;
   border: none;
   background: none;
