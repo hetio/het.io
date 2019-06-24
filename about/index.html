@@ -5,76 +5,100 @@ icon: fas fa-book-open
 category: about
 ---
 
-<section id="hetnet">
+<section id="what-is-a-hetnet">
   <div class="section">
     <h3>What is a "hetnet"?</h3>
-    A network (also known as a
+    A
     <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
-      >"graph"</a
-    >) is a way of representing a group of things (called <i>"nodes"</i>) and
-    the relationships between them (called <i>"edges"</i>). Typical networks
-    don't have multiple types of nodes or edges. However, types are crucial for
-    representing rich biomedical knowledge, such that a gene is distinct from a
-    disease, and a disease from a drug, etcetera.
+      >network</a
+    >
+    is a way of representing a group of things &ndash; called
+    <i>nodes</i> &ndash; and the relationships between them &ndash; called
+    <i>edges</i>. Typically, a network has only one type of node and one type of
+    edge. But for a network of biomedical information, it is useful to be able
+    to distinguish between different types of entities and relationships &ndash;
+    e.g. a gene and a disease, an upregulation and a binding, etc.
     <br />
     <br />
-    A <i>"hetnet"</i> (short for <b>het</b>erogeneous information
-    <b>net</b>work) is a network where each node and edge has a type. (The term
-    <i>"hetnet"</i> was selected amongst several possible alternatives in this
-    <a href="https://doi.org/10.15363/thinklab.d104">2015 discussion</a>.)
+    A <i>hetnet</i> (short for <b>het</b>erogeneous information <b>net</b>work)
+    is a network where each node and edge has a type. (The term hetnet was
+    selected amongst several possible alternatives in
+    <a href="https://doi.org/10.15363/thinklab.d104">this 2015 discussion</a>.)
   </div>
 </section>
 <hr />
-<section id="hetionet">
+<section id="what-is-hetionet">
   <div class="section">
     <h3>What is Hetionet?</h3>
     Hetionet is a hetnet of biomedical knowledge. It encodes relationships
-    uncovered by millions of studies over the last half century. Hetionet is
-    constructed from existing publicly available databases. It's open source.
+    uncovered by millions of studies conducted over the last half-century. The
+    network is constructed from a collection of existing publicly available
+    databases, and is itself
+    <a href="https://github.com/hetio/hetionet#license"
+      >open-source and free to use</a
+    >.
   </div>
 </section>
 <hr />
-<section id="why">
+<section id="why-was-hetionet-made">
   <div class="section">
     <h3>Why was Hetionet made?</h3>
-    Hetionet v1.0 was created as part of Project Rephetio, which predicted new
-    uses for existing drugs. By predicting missing network edges, Rephetio
-    leveraged the power of the hetnet to turn biomedical knowledge into insights
-    of drug efficacy. While resources were selected to be relevant for drug
-    repurposing, Hetionet is now useful in a broader sense.<br />
+    Hetionet was originally created as part of
+    <a href="../rephetio">Project Rephetio</a>, a study that utilized the
+    benefits of hetnets to predict new uses for existing drugs. Although the
+    original resources for the network were selected for drug repurposing,
+    Hetionet is now useful in a much broader sense, and
+    <a href="../studies">has been used for a wide variety of purposes</a>.
     <br />
-    Prior to their integration, these databases had to be analyzed separately.
-    But now, Hetionet has performed the painstaking unification process, such
-    that all the information is in one place in one common format. accessible,
-    integrative
+    <br />
+    Hetionet was also made to alleviate some of the inaccuracies and
+    inconveniences of using other integrative networks, or trying to use
+    multiple, separate databases in the same analysis. It unifies data from
+    several different, disparate sources into a single, comprehensive,
+    accessible, common-format network. More about what makes the design of
+    Hetionet special is described below.
   </div>
 </section>
 <hr />
-<section id="how">
+<section id="whats-in-hetionet">
   <div class="section">
     <h3>What's in Hetionet?</h3>
-    Hetionet combines information from 29 public databases into 11 types of
-    nodes and 24 types of edges. Together, this forms a hetnet with XX nodes and
-    XX edges. The schema below is the metagraph of Hetionet, showing the types
-    that comprise the network.
-    <br />
-    <br />
-    <img src="metagraph.png" width="300px" />
-    <br />
-    <br />
+    Hetionet combines information from
     <a href="https://git.dhimmel.com/rephetio-manuscript/#tbl:resources"
-      >table</a
+      >29 public databases</a
+    >. The network contains 47,031 nodes of
+    <a href="https://git.dhimmel.com/rephetio-manuscript/#tbl:metanodes"
+      >11 types</a
     >
+    and 2,250,197 edges of
+    <a href="https://git.dhimmel.com/rephetio-manuscript/#tbl:metaedges"
+      >24 types</a
+    >.<br />
+    <br />
+    The "metagraph" diagram below shows the connectivity between different types
+    of nodes and edges in the network.
     <br />
     <br />
-    For example, the metagraph shows the 11 node types in Hetionet. Notice that
-    multiple types of edges can connect the same two nodes. For example, a
-    compound can have a relationship to a gene by binding its protein and/or by
-    upregulating it. Since the biological effect of binding versus upregulation
-    are very different, it's important that the network captures this
-    distinction.<br />
+    <img
+      src="metagraph.png"
+      style="display: block; width: 100%; max-width: 300px; margin: 0 auto;"
+    />
     <br />
-
+    <i
+      ><b>Note</b>: The prefix "meta" is used to refer to the type of the
+      node/edge, as opposed to the node/edge itself (a specific gene, disease,
+      etc.).</i
+    ><br />
+    <br />
+    Notice that multiple types of edges can connect the same two nodes. For
+    example, a compound can have a relationship to a gene by binding its protein
+    and/or by upregulating it. Since the biological effects of binding and
+    upregulating are very different, it is important for the network to capture
+    this distinction.<br />
+    <br />
+    table list of metanodes and their definitions
+    <br />
+    <br />
     Hetionet was created openly, with public discussion and feedback throughout
     the process. First for each metanode, a standardized vocabulary was selected
     to define the nodes (e.g. Entrez Gene for genes or Disease Ontology for
@@ -90,33 +114,49 @@ category: about
     https://git.dhimmel.com/rephetio-manuscript/#methods
     <br />
     <br />
-    When referring to the type of something in the network, we preprend "meta":
-    i.e. metagraph, metanode, metaedge, metapath.
   </div>
 </section>
 <hr />
 <section id="acknowledgements">
   <div class="section">
     <h3>Acknowledgements</h3>
-    From 2011-2016, Development of Hetionet v1.0 was lead by Daniel Himmelstein
-    and Sergio Baranzini at the University of California, San Francisco as part
-    of Project Rephetio. Project Rephetio thanks its team of online contributors
-    (https://git.dhimmel.com/rephetio-manuscript/#realtime-open-science-thinklab)
-    who provided feedback throughout the course of the project. Daniel
-    Himmelstein continues to develop applications of Hetionet and algorithms for
-    hetnets as a postdoctoral fellow in the Greene Lab at University of
-    Pennsylvania. <br />
+    Hetionet was originally developed by
+    <a href="https://dhimmel.com/">Daniel Himmelstein</a>,
+    <a href="https://profiles.ucsf.edu/sergio.baranzini">Sergio Baranzini</a>,
+    and others in the
+    <a href="https://baranzinilab.ucsf.edu/">Baranzini Lab</a> at
+    <a href="https://www.ucsf.edu/"
+      >the University of California, San Fransisco</a
+    >, as part of
+    <a href="https://git.dhimmel.com/rephetio-manuscript">Project Rephetio</a>.
+    Thank you to the
+    <a
+      href="https://git.dhimmel.com/rephetio-manuscript/#realtime-open-science-thinklab"
+      >team of online contributors</a
+    >
+    who
+    <a href="https://think-lab.github.io/p/rephetio/discussion/"
+      >provided feedback</a
+    >
+    throughout the course of the project. Other applications of Hetionet and
+    algorithms for hetnets continue to be developed by Daniel in the
+    <a href="http://www.greenelab.com/">Greene Lab</a> at
+    <a href="">the University of Pennsylvania</a>.<br />
     <br />
-
-    Daniel Himmelstein's PhD work in the Baranzini lab was supported by the
-    National Science Foundation Graduate Research Fellowship under Grant No.
-    1144247. Sergio Baranzini work was in part supported by the National
-    Institutes of Health (R01 NS088155). Development of hetnet software,
-    applications, and algorithms in the Greene Lab has been supported through a
-    research collaboration with Pfizer Worldwide Research and Development and by
-    the GBMF (Grant No). See the acknowledgement sections of related
-    publications for grants supporting other collaborators and any additional
-    funding not listed here.
+    Daniel's work in the Baranzini Lab was supported by the
+    <a href="https://www.nsfgrfp.org/"
+      >National Science Foundation Graduate Research Fellowship</a
+    >
+    (1144247). Sergio's work was in part supported by the
+    <a href="https://www.nih.gov/">National Institutes of Health</a> (R01
+    NS088155). Development of hetnet software, applications, and algorithms in
+    the Greene Lab has been supported by the
+    <a href="https://www.moore.org/">Gordon and Betty Moore Foundation</a>
+    (#) and through a research collaboration with
+    <a href="https://www.pfizer.com/science"
+      >Pfizer Worldwide Research and Development</a
+    >. For a comprehensive list of contributors, grants, and funding sources,
+    see the acknowledgement sections of related publications.
   </div>
 </section>
 <hr />
@@ -142,9 +182,9 @@ category: about
 </style>
 <section id="cite">
   <div class="section">
-    <h3>Cite Hetionet or related products</h3>
+    <h3>Cite</h3>
     <div class="row">
-      <div class="col_text small">
+      <div class="col_text">
         <span class="semibold"
           >Systematic integration of biomedical knowledge prioritizes drugs for
           repurposing</span
@@ -170,7 +210,7 @@ category: about
       </div>
     </div>
     <div class="row">
-      <div class="col_text small">
+      <div class="col_text">
         <span class="semibold"
           >Heterogeneous Network Edge Prediction: A Data Integration Approach to
           Prioritize Disease-Associated Genes</span
@@ -194,6 +234,9 @@ category: about
           data-altmetric-id="4259520"
         ></div>
       </div>
+      <br />
+      To reference ___, cite 1 and 2 above. To reference ___, cite 1 above. To
+      reference ___, cite 2 above.
     </div>
   </div>
 </section>
