@@ -42,7 +42,12 @@ category: about
     available databases, and is itself
     <a href="https://github.com/hetio/hetionet#license"
       >open-source and free to use</a
-    >.
+    >.<br />
+    <br />
+    Hetionet enables scientists and biologists to formulate novel hypotheses,
+    predictions, and other valuable insights by connecting an existing body of
+    biomedical data across multiple levels and types in a convenient,
+    accessible, holistic way.
   </div>
 </section>
 <hr />
@@ -194,7 +199,6 @@ category: about
       <a href="metagraph-large.png" target="_blank">
         <img src="metagraph.png" width="400px" />
       </a>
-      <figcaption>tesxtsdfasd fasdf asdf asdf</figcaption>
     </figure>
     <br />
     Notice that multiple types of edges can connect the same two nodes. For
@@ -205,25 +209,34 @@ category: about
   </div>
 </section>
 <hr />
-<section id="what-makes-hetionet-unique">
+<section id="how-was-hetionet-made">
   <div class="section">
-    <h3>What makes Hetionet unique?</h3>
-    Hetionet was created openly, with public discussion and feedback throughout
-    the creation process. First for each metanode, a standardized vocabulary was
-    selected to define the nodes (e.g. Entrez Gene for genes or Disease Ontology
-    for diseases). These vocabularies provide a common backbone of nodes to
-    overlay edges onto, while preventing redundant concepts from forming
-    separate nodes. Next, edges were extracted from omics-scale resources,
-    converting identifiers to the appropriate node vocabularies. Edges were
-    consolidated such that one relationship is encoded into a single edge, even
-    when many studies or resources may have reported it. The sources of edges
-    range from text-mining (e.g. Disease-presents-Symptom edges based on PubMed
-    term cooccurrence) to high-throughput screens (e.g.
-    Compound-upregulates-Gene edges based on millions of LINCS L1000
-    experiments). For more info
-    https://git.dhimmel.com/rephetio-manuscript/#methods
+    <h3>How was Hetionet made?</h3>
+    Hetionet was created openly, with a process of continuous
+    <a href="https://think-lab.github.io/p/rephetio/discussion/"
+      >public discussion and feedback</a
+    >. In general, great care was taken to "clean" and "de-duplicate" the
+    network such that it would be as easy and effective to use as possible.<br />
     <br />
+    A standardized vocabulary was selected to define each metanode (e.g. Entrez
+    Gene for genes or Disease Ontology for diseases). These vocabularies provide
+    a robust, common backbone to overlay nodes and edges onto without repeating
+    equivalent concepts.<br />
     <br />
+    Edges were extracted from
+    <a href="https://en.wikipedia.org/wiki/Omics">omics-scale</a> resources
+    (ranging from <a href="https://think-lab.github.io/d/67/">text-mining</a> to
+    <a
+      href="https://git.dhimmel.com/rephetio-manuscript/#transcriptional-signatures-of-perturbation-from-lincs-l1000"
+      >high-throughput screens</a
+    >) and their identifiers were converted to the appropriate node
+    vocabularies. Edges were consolidated such that one relationship is encoded
+    into a single edge, even when multiple studies or resources have reported
+    it.<br />
+    <br />
+    <a href="https://git.dhimmel.com/rephetio-manuscript/#methods">See here</a>
+    for a more detailed description of the methodologies used to construct the
+    network.
   </div>
 </section>
 <hr />
@@ -262,7 +275,7 @@ category: about
     NS088155). Development of hetnet software, applications, and algorithms in
     the Greene Lab is supported by the
     <a href="https://www.moore.org/">Gordon and Betty Moore Foundation</a>
-    (#) and through a research collaboration with
+    (GBMF4552) and through a research collaboration with
     <a href="https://www.pfizer.com/science"
       >Pfizer Worldwide Research and Development</a
     >. For a comprehensive list of contributors, grants, and funding sources,
@@ -320,6 +333,14 @@ category: about
       </div>
     </div>
     <div class="row">
+      Cite for topics:<br />
+      <i>
+        eLife: Project Rephetio, drug repurposing, Hetionet v1.0, data
+        licensing, realtime open science, consensus LINCS L1000 signatures,
+        hetnets, HNEP
+      </i>
+    </div>
+    <div class="row">
       <div class="col_text">
         <span class="semibold"
           >Heterogeneous Network Edge Prediction: A Data Integration Approach to
@@ -344,9 +365,13 @@ category: about
           data-altmetric-id="4259520"
         ></div>
       </div>
-      <br />
-      To reference ___, cite 1 and 2 above. To reference ___, cite 1 above. To
-      reference ___, cite 2 above.
+    </div>
+    <div class="row">
+      Cite for topics:<br />
+      <i>
+        PLOS: DWPC, predicting disease-gene associations, hetnet permutation,
+        HNEP
+      </i>
     </div>
   </div>
 </section>

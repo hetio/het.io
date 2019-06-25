@@ -76,20 +76,13 @@ figcaption {
   margin-top: 1em;
   text-align: center;
 }
-a img {
-  transition: opacity 0.25s ease;
-}
-a:hover img,
-a:focus img {
-  opacity: 0.5;
-}
-iframe {
-  border: none;
-}
 sup {
   font-size: 0.65em;
   top: -2px;
   position: relative;
+}
+iframe {
+  border: none;
 }
 
 /* -------------------------------------------------- */
