@@ -8,22 +8,28 @@ category: about
 <section id="what-is-a-hetnet">
   <div class="section">
     <h3>What is a "hetnet"?</h3>
-    A
+    A <i>network</i> (also known as a
     <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
-      >network</a
-    >
-    is a way of representing a group of things &ndash; called
+      >graph</a
+    >) is a conceptual representation of a group of things &ndash; called
     <i>nodes</i> &ndash; and the relationships between them &ndash; called
     <i>edges</i>. Typically, a network has only one type of node and one type of
-    edge. But for a network of biomedical information, it is useful to be able
-    to distinguish between different types of entities and relationships &ndash;
-    e.g. a gene and a disease, an upregulation and a binding, etc.
+    edge. But in many cases, it is necessary to be able to distinguish between
+    different types of entities and relationships.<br />
     <br />
+    A <i>hetnet</i> (<a href="https://doi.org/10.15363/thinklab.d104"
+      >short for</a
+    >
+    <b>het</b>erogeneous information <b>net</b>work) is a network where nodes
+    and edges can be multiple types. This additional dimension allows a hetnet
+    to accurately describe more complex data. Hetnets are particularly useful in
+    biomedicine, where it is important to capture the conceptual distinctions
+    between various components and mechanisms, such as genes and diseases, or
+    upregulation and binding.<br />
     <br />
-    A <i>hetnet</i> (short for <b>het</b>erogeneous information <b>net</b>work)
-    is a network where each node and edge has a type. (The term hetnet was
-    selected amongst several possible alternatives in
-    <a href="https://doi.org/10.15363/thinklab.d104">this 2015 discussion</a>.)
+    The prefix <i>meta</i> is used on this site to refer to the type of the
+    node/edge (e.g. compound), as opposed to the specific node/edge itself (e.g.
+    acetaminophen).
   </div>
 </section>
 <hr />
@@ -31,9 +37,9 @@ category: about
   <div class="section">
     <h3>What is Hetionet?</h3>
     Hetionet is a hetnet of biomedical knowledge. It encodes relationships
-    uncovered by millions of studies conducted over the last half-century. The
-    network is constructed from a collection of existing publicly available
-    databases, and is itself
+    uncovered by millions of studies conducted over the last half-century into a
+    single resource. The network is constructed from a collection of publicly
+    available databases, and is itself
     <a href="https://github.com/hetio/hetionet#license"
       >open-source and free to use</a
     >.
@@ -48,15 +54,14 @@ category: about
     benefits of hetnets to predict new uses for existing drugs. Although the
     original resources for the network were selected for drug repurposing,
     Hetionet is now useful in a much broader sense, and
-    <a href="../studies">has been used for a wide variety of purposes</a>.
+    <a href="../studies">has been used for a variety of purposes</a>.
     <br />
     <br />
     Hetionet was also made to alleviate some of the inaccuracies and
     inconveniences of using other integrative networks, or trying to use
     multiple, separate databases in the same analysis. It unifies data from
     several different, disparate sources into a single, comprehensive,
-    accessible, common-format network. More about what makes the design of
-    Hetionet special is described below.
+    accessible, common-format network.
   </div>
 </section>
 <hr />
@@ -75,42 +80,147 @@ category: about
       >24 types</a
     >.<br />
     <br />
-    The "metagraph" diagram below shows the connectivity between different types
-    of nodes and edges in the network.
+    <div class="table_container">
+      <table>
+        <thead>
+          <tr>
+            <th class="col_m">Metanode</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gene</td>
+            <td>
+              Protein-coding human genes. From
+              <a href="https://www.ncbi.nlm.nih.gov/gene">Entrez Gene</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Compound</td>
+            <td>
+              Approved small molecule compounds with documented chemical
+              structures. From <a href="https://www.drugbank.ca/">DrugBank</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Anatomy</td>
+            <td>
+              Anatomical structures, excluding structures that are known not to
+              be found in humans. From
+              <a href="http://uberon.github.io/">Uberon</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Disease</td>
+            <td>
+              Complex diseases, selected to be distinct and specific enough to
+              be clinically relevant yet general enough to be well annotated.
+              From <a href="http://disease-ontology.org/">Disease Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Symptom</td>
+            <td>
+              Signs and Symptoms (i.e. clinical abnormalities that can indicate
+              a medical condition). From the
+              <a href="https://www.nlm.nih.gov/mesh/meshhome.html"
+                >MeSH ontology</a
+              >.
+            </td>
+          </tr>
+          <tr>
+            <td>Side Effect</td>
+            <td>
+              Adverse drug reactions. From
+              <a href="http://sideeffects.embl.de/">SIDER</a>/<a
+                href="https://www.nlm.nih.gov/research/umls/"
+                >UMLS</a
+              >.
+            </td>
+          </tr>
+          <tr>
+            <td>Biological Process</td>
+            <td>
+              Larger processes or biological programs accomplished by multiple
+              molecular activities. From
+              <a href="http://geneontology.org/">Gene Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Cellular Component</td>
+            <td>
+              The locations relative to cellular structures in which a gene
+              product performs a function. From
+              <a href="http://geneontology.org/">Gene Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Molecular Function</td>
+            <td>
+              Activities that occur at the molecular level, such as "catalysis"
+              or "transport". From
+              <a href="http://geneontology.org/">Gene Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Pathway</td>
+            <td>
+              A series of actions among molecules in a cell that leads to a
+              certain product or change in the cell. From
+              <a href="https://www.wikipathways.org/index.php/WikiPathways"
+                >WikiPathways</a
+              >, <a href="https://reactome.org/">Reactome</a>, and Pathway
+              Interaction Database.
+            </td>
+          </tr>
+          <tr>
+            <td>Pharma<wbr />cologic Class</td>
+            <td>
+              "Chemical/<wbr />Ingredient", "Mechanism of Action", and
+              "Physiologic Effect" FDA class types. From
+              <a href="http://drugcentral.org/">DrugCentral</a>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br />
+    The <i>metagraph</i> diagram below illustrates the connectivity between
+    different types of nodes and edges in the network.
     <br />
     <br />
-    <img
-      src="metagraph.png"
-      style="display: block; width: 100%; max-width: 300px; margin: 0 auto;"
-    />
-    <br />
-    <i
-      ><b>Note</b>: The prefix "meta" is used to refer to the type of the
-      node/edge, as opposed to the node/edge itself (a specific gene, disease,
-      etc.).</i
-    ><br />
+    <figure>
+      <a href="metagraph-large.png" target="_blank">
+        <img src="metagraph.png" width="400px" />
+      </a>
+      <figcaption>tesxtsdfasd fasdf asdf asdf</figcaption>
+    </figure>
     <br />
     Notice that multiple types of edges can connect the same two nodes. For
     example, a compound can have a relationship to a gene by binding its protein
-    and/or by upregulating it. Since the biological effects of binding and
-    upregulating are very different, it is important for the network to capture
-    this distinction.<br />
-    <br />
-    table list of metanodes and their definitions
-    <br />
-    <br />
+    and/or by upregulating it. Since the biological effects of these two
+    mechanisms are very different, they are given separate representations in
+    the network.
+  </div>
+</section>
+<hr />
+<section id="what-makes-hetionet-unique">
+  <div class="section">
+    <h3>What makes Hetionet unique?</h3>
     Hetionet was created openly, with public discussion and feedback throughout
-    the process. First for each metanode, a standardized vocabulary was selected
-    to define the nodes (e.g. Entrez Gene for genes or Disease Ontology for
-    diseases). These vocabularies provide a common backbone of nodes to overlay
-    edges onto, while preventing redundant concepts from forming separate nodes.
-    Next, edges were extracted from omics-scale resources, converting
-    identifiers to the appropriate node vocabularies. Edges were consolidated
-    such that one relationship is encoded into a single edge, even when many
-    studies or resources may have reported it. The sources of edges range from
-    text-mining (e.g. Disease-presents-Symptom edges based on PubMed term
-    cooccurrence) to high-throughput screens (e.g. Compound-upregulates-Gene
-    edges based on millions of LINCS L1000 experiments). For more info
+    the creation process. First for each metanode, a standardized vocabulary was
+    selected to define the nodes (e.g. Entrez Gene for genes or Disease Ontology
+    for diseases). These vocabularies provide a common backbone of nodes to
+    overlay edges onto, while preventing redundant concepts from forming
+    separate nodes. Next, edges were extracted from omics-scale resources,
+    converting identifiers to the appropriate node vocabularies. Edges were
+    consolidated such that one relationship is encoded into a single edge, even
+    when many studies or resources may have reported it. The sources of edges
+    range from text-mining (e.g. Disease-presents-Symptom edges based on PubMed
+    term cooccurrence) to high-throughput screens (e.g.
+    Compound-upregulates-Gene edges based on millions of LINCS L1000
+    experiments). For more info
     https://git.dhimmel.com/rephetio-manuscript/#methods
     <br />
     <br />
@@ -150,7 +260,7 @@ category: about
     (1144247). Sergio's work was in part supported by the
     <a href="https://www.nih.gov/">National Institutes of Health</a> (R01
     NS088155). Development of hetnet software, applications, and algorithms in
-    the Greene Lab has been supported by the
+    the Greene Lab is supported by the
     <a href="https://www.moore.org/">Gordon and Betty Moore Foundation</a>
     (#) and through a research collaboration with
     <a href="https://www.pfizer.com/science"

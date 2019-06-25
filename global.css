@@ -63,9 +63,9 @@ code {
   padding: 0 5px;
 }
 figure {
-  display: inline-block;
-  margin: 10px;
-  max-width: 100%;
+  display: block;
+  margin: 0;
+  padding: 20px;
   text-align: center;
 }
 figure img {
@@ -73,7 +73,8 @@ figure img {
   max-height: 100vh;
 }
 figcaption {
-  margin-top: 10px;
+  margin-top: 1em;
+  text-align: center;
 }
 a img {
   transition: opacity 0.25s ease;
@@ -409,12 +410,13 @@ table {
   table-layout: fixed;
   margin: 0 auto;
 }
-table thead td {
+th {
   position: sticky;
   top: 0;
   z-index: 99;
-  background: #f0f0f0;
+  background: #eaeaea;
 }
+th,
 td {
   box-sizing: border-box;
   padding: 0;
