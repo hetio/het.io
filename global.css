@@ -56,11 +56,18 @@ a {
   color: #41c6eb;
   color: #02b3e4;
 }
+p:first-child {
+  margin-top: 0;
+}
+p:last-child {
+  margin-bottom: 0;
+}
 code {
   font-family: 'Roboto Mono', monospace;
   font-weight: 500;
+  font-size: 0.9em;
   background: #e0e0e0;
-  padding: 0 5px;
+  padding: 0 3px;
 }
 figure {
   display: block;
@@ -120,9 +127,15 @@ footer {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: flex-start;
   margin-top: 20px;
   margin-bottom: 20px;
+}
+.row:first-child {
+  margin-top: 0;
+}
+.row:last-child {
+  margin-bottom: 0;
 }
 .col_text {
   flex-grow: 1;

@@ -10,20 +10,28 @@ category: explore
     <h3>Connectivity Search</h3>
     <div class="row">
       <div class="col_text">
-        Connectivity search allows you to find the most important paths
-        connecting any two nodes in Hetionet, even when they are different types
-        or not known to be related. For example, if you want to see how the
-        <a href="search/?source=6602&target=28127&metapaths=DaGeA"
-          >eye and breast cancer may be related</a
-        >, you can. __add user story__
+        <p>
+          Connectivity search allows you to find the most important paths
+          connecting any two nodes in Hetionet, even when they are different
+          types or not known to be related. If you want to investigate how the
+          <a href="../search/?source=28127&target=6602&metapaths=AeGaD"
+            >eye and breast cancer</a
+          >
+          may be related, you can. Filter nodes by type, see computed
+          significance data about paths, create graph visualizations with
+          highlighted paths, and more.
+        </p>
+        <a href="../search" class="button"
+          >Go to the connectivity search<i
+            class="fas fa-search"
+            data-right
+          ></i></a
+        ><br />
       </div>
       <div class="col_image">
         <img src="connectivity-search.png" height="180px" />
       </div>
     </div>
-    <a href="../search" class="button"
-      >Go to the connectivity search<i class="fas fa-search" data-right></i></a
-    ><br />
   </div>
 </section>
 <hr />
@@ -32,20 +40,24 @@ category: explore
     <h3>Neo4j Browser</h3>
     <div class="row">
       <div class="col_text">
-        Neo4j is a third-party graph database that supports the Cypher language
-        for querying and visualizing hetnets. Users can make advanced queries on
-        Hetionet right away &ndash; without downloading anything &ndash; by
-        viewing using the public Neo4j browser app hosted here. The Neo4j
-        instance also provides API access, which allows services to be built on
-        top of Hetionet, like connectivity search above.
+        <p>
+          Neo4j is a third-party graph database that supports the Cypher
+          language for querying and visualizing hetnets. Users can make advanced
+          queries on Hetionet right away &mdash; without downloading anything
+          &mdash; by using the public Neo4j browser app hosted here. The
+          connectivity search above uses Neo4j for some of its real-time
+          computations and queries. Neo4j also provides an API, which makes it
+          possible for developers to create their own services/apps that query
+          Hetionet.
+        </p>
+        <a href="https://neo4j.het.io/browser/" class="button"
+          >Open the Neo4j browser<i class="fas fa-arrow-right" data-right></i
+        ></a>
       </div>
       <div class="col_image">
         <img src="neo4j.png" height="180px" />
       </div>
     </div>
-    <a href="https://neo4j.het.io/browser/" class="button"
-      >Open the Neo4j browser<i class="fas fa-arrow-right" data-right></i
-    ></a>
   </div>
 </section>
 <hr />
@@ -54,8 +66,9 @@ category: explore
     <h3>Download</h3>
     <div class="row">
       <div class="col_text">
-        Hetionet is available in multiple machine-readable formats.
-
+        <p>
+          Hetionet is available in multiple machine-readable formats:
+        </p>
         <ul>
           <li>JSON <code>.json</code> (readable by <code>hetnetpy</code>)</li>
           <li>
@@ -68,16 +81,18 @@ category: explore
             <code>hetmatpy</code>)
           </li>
         </ul>
-        Users looking to perform more advanced queries and analyses not
-        supported by the web apps above can use these datasets for local
-        processing.
+        <p>
+          Users looking to perform more advanced queries and analyses not
+          supported by the web apps above can use these datasets for local
+          processing.
+        </p>
+        <a href="https://github.com/hetio/hetionet" class="button"
+          >View the dataset on GitHub<i class="fab fa-github" data-right></i
+        ></a>
       </div>
       <div class="col_image">
         <img src="download.svg" height="100px" />
       </div>
     </div>
-    <a href="https://github.com/hetio/hetionet" class="button"
-      >View the dataset on GitHub<i class="fab fa-github" data-right></i
-    ></a>
   </div>
 </section>
