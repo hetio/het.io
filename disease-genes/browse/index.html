@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hetio &middot; Disease-Associated Genes</title>
+  <meta name="description" content="Browse predictions for the het.io disease–associated genes project.">
+  <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+
+  <!-- Bootstrap core CSS -->
+  <link href="../css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="../css/bootstrap-theme.css" rel="stylesheet">
+
+
+  <style type="text/css" title="currentStyle">
+    @import "css/demo_page.css";
+    @import "css/demo_table_jui.css";
+    @import "css/jquery-ui-1.8.4.custom.css";
+  </style>
+
+</head>
+
+<body>
+
+  <!-- Main jumbotron for a primary marketing message or call to action -->
+  <div class="jumbotron">
+    <div class="container">
+      <h1>Disease-Associated Gene Browser
+      </h1>
+      <p>View predictions and performance assessments.</p>
+    </div>
+  </div>
+
+
+  <div class="container">
+
+    <h2>Browse by</h2>
+    <form>
+      <div class="btn-group btn-group-justified" id="table_select_button" data-toggle="buttons">
+        <label class="btn btn-default active">
+          <input type="radio" value="disease" name="selected_table" id="disease">Disease</label>
+        <label class="btn btn-default">
+          <input type="radio" value="gene" name="selected_table" id="gene">Gene</label>
+        <label class="btn btn-default">
+          <input type="radio" value="feature" name="selected_table" id="feature">Feature</label>
+      </div>
+    </form>
+    <br>
+    <div id="dynamic_description">
+      <p>Table Description...</p>
+    </div>
+    <div id="dynamic_visible">Generating Table...</div>
+
+  </div>
+
+
+  <script type="text/javascript" charset="utf-8" src="../js/jquery-2.1.0.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="../js/bootstrap.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery.dataTables.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/jquery.csv-0.71.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/tablefxns.js"></script>
+
+
+  <script type="text/javascript">
+    description_dict = {
+      disease: "<p>Use this table to navigate to your disease of interest or to explore disease-specific performance. Clicking a <code>disease_name</code> loads the predicted probabilities of association between that disease and each protein-coding gene. Clicking a <code>disease_code</code> opens an external webpage with additional disease information. <code>pathophysiology</code> shows our manual disease classification. The <code>associations</code> column indicates the number of genes with a primary annotation to a high-confidence association that we extracted from the GWAS Catalog. The model's ability to rank associated genes over unassociated genes for a specific disease is dispayed by the <code>auroc</code> &#8212; area under the ROC curve &#8212; column.</p>",
+      gene: "<p>Use this table to navigate to your gene of interest. Clicking a <code>gene_symbol</code> loads the predicted probabilities of association between that gene and each complex disease. Clicking a <code>gene_code</code> opens an external link with additional gene information. The <code>associations</code> column indicates the number of genes with a primary annotation to a high-confidence association that we extracted from the GWAS Catalog. <code>mean_prediction</code> shows a gene's average prediction accross all diseases.</p>",
+      feature: "<p>Explore the features, their individual performance, and their contribution in the logistic ridge regression model. Brackets enclosing a metapath abbreviate an MSigDB Collection based feature. Clicking on a <code>metapath</code> opens a page describing the feature and showing its disease-specific performance. <code>metric</code> indicates whether the feature is calculated using <i>degree wieghted path count</i> (with damping exponent <i>w</i>) or simply <i>path count</i>. The <code>auroc</code> &#8212; area under the ROC curve &#8212; column indicates the feature's ability to rank associated gene-disease pairs higher than unassoicated gene-disease pairs. The <code>standardized_coefficient</code> indicates the effect size attributed to that feature by the logistic ridge regression model.</p>"
+    };
+
+    $("#dynamic_description").html(description_dict['disease']);
+    dynamicTableFromURL('visible', base_data_url.concat('disease-summary-table.txt'), aoColumnDefs);
+
+    $('body').on('mousedown', '#table_select_button .btn', function(event) {
+      event.stopPropagation(); // prevent default bootstrap behavior
+      console.log(this)
+      if ($(this).attr('data-toggle') != 'button') { // don't toggle if data-toggle="button"
+        $(this).button('toggle')
+      }
+      var myRadio = $('input[name=selected_table]');
+      var checked_value = myRadio.filter(':checked').val();
+      //console.log(checked_value)
+      console.log(description_dict[checked_value])
+      $("#dynamic_description").html(description_dict[checked_value]);
+      $("#dynamic_visible").html('<div id="dynamic_visible">Generating Table...</div>');
+      dynamicTableFromURL('visible', base_data_url.concat('{0}-summary-table.txt').f(checked_value), aoColumnDefs);
+    });
+  </script>
+
+  <!-- Piwik -->
+  <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//piwik.dhimmel.com/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 3]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><p><img src="//piwik.dhimmel.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
+</body>
+
+</html>

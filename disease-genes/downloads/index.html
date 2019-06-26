@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+    <title>hetio &middot; Disease–Associated Genes Downloads</title>
+    <meta name="description" content="Downloads for the het.io disease–associated genes project.">
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="../css/bootstrap-theme.css" rel="stylesheet">
+
+</head>
+
+<body>
+<!-- Main jumbotron for a primary marketing message or call to action -->
+<div class="jumbotron">
+  <div class="container">
+    <h1>Downloads <small>Disease-Associated Genes</small></h1>
+    <p></p>
+  </div>
+</div>
+
+
+<div class="container">
+
+
+<!-- python generated download html goes here -->
+<h2>predictions</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Predictions</h4>
+  <p>Predicted probabilities of association between all genes (rows) and diseases (columns).</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/predictions.txt.gz" download>predictions.txt.gz</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Features</h4>
+  <p>The features (columns) computed for each gene-disease pair (rows). Column names with beginning with 'XB' refer to standardized features.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/features.txt.gz" download>features.txt.gz</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Model Coefficients</h4>
+  <p>Standardized and unstandardized coefficients from the ridge and lasso logistic regression models.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/coefficients.txt" download>coefficients.txt</a></p>
+</div>
+</div>
+
+<hr>
+<h2>resources</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Protein-coding Genes</h4>
+  <p>Information on the included protein-coding genes, derived from the HGNC database.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/genes.txt" download>genes.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Complex Diseases</h4>
+  <p>All diseases with at least one GWAS-Catalog-extracted association. The manual pathophysiology classification is included.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/diseases.txt" download>diseases.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Tissue-specific Gene Expression</h4>
+  <p>A processed version of the GNF BodyMap providing a gene's (row, HGNC symbols) expression value for each of 77 tissues (columns, BRENDA Tissue Ontology IDs).</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/expression.txt.gz" download>expression.txt.gz</a></p>
+</div>
+</div>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Gene-Disease Associations</h4>
+  <p>All gene-disease associations extracted from the GWAS catalog for the four categories of association.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/gene-associations.txt" download>gene-associations.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Processed GWAS Catalog Loci</h4>
+  <p>The associated gene-disease loci (regions) derived from the GWAS Catalog.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/loci-associations.txt" download>loci-associations.txt</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Disease Localization</h4>
+  <p>Literature co-occurrence between diseases and tissues calculated using CoPub 5.0. </p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/disease-localization.txt" download>disease-localization.txt</a></p>
+</div>
+</div>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Protein-Protein Interactions</h4>
+  <p>Protein-protein interactions processed from iRefIndex using ppiTrim. ppiTrim converts to gene space, consolidates duplicate interactions, and removes complexes.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/protein-interactions.txt.gz" download>protein-interactions.txt.gz</a></p>
+</div>
+</div>
+
+<hr>
+<h2>network</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Serialized Network</h4>
+  <p>A JSON formatted text file storing the complete network. The top level is an JSON object with four pairs (metanodes, metaedges, nodes, edges). The value for each pair is a JSON array containing the corresponding items.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/network.json.gz" download>network.json.gz</a></p>
+</div>
+
+<div class="col-md-4">
+  <h4>Network Tables</h4>
+  <p>A table of network edges (sif format) and a table of node attributes.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/network-tables.zip" download>network-tables.zip</a></p>
+</div>
+</div>
+
+<hr>
+<h2>vizualization</h2>
+<div class="row">
+
+<div class="col-md-4">
+  <h4>Vector Images</h4>
+  <p>PDF formatted versions of the figures.</p>
+  <p><a href="https://github.com/dhimmel/het.io-dag-data/raw/d00aacbe78bfa7588d23742c8b847020c45e148a/downloads/figures.zip" download>figures.zip</a></p>
+</div>
+</div>
+<!-- python generated download html ends here -->
+
+
+</div>
+
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/bootstrap.min.js"></script>
+
+  <!-- Piwik -->
+  <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//piwik.dhimmel.com/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 3]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><p><img src="//piwik.dhimmel.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
+</body>
+</html>

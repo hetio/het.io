@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>hetio · Project Rephetio · Drug Repurposing</title>
+  <meta name="description" content="Browse Project Rephetio predictions for the selected compound or disease. Probabilities of treatment for 209,168 compound–disease pairs.">
+  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
+
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.css"/>
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
+  <link rel="stylesheet" href="css/rephetio.css"/>
+</head>
+
+<body>
+  <div class="container">
+
+    <div id="heading">Heading</div>
+    <div id="info_section">Info</div>
+    <div id="usage_section">Table usage description</div>
+    <div>
+      <table id="browse_table" class="display table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Prediction</th>
+            <th>Compound Pctl</th>
+            <th>Disease Pctl</th>
+            <th>Cat</th>
+            <th>Trials</th>
+            <th></th>
+            <th>synonyms</th>
+            <th>description</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>More information</h2>
+    <p>
+      For more information on Project Rephetio or for feedback, please see the <a href="https://doi.org/10.7554/eLife.26726" title="eLife · Systematic integration of biomedical knowledge prioritizes drugs for repurposing">project manuscript<a> and <a href="https://think-lab.github.io/p/rephetio/" title="Project Rephetio discussion and details on Thinklab"><i>Thinklab</i> page</a>.
+    </p>
+
+    <p>
+      Project Rephetio predictions are released under <a href="https://creativecommons.org/publicdomain/zero/1.0/" title="CC0 1.0 Universal · Public Domain Dedication">CC0 1.0</a>.
+      Compounds (identifiers, names, and desciptions) are from <a href="http://www.drugbank.ca/">DrugBank</a>, while diseases are from the <a href="http://disease-ontology.org/">Disease Ontology</a>.
+    </p>
+
+  </div>
+
+  <script type="text/javascript" charset="utf-8" src="js/jquery-2.2.4.min.js"></script>
+  <script type="text/javascript" charset="utf-8" src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/u/bs-3.3.6/dt-1.10.12/datatables.min.js"></script>
+  <script type="text/javascript" src="js/clipboard.min.js"></script>
+  <script type="text/javascript" src="js/utilities.js"></script>
+
+  <script type='text/javascript'>
+    $('.dropdown-toggle').dropdown();
+
+    new Clipboard('.btn');
+
+    var id = getUrlVars()['id'];
+    if (!id) {
+      window.location = './';
+    }
+    var url = `${data_url}info.json`;
+    console.log(url);
+    var request = $.getJSON(url);
+    request.done(function(response) {
+      info = response[id]
+      var id_type = info.type;
+      var name = info.name;
+      tooltip_name = render_name(info.name, 'display', [info.description]);
+      
+      $('#heading').html(`<h2>Predictions for <i>${tooltip_name}</i>`);
+      id_raw = id.replace('_', ':')
+      var id_href = `<a href="${id_type == 'compound' ? 'http://www.drugbank.ca/drugs/' + id: 'http://www.disease-ontology.org/?id=' + id_raw}" title="See in ${id_type == 'compound' ? 'DrugBank': 'the Disease Ontology'}">${id_raw}</a>`;
+
+      $('#info_section').html(
+        `<p>
+        This page shows predicted treatments for ${name} (<code>${id_href}</code>) from Project Rephetio.
+        In PharmacotherapyDB v1.0, ${name} contains ${info.treats} treatments and ${info.palliates} palliative indications.
+        ${info.treats ? `The predictions prioritized the ${info.treats} treatments with AUROC = ${render_percent(info.auroc, 'display')}.` : '' }
+        In Hetionet v1.0, ${name} is connected by ${info.edges} relationships.
+        </p>`
+      );
+
+      $('#usage_section').html(
+        `<p>
+        Use the table below to browse ${id_type == 'compound' ? 'diseases' : 'compounds'}.
+        <mark class="bg-info">Prediction</mark> is the predicted probability that ${id_type == 'compound' ? `${name} treats the disease` : `the compound treats ${name}`}.
+        <mark class="bg-info">Compound Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? name : 'that compound'}.
+        <mark class="bg-info">Disease Pctl</mark> refers to the prediction's percentile within all predictions for ${id_type == 'compound' ? 'that disease' : name}.
+        <mark class="bg-info">Cat</mark> gives the category in PharmacotherapyDB v1.0: DM refers to a disease-modifying indication, SYM refers to a symptomatic indication, NOT refers to a non-indication.
+        <mark class="bg-info">Trials</mark> refers to the number of trials investigating this compound–disease pair in ClinicalTrials.gov.
+        </p>
+
+        <p>
+        Additional information is available for each prediction through the Hetionet Neo4j Browser.
+        Use <button class="btn btn-xs btn-default disabled">New Browser</button> to open a new Hetionet Browser with the prediction query prefilled (you still must hit play).
+        Use <button class="btn btn-xs btn-default disabled">Copy Command</button> to copy a command to your clipboard which can be pasted into an already-open Hetionet Browser.
+        </p>`
+      );
+
+
+      function render_play(data, type, full) {
+        if (type != 'display') {return data};
+        if (id_type == 'compound') {
+          guide_url = `https://neo4j.het.io/guides/rep/${id}/${data.replace(':', '_')}.html`
+        };
+        if (id_type == 'disease') {
+          guide_url = `https://neo4j.het.io/guides/rep/${data}/${id}.html`
+        };
+        return (`
+        <a href="https://neo4j.het.io/browser/?cmd=play&arg=${guide_url}" target="_blank" class="btn btn-xs btn-default">New Browser</a>
+        <button class="btn btn-xs btn-default" data-clipboard-text=":play ${guide_url}">Copy Command</button>
+        `);
+      }
+
+      var aoColumnDefs = [
+        {aTargets: [7,8], bVisible: false},
+        {aTargets: [6], mRender: render_play},
+        {aTargets: [1,2,3], mRender: render_percent},
+        {aTargets: [0], mRender: render_name},
+        {aTargets: [4], mRender: render_category}
+      ];
+
+      var url = `${data_url}${id_type}/${id}.json`
+      console.log(url)
+      $('#browse_table').DataTable({
+        ajax: url,
+        aoColumnDefs: aoColumnDefs,
+        pageLength: 25,
+        order: [[1, 'desc'], [2, 'desc'], [3, 'desc']],
+      })
+      activate_tooltip();
+    });
+
+  </script>
+
+  <!-- Piwik -->
+  <script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+      var u="//piwik.dhimmel.com/";
+      _paq.push(['setTrackerUrl', u+'piwik.php']);
+      _paq.push(['setSiteId', 3]);
+      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+  </script>
+  <noscript><p><img src="//piwik.dhimmel.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+  <!-- End Piwik Code -->
+
+</body>
+
+</html>
