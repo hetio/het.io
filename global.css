@@ -56,10 +56,14 @@ a {
   color: #41c6eb;
   color: #02b3e4;
 }
-p:first-child {
+p:first-child,
+ul:first-child,
+ol:first-child {
   margin-top: 0;
 }
-p:last-child {
+p:last-child,
+ul:last-child,
+ol:last-child {
   margin-bottom: 0;
 }
 code {
