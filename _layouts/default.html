@@ -1,23 +1,35 @@
 <html>
   <head>
-    <!-- metatags - https://metatags.io/ -->
-    <title>Hetionet - {{ page.title }}</title>
+    <title>Hetio - {{ page.title }}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="title"
-      property="og:title"
-      content="Hetionet - {{ page.title }}"
-    />
+
+    <!-- metatags - https://metatags.io/ -->
+    <meta name="title" content="Hetio - {{ page.title }}" />
+    <meta name="description" content="{{ page.description }}" />
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://het.io" />
+    <meta property="og:title" content="Hetio - {{ page.title }}" />
+    <meta property="og:description" content="{{ page.description }}" />
+    <meta property="og:image" content="/share-thumbnail.png" />
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://het.io" />
+    <meta property="twitter:title" content="Hetio - {{ page.title }}" />
+    <meta property="twitter:description" content="{{ page.description }}" />
+    <meta property="twitter:image" content="/share-thumbnail.png" />
+
+    <!-- keywords -->
+    <meta name="keywords" content="{{ page.keywords }}" />
 
     <!-- global styles -->
-    <link href="../global.css" rel="stylesheet" />
+    <link href="/global.css" rel="stylesheet" />
 
     <!-- page styles -->
     <link href="page.css" rel="stylesheet" />
 
     <!-- scripts -->
-    <script src="../scripts.js"></script>
+    <script src="/scripts.js"></script>
   </head>
   <body>
     {% include header.html %}
