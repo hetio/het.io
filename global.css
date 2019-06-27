@@ -342,7 +342,7 @@ button > svg:not(:last-child) {
 /* general utility styles */
 /* -------------------------------------------------- */
 .small {
-  font-size: 0.75em;
+  font-size: 0.8em;
 }
 .light {
   color: #808080;

@@ -1,7 +1,7 @@
 #gallery {
   display: grid;
   grid-template-columns: repeat(5, 120px);
-  grid-template-rows: repeat(12, 120px);
+  grid-template-rows: repeat(14, 120px);
   grid-gap: 10px;
 }
 #gallery div {

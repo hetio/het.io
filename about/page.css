@@ -16,3 +16,9 @@ td {
 td {
   border-bottom: solid 1px #e0e0e0;
 }
+.topic {
+  display: inline-block;
+  margin: 8px 12px 0 0;
+  white-space: nowrap;
+  font-style: italic;
+}
