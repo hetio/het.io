@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g transform="translate(0,7) translate(50,50) scale(1.25) translate(-50,-50)">
+    <path
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 50 21.13
+        A 50 50 0 0 1 75 64.43
+      "
+    ></path>
+    <path
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 75 64.43
+        A 50 50 0 0 1 25 64.43
+      "
+    ></path>
+    <path
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 25 64.43
+        A 50 50 0 0 1 50 21.13
+      "
+    ></path>
+    <path
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 60.83 43.75
+        L 39.17 56.25
+      "
+    ></path>
+    <path
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 50 62.5
+        L 50 37.5
+      "
+    ></path>
+    <path
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 39.17 43.75
+        L 60.83 56.25
+      "
+    ></path>
+    <g transform="translate(50,21.13)">
+      <circle cx="0" cy="0" r="10" fill="#02b3e4"></circle>
+    </g>
+    <g transform="translate(75,64.43)">
+      <circle cx="0" cy="0" r="10" fill="#fa750f"></circle>
+    </g>
+    <g transform="translate(25,64.43)">
+      <circle cx="0" cy="0" r="10" fill="#e91e63"></circle>
+    </g>
+  </g>
+</svg>

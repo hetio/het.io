@@ -1,0 +1,119 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <style>
+    .circles {
+      animation: draw_circles 1s ease forwards;
+    }
+    @keyframes draw_circles {
+      0% {
+        transform: scale(0);
+      }
+      25% {
+        transform: scale(0);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+    .arcs {
+      animation: draw_arcs 1s ease forwards;
+    }
+    @keyframes draw_arcs {
+      0% {
+        stroke-dasharray: 53;
+        stroke-dashoffset: 53;
+      }
+      100% {
+        stroke-dasharray: 53;
+        stroke-dashoffset: 0;
+      }
+    }
+    .lines {
+      animation: draw_lines 1s ease forwards;
+    }
+    @keyframes draw_lines {
+      0% {
+        stroke-dasharray: 26;
+        stroke-dashoffset: 26;
+      }
+      75% {
+        stroke-dasharray: 26;
+        stroke-dashoffset: 26;
+      }
+      100% {
+        stroke-dasharray: 26;
+        stroke-dashoffset: 0;
+      }
+    }
+  </style>
+  <g transform="translate(0,7) translate(50,50) scale(1.25) translate(-50,-50)">
+    <path
+      class="arcs"
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 50 21.13
+        A 50 50 0 0 1 75 64.43
+      "
+    ></path>
+    <path
+      class="arcs"
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 75 64.43
+        A 50 50 0 0 1 25 64.43
+      "
+    ></path>
+    <path
+      class="arcs"
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 25 64.43
+        A 50 50 0 0 1 50 21.13
+      "
+    ></path>
+    <path
+      class="lines"
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 60.83 43.75
+        L 39.17 56.25
+      "
+    ></path>
+    <path
+      class="lines"
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 50 62.5
+        L 50 37.5
+      "
+    ></path>
+    <path
+      class="lines"
+      stroke-width="4"
+      stroke="#f0f0f0"
+      fill="none"
+      d="
+        M 39.17 43.75
+        L 60.83 56.25
+      "
+    ></path>
+    <g transform="translate(50,21.13)">
+      <circle class="circles" cx="0" cy="0" r="10" fill="#02b3e4"></circle>
+    </g>
+    <g transform="translate(75,64.43)">
+      <circle class="circles" cx="0" cy="0" r="10" fill="#fa750f"></circle>
+    </g>
+    <g transform="translate(25,64.43)">
+      <circle class="circles" cx="0" cy="0" r="10" fill="#e91e63"></circle>
+    </g>
+  </g>
+</svg>

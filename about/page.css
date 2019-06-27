@@ -1,0 +1,24 @@
+.table_container {
+  max-height: 75vh;
+}
+table {
+  min-width: 420px;
+  text-align: left;
+}
+th,
+td:first-child {
+  font-weight: 600;
+}
+th,
+td {
+  padding: 5px;
+}
+td {
+  border-bottom: solid 1px #e0e0e0;
+}
+.topic {
+  display: inline-block;
+  margin: 8px 12px 0 0;
+  white-space: nowrap;
+  font-style: italic;
+}

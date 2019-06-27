@@ -1,0 +1,42 @@
+<nav>
+  <a
+    href="{% if page.topLevel != true %}../{% endif %}about"
+    class="nav_button"
+    title="Learn more about the network"
+    data-active="{% if page.category == 'about' %}true{% endif %}"
+    >About{% if page.icons %}<i class="fas fa-book-open fa-sm" data-right></i>{%
+    endif %}</a
+  >
+  <a
+    href="{% if page.topLevel != true %}../{% endif %}explore"
+    class="nav_button"
+    title="View, search, and play with the network"
+    data-active="{% if page.category == 'explore' %}true{% endif %}"
+    >Explore{% if page.icons %}<i class="fas fa-search fa-sm" data-right></i>{%
+    endif %}</a
+  >
+  <a
+    href="{% if page.topLevel != true %}../{% endif %}studies"
+    class="nav_button"
+    title="Analyses and papers related to the network"
+    data-active="{% if page.category == 'studies' %}true{% endif %}"
+    >Studies{% if page.icons %}<i class="fas fa-microscope fa-sm" data-right></i
+    >{% endif %}</a
+  >
+  <a
+    href="{% if page.topLevel != true %}../{% endif %}software"
+    class="nav_button"
+    title="Tools used to make the network"
+    data-active="{% if page.category == 'software' %}true{% endif %}"
+    >Software{% if page.icons %}<i class="fas fa-code fa-sm" data-right></i>{%
+    endif %}</a
+  >
+  <a
+    href="{% if page.topLevel != true %}../{% endif %}media"
+    class="nav_button"
+    title="Publications, articles, and other related media"
+    data-active="{% if page.category == 'media' %}true{% endif %}"
+    >Media{% if page.icons %}<i class="fas fa-feather-alt fa-sm" data-right></i
+    >{% endif %}</a
+  >
+</nav>

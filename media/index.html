@@ -1,179 +1,220 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+title: Media
+icon: fas fa-feather-alt
+category: media
+---
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>hetio &middot; Publications &amp; Media</title>
-    <link href="../favicon.ico" rel="icon" type="image/x-icon"/>
-
-    <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <!-- Custom styles for this template -->
-    <link href="../css/bootstrap-theme.css" rel="stylesheet">
-
-<style type="text/css" title="currentStyle">
-
-/* Move down content because we have a fixed navbar that is 50px tall */
-body {
-  padding-top: 50px;
-}
-
-
-
-</style>
-
-</head>
-
-<body>
-
-
-<div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-<div class="container">
-<div class="navbar-header">
-  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-    <span class="sr-only">Toggle navigation</span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-    <span class="icon-bar"></span>
-  </button>
-  <a class="navbar-brand" href="#">het.io</a>
-</div>
-<div class="navbar-collapse collapse">
-<ul class="nav navbar-nav">
-  <li><a href="../">Home</a></li>
-  <li><a href="../hnep">HNEP</a></li>
-  <li>
-    <a href="/repurpose">Drug Repurposing</a>
-  </li>
-  <li class="dropdown">
-    <a href="../disease-genes" class="dropdown-toggle" data-toggle="dropdown">
-      Disease Genes
-      <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-      <li>
-        <a href="../disease-genes">About</a>
-      </li>
-      <li>
-        <a href="../disease-genes/browse">Browse</a>
-      </li>
-      <li>
-        <a href="../disease-genes/downloads">Downloads</a>
-      </li>
-    </ul>
-  </li>
-
- <li class="active"><a href="./">Media</a></li>
- <li class="dropdown">
-    <a href="https://baranzinilab.ucsf.edu/" class="dropdown-toggle" data-toggle="dropdown">
-       Baranzini Lab
-       <b class="caret"></b>
-    </a>
-    <ul class="dropdown-menu">
-       <li><a href="https://baranzinilab.ucsf.edu/">Home</a></li>
-       <li class="divider"></li>
-       <li><a href="https://baranzinilab.ucsf.edu/research">Research</a></li>
-       <li><a href="https://baranzinilab.ucsf.edu/publications">Publications</a></li>
-       <li><a href="https://baranzinilab.ucsf.edu/tools">Tools</a></li>
-       <li><a href="https://baranzinilab.ucsf.edu/links">Links</a></li>
-       <li><a href="https://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd">Contact</a></li>
-    </ul>
- </li>
-</ul>
-</div><!--/.navbar-collapse -->
-</div>
-</div>
-
-
-<!-- Main jumbotron for a primary marketing message or call to action -->
-<div class="jumbotron">
-  <div class="container">
-    <h1>Publications &amp; Media <small></small></h1>
-    <p></p>
+<section>
+  <div class="section">
+    <div id="gallery">
+      <div
+        style="
+          grid-column-start: 1;
+          grid-column-end: 3;
+          grid-row-start: 1;
+          grid-row-end: 3;
+        "
+      >
+        <a
+          href="https://doi.org/10.1038/536016a"
+          target="_blank"
+          data-tooltip="Nature News covers the legal barriers faced making Hetionet as open as possible"
+        >
+          <img src="legal-confusion.jpg" />
+          <i class="fas fa-newspaper"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 3;
+          grid-column-end: 6;
+          grid-row-start: 1;
+          grid-row-end: 3;
+        "
+      >
+        <a
+          href="https://doi.org/br6n"
+          target="_blank"
+          data-tooltip="An illustration of Hetionet and its applications"
+        >
+          <img src="hetnet-awakens.png" />
+          <i class="fas fa-sticky-note"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 1;
+          grid-column-end: 4;
+          grid-row-start: 3;
+          grid-row-end: 5;
+        "
+      >
+        <a
+          href="https://www.youtube.com/watch?v=t7HQ-r7kg0c"
+          target="_blank"
+          data-tooltip="Presenting on Project Rephetio at the Broad Institute's MIA seminar series"
+        >
+          <img src="mia.jpg" />
+          <i class="fas fa-video"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 4;
+          grid-column-end: 6;
+          grid-row-start: 3;
+          grid-row-end: 5;
+        "
+      >
+        <a
+          href="https://portal.graphgist.org/graph_gists/"
+          target="_blank"
+          data-tooltip="An interactive GraphGist showing the basics of drug repurposing on a hetnet"
+        >
+          <img src="graph-gist.png" />
+          <i class="fas fa-graduation-cap"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 1;
+          grid-column-end: 3;
+          grid-row-start: 5;
+          grid-row-end: 7;
+        "
+      >
+        <a
+          href="http://biomedicalcomputationreview.org/content/unlocking-genetics-complex-diseases-gwas-and-beyond"
+          target="_blank"
+          data-tooltip="Article in Stanford's Biomedical Computation Review on how hetnet edge prediction can help prioritize the search for disease-associated genes"
+        >
+          <img src="bcr-cover.png" />
+          <i class="fas fa-newspaper"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 3;
+          grid-column-end: 6;
+          grid-row-start: 5;
+          grid-row-end: 7;
+        "
+      >
+        <a
+          href="https://www.youtube.com/watch?v=H8DfXop8K7g"
+          target="_blank"
+          data-tooltip="Daniel Himmelstein's PhD thesis seminar exploring the uses of and history behind hetnets."
+        >
+          <img src="phd.jpg" />
+          <i class="fas fa-video"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 1;
+          grid-column-end: 4;
+          grid-row-start: 7;
+          grid-row-end: 9;
+        "
+      >
+        <a
+          href="https://www.youtube.com/watch?v=jwhAlNgjvMA"
+          target="_blank"
+          data-tooltip="GraphConnect 2016 presentation on Hetionet and its use of the Neo4j graph database"
+        >
+          <img src="graphcon.jpg" />
+          <i class="fas fa-video"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 4;
+          grid-column-end: 6;
+          grid-row-start: 7;
+          grid-row-end: 9;
+        "
+      >
+        <a
+          href="https://nrnb.org/competitions.html#c-tab"
+          target="_blank"
+          data-tooltip="Hetnet visualization, second place for 'Most Aesthetically Pleasing' in Cytoscape 3.2 Launch Challenge"
+        >
+          <img src="hetnet-cytoscape.png" />
+          <i class="fas fa-sticky-note"></i>
+          <!-- 
+            To provide context for understanding disease-gene associations, we integrated public resources into a heterogeneous network. The network contains 40,343 nodes (across 18 types) and 1,608,168 edges (across 19 types). Using the network's topology, we learned influential mechanisms underlying pathogenesis and predicted the probability that each gene was associated with each disease.
+           -->
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 3;
+          grid-column-end: 6;
+          grid-row-start: 9;
+          grid-row-end: 11;
+        "
+      >
+        <a
+          href="https://www.youtube.com/watch?v=sNqp0IZQkB0"
+          target="_blank"
+          data-tooltip="Online meetup discussing modeling hetnets with Neo4j"
+        >
+          <img src="neo4j-meetup.jpg" />
+          <i class="fas fa-video"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 3;
+          grid-column-end: 6;
+          grid-row-start: 11;
+          grid-row-end: 13;
+        "
+      >
+        <a
+          href="https://www.youtube.com/watch?v=QfElj7A12Rw"
+          target="_blank"
+          data-tooltip="Daniel Himmelstein discusses Project Rephetio on the Graphistania podcast"
+        >
+          <img src="podcast.jpg" />
+          <i class="fas fa-microphone-alt"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 1;
+          grid-column-end: 3;
+          grid-row-start: 9;
+          grid-row-end: 12;
+        "
+      >
+        <a
+          href="https://f1000research.com/posters/1097367"
+          target="_blank"
+          data-tooltip="Illustration of a hetnet method for predicting disease-associated genes, presented at ASHG 2014"
+        >
+          <img src="ASHG-2014-poster.png" />
+          <i class="fas fa-sticky-note"></i>
+        </a>
+      </div>
+      <div
+        style="
+          grid-column-start: 3;
+          grid-column-end: 6;
+          grid-row-start: 13;
+          grid-row-end: 15;
+        "
+      >
+        <a
+          href="https://www.youtube.com/watch?v=GPAvruPpZ3A"
+          target="_blank"
+          data-tooltip="Video application for ISMB 2014 on disease-associated gene prediction"
+        >
+          <img src="ismb.jpg" />
+          <i class="fas fa-video"></i>
+        </a>
+      </div>
+    </div>
   </div>
-</div>
-
-
-<div class="container">
-  <div class="row">
-    <!-- HNEP -->
-
-    <div class="col-md-4">
-      <h2>Publications</h2>
-      
-      <p>
-        Himmelstein DS, Lizee A, Hessler C, Brueggeman L, Chen SL, Hadley D, Green A, Khankhanian P, Baranzini SE (2017) <b>Systematic integration of biomedical knowledge prioritizes drugs for repurposing</b>. <i>eLife</i> <a href="https://doi.org/10.7554/eLife.26726">doi:10.7554/eLife.26726</a></p>
-      <p>
-        <div data-badge-popover="right" data-badge-type="medium-bar" data-doi="10.7554/eLife.26726" data-hide-no-mentions="true" class="altmetric-embed"></div>
-      </p>
-      
-      <p>
-        Himmelstein DS, Baranzini SE (2015) <b>Heterogeneous Network Edge Prediction: A Data Integration Approach to Prioritize Disease-Associated Genes</b>. <i>PLOS Computational Biology</i> <a href="https://doi.org/10.1371/journal.pcbi.1004259">doi:10.1371/journal.pcbi.1004259</a></p>
-      <p>
-        <div data-badge-popover="right" data-badge-type="medium-bar" data-doi="10.1371/journal.pcbi.1004259" data-hide-no-mentions="true" class="altmetric-embed"></div>
-      </p>
-
-    </div>
-
-    <div class="col-md-4">
-      <h2>Poster from ASHG 2014 <small>also at <a href="http://f1000.com/posters/browse/summary/1097367">F1000Posters</a></small></h2>
-      <a href="ASHG-2014-poster.pdf"><img src="ASHG-2014-poster.jpg"
-        class="img-thumbnail" width="100%"></a>
-    </div>
-
-    <div class="col-md-4">
-      <h2>Article<small> in Stanford's <i>Biomedical Computation Review</i></small></h2>
-      <a href="http://biomedicalcomputationreview.org/content/unlocking-genetics-complex-diseases-gwas-and-beyond"><img src="bcr-cover.jpg"
-        class="img-thumbnail" width="100%"></a>
-
-    </div>
-
-    <div class="col-md-6">
-      <h2>Heterogeneous Network Visualization takes Silver</h2>
-      <p>Our visualization
-        <a href="http://nrnb.org/competitions.html" target="_blank">took second place</a>
-        in the <i>Most Aesthetically Pleasing</i> category of the
-        <a href="http://www.cytoscape.org/cy32_launch_challenge.html" target="_blank">Cytoscape 3.2 Lauch Challenge</a>.
-        The results were announced on December 24, 2014.</p>
-      <img src="hetnet-visualization.png"
-        class="img-thumbnail" width="100%">
-      <p><b>Title</b>: Heterogeneous Network Visualization with Cytoscape: An Integrative Approach to the Genetics of Complex Human Disease</p>
-      <p><b>Description</b>: To provide context for understanding disease-gene associations, we integrated public resources into a heterogeneous network. The network contains 40,343 nodes (across 18 types) and 1,608,168 edges (across 19 types). Using the network's topology, we learned influential mechanisms underlying pathogenesis and predicted the probability that each gene was associated with each disease.</p>
-    </div>
-
-    <div class="col-md-6">
-      <h2>ISMB Late Breaking Research Video Proposal</h2>
-      <p>A <a href="https://youtu.be/GPAvruPpZ3A">short video</a> describing the use of HNEP for predicting disease-associated genes. </p>
-      <iframe width="100%" height="325" src="https://www.youtube.com/embed/GPAvruPpZ3A" frameborder="0" allowfullscreen></iframe>
-    </div>
-
-  </div>
-</div>
-
-
-<script type="text/javascript" charset="utf-8" src="../js/jquery-2.1.0.min.js"></script>
-<script src="../js/bootstrap.min.js"></script>
-
-  <!-- Altmetrics -->
-  <script type='text/javascript' src='https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js'></script>
-
-  <!-- Piwik -->
-  <script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="//piwik.dhimmel.com/";
-      _paq.push(['setTrackerUrl', u+'piwik.php']);
-      _paq.push(['setSiteId', 3]);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-  </script>
-  <noscript><p><img src="//piwik.dhimmel.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
-  <!-- End Piwik Code -->
-
-</body>
-</html>
+</section>

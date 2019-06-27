@@ -1,0 +1,67 @@
+<html>
+  <head>
+    <!-- metatags - https://metatags.io/ -->
+    <title>Hetionet - {{ page.title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="title"
+      property="og:title"
+      content="Hetionet - {{ page.title }}"
+    />
+    <meta property="og:type" content="website" />
+
+    <!-- global styles -->
+    <link href="../global.css" rel="stylesheet" />
+
+    <!-- page styles -->
+    <link href="page.css" rel="stylesheet" />
+
+    <!-- scripts -->
+    <script src="../scripts.js"></script>
+  </head>
+  <body>
+    {% include header.html %}
+    <main>
+      <section class="title_section">
+        <div class="section">
+          <h2>
+            {{ page.title }}<i class="{{ page.icon }} fa-sm" data-right></i>
+          </h2>
+        </div>
+      </section>
+      {{ content }}
+    </main>
+    {% include footer.html %}
+
+    <!-- Matomo -->
+    <script type="text/javascript">
+      var _paq = window._paq || [];
+      /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+      _paq.push(['setCookieDomain', '*.het.io']);
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u = 'https://piwik.dhimmel.com/';
+        _paq.push(['setTrackerUrl', u + 'matomo.php']);
+        _paq.push(['setSiteId', '3']);
+        var d = document,
+          g = d.createElement('script'),
+          s = d.getElementsByTagName('script')[0];
+        g.type = 'text/javascript';
+        g.async = true;
+        g.defer = true;
+        g.src = u + 'matomo.js';
+        s.parentNode.insertBefore(g, s);
+      })();
+    </script>
+    <noscript
+      ><p>
+        <img
+          src="https://piwik.dhimmel.com/matomo.php?idsite=3&amp;rec=1"
+          style="border:0;"
+          alt=""
+        /></p
+    ></noscript>
+    <!-- End Matomo Code -->
+  </body>
+</html>

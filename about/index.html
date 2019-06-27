@@ -1,0 +1,426 @@
+---
+layout: default
+title: About
+icon: fas fa-book-open
+category: about
+---
+
+<section id="what-is-a-hetnet">
+  <div class="section">
+    <h3>What is a "hetnet"?</h3>
+    <p>
+      A <i>network</i> (also known as a
+      <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)"
+        >graph</a
+      >) is a conceptual representation of a group of things &mdash; called
+      <i>nodes</i> &mdash; and the relationships between them &mdash; called
+      <i>edges</i>. Typically, a network has only one type of node and one type
+      of edge. But in many cases, it is necessary to be able to distinguish
+      between different types of entities and relationships.
+    </p>
+    <p>
+      A <i>hetnet</i> (<a href="https://doi.org/10.15363/thinklab.d104"
+        >short for</a
+      >
+      <b>het</b>erogeneous information <b>net</b>work) is a network where nodes
+      and edges can be multiple types. This additional dimension allows a hetnet
+      to accurately describe more complex data. Hetnets are particularly useful
+      in biomedicine, where it is important to capture the conceptual
+      distinctions between various components and mechanisms, such as genes and
+      diseases, or upregulation and binding.
+    </p>
+    <p>
+      The prefix <i>meta</i> is used on this site to refer to the type of the
+      node/edge (e.g. compound), as opposed to the specific node/edge itself
+      (e.g. acetaminophen).
+    </p>
+  </div>
+</section>
+<hr />
+<section id="what-is-hetionet">
+  <div class="section">
+    <h3>What is Hetionet?</h3>
+    <p>
+      Hetionet is a hetnet of biomedical knowledge. It encodes relationships
+      uncovered by millions of studies conducted over the last half-century into
+      a single resource. The network is constructed from a collection of
+      publicly available databases, and is itself
+      <a href="https://github.com/hetio/hetionet#license"
+        >open-source and free to use</a
+      >, barring any upstream restrictions.
+    </p>
+    <p>
+      Hetionet enables scientists and biologists to formulate novel hypotheses,
+      predictions, and other valuable insights by connecting an existing body of
+      biomedical data across multiple levels and types in a convenient,
+      accessible, holistic way.
+    </p>
+  </div>
+</section>
+<hr />
+<section id="why-was-hetionet-made">
+  <div class="section">
+    <h3>Why was Hetionet made?</h3>
+    <p>
+      Hetionet was originally created as part of
+      <a href="../rephetio">Project Rephetio</a>, a study that utilized the
+      benefits of hetnets to predict new uses for existing drugs. Although the
+      original resources for the network were selected for drug repurposing,
+      Hetionet is now useful in a much broader sense, and
+      <a href="../studies">has been used for a variety of purposes</a>.
+    </p>
+    <p>
+      Hetionet was also made to alleviate some of the inaccuracies and
+      inconveniences of using other integrative networks, or trying to use
+      multiple, separate databases in the same analysis. It unifies data from
+      several different, disparate sources into a single, comprehensive,
+      accessible, common-format network.
+    </p>
+  </div>
+</section>
+<hr />
+<section id="whats-in-hetionet">
+  <div class="section">
+    <h3>What's in Hetionet?</h3>
+    <p>
+      Hetionet combines information from
+      <a href="https://git.dhimmel.com/rephetio-manuscript/#tbl:resources"
+        >29 public databases</a
+      >. The network contains 47,031 nodes of
+      <a href="https://git.dhimmel.com/rephetio-manuscript/#tbl:metanodes"
+        >11 types</a
+      >
+      and 2,250,197 edges of
+      <a href="https://git.dhimmel.com/rephetio-manuscript/#tbl:metaedges"
+        >24 types</a
+      >.
+    </p>
+    <div class="table_container">
+      <table>
+        <thead>
+          <tr>
+            <th class="col_m">Metanode</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Gene</td>
+            <td>
+              Protein-coding human genes. From
+              <a href="https://www.ncbi.nlm.nih.gov/gene">Entrez Gene</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Compound</td>
+            <td>
+              Approved small molecule compounds with documented chemical
+              structures. From <a href="https://www.drugbank.ca/">DrugBank</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Anatomy</td>
+            <td>
+              Anatomical structures, excluding structures that are known not to
+              be found in humans. From
+              <a href="http://uberon.github.io/">Uberon</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Disease</td>
+            <td>
+              Complex diseases, selected to be distinct and specific enough to
+              be clinically relevant yet general enough to be well annotated.
+              From <a href="http://disease-ontology.org/">Disease Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Symptom</td>
+            <td>
+              Signs and Symptoms (i.e. clinical abnormalities that can indicate
+              a medical condition). From the
+              <a href="https://www.nlm.nih.gov/mesh/meshhome.html"
+                >MeSH ontology</a
+              >.
+            </td>
+          </tr>
+          <tr>
+            <td>Side Effect</td>
+            <td>
+              Adverse drug reactions. From
+              <a href="http://sideeffects.embl.de/">SIDER</a>/<a
+                href="https://www.nlm.nih.gov/research/umls/"
+                >UMLS</a
+              >.
+            </td>
+          </tr>
+          <tr>
+            <td>Biological Process</td>
+            <td>
+              Larger processes or biological programs accomplished by multiple
+              molecular activities. From
+              <a href="http://geneontology.org/">Gene Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Cellular Component</td>
+            <td>
+              The locations relative to cellular structures in which a gene
+              product performs a function. From
+              <a href="http://geneontology.org/">Gene Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Molecular Function</td>
+            <td>
+              Activities that occur at the molecular level, such as "catalysis"
+              or "transport". From
+              <a href="http://geneontology.org/">Gene Ontology</a>.
+            </td>
+          </tr>
+          <tr>
+            <td>Pathway</td>
+            <td>
+              A series of actions among molecules in a cell that leads to a
+              certain product or change in the cell. From
+              <a href="https://www.wikipathways.org/index.php/WikiPathways"
+                >WikiPathways</a
+              >, <a href="https://reactome.org/">Reactome</a>, and Pathway
+              Interaction Database.
+            </td>
+          </tr>
+          <tr>
+            <td>Pharma<wbr />cologic Class</td>
+            <td>
+              "Chemical/<wbr />Ingredient", "Mechanism of Action", and
+              "Physiologic Effect" FDA class types. From
+              <a href="http://drugcentral.org/">DrugCentral</a>.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      The <i>metagraph</i> diagram below illustrates the connectivity between
+      different types of nodes and edges in the network.
+    </p>
+    <figure>
+      <a href="metagraph-large.png" target="_blank">
+        <img src="metagraph.png" width="400px" />
+      </a>
+    </figure>
+    <p>
+      Notice that multiple types of edges can connect the same two nodes. For
+      example, a compound can have a relationship to a gene by binding its
+      protein and/or by upregulating it. Since the biological effects of these
+      two mechanisms are very different, they are given separate representations
+      in the network.
+    </p>
+  </div>
+</section>
+<hr />
+<section id="how-was-hetionet-made">
+  <div class="section">
+    <h3>How was Hetionet made?</h3>
+    <p>
+      Hetionet was created openly, with a process of continuous
+      <a href="https://think-lab.github.io/p/rephetio/discussion/"
+        >public discussion and feedback</a
+      >. In general, great care was taken to "clean" and "de-duplicate" the
+      network such that it would be as easy and effective to use as possible.
+    </p>
+    <p>
+      A standardized vocabulary was selected to define each metanode (e.g.
+      Entrez Gene for genes or Disease Ontology for diseases). These
+      vocabularies provide a robust, common backbone to overlay nodes and edges
+      onto without repeating equivalent concepts.
+    </p>
+    <p>
+      Edges were extracted from
+      <a href="https://en.wikipedia.org/wiki/Omics">omics-scale</a> resources
+      (ranging from
+      <a href="https://doi.org/10.15363/thinklab.d67">text-mining</a> to
+      <a
+        href="https://git.dhimmel.com/rephetio-manuscript/#transcriptional-signatures-of-perturbation-from-lincs-l1000"
+        >high-throughput screens</a
+      >) and their identifiers were converted to the appropriate node
+      vocabularies. Edges were consolidated such that one relationship is
+      encoded into a single edge, even when multiple studies or resources have
+      reported it.
+    </p>
+    <p>
+      <a href="https://git.dhimmel.com/rephetio-manuscript/#methods"
+        >See here</a
+      >
+      for a more detailed description of the methodologies used to construct the
+      network.
+    </p>
+  </div>
+</section>
+<hr />
+<section id="acknowledgements">
+  <div class="section">
+    <h3>Acknowledgements</h3>
+    <p>
+      Hetionet was originally developed by
+      <a href="https://dhimmel.com/">Daniel Himmelstein</a> and collaborators in
+      the <a href="https://baranzinilab.ucsf.edu/">Baranzini Lab</a> at
+      <a href="https://www.ucsf.edu/"
+        >the University of California, San Fransisco</a
+      >, as part of
+      <a href="https://git.dhimmel.com/rephetio-manuscript">Project Rephetio</a
+      >. Thank you to the
+      <a
+        href="https://git.dhimmel.com/rephetio-manuscript/#realtime-open-science-thinklab"
+        >team of online contributors</a
+      >
+      who
+      <a href="https://think-lab.github.io/p/rephetio/discussion/"
+        >provided feedback</a
+      >
+      throughout the course of the project.
+    </p>
+    <p>
+      Other applications of Hetionet and algorithms for hetnets continue to be
+      developed by Daniel in the
+      <a href="http://www.greenelab.com/">Greene Lab</a> at
+      <a href="">the University of Pennsylvania</a>.
+    </p>
+    <p>
+      Daniel's work in the Baranzini Lab was supported by the
+      <a href="https://www.nsfgrfp.org/"
+        >National Science Foundation Graduate Research Fellowship</a
+      >
+      (1144247). Sergio's work was in part supported by the
+      <a href="https://www.nih.gov/">National Institutes of Health</a> (R01
+      NS088155). Development of hetnet software, applications, and algorithms in
+      the Greene Lab is supported by the
+      <a href="https://www.moore.org/">Gordon and Betty Moore Foundation</a>
+      (GBMF4552) and through a research collaboration with
+      <a href="https://www.pfizer.com/science"
+        >Pfizer Worldwide Research and Development</a
+      >. For a comprehensive list of contributors, grants, and funding sources,
+      see the acknowledgement sections of related publications.
+    </p>
+  </div>
+</section>
+<hr />
+<style>
+  /* override bad altmetric popup css */
+  .altmetric-embed {
+    border-radius: 0 !important;
+  }
+  .altmetric-popover-inner,
+  .altmetric-popover-content {
+    background: #f0f0f0 !important;
+  }
+  .altmetric_arrow {
+    border-top-color: #f0f0f0 !important;
+  }
+  .altmetric-popover-content > div > a {
+    top: 15px !important;
+    right: 15px !important;
+  }
+  .altmetric-popover-content > div > div:last-of-type {
+    display: none !important;
+  }
+</style>
+<section id="cite">
+  <div class="section">
+    <h3>Cite</h3>
+    <div class="row">
+      <div class="col_text">
+        <span class="semibold"
+          >Systematic integration of biomedical knowledge prioritizes drugs for
+          repurposing</span
+        >
+        <br />
+        Himmelstein DS, Lizee A, Hessler C, Brueggeman L, Chen SL, Hadley D,
+        Green A, Khankhanian P, Baranzini SE
+        <br />
+        <i>eLife</i> (2017)
+        <a href="https://elifesciences.org/articles/26726"
+          >doi:10.7554/eLife.26726</a
+        >
+      </div>
+      <div class="col_image">
+        <script
+          type="text/javascript"
+          src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"
+        ></script>
+        <div
+          class="altmetric-embed"
+          data-badge-popover="top"
+          data-badge-type="donut"
+          data-altmetric-id="26437680"
+        ></div>
+      </div>
+    </div>
+    <div class="row">
+      <p>
+        Cite for topics:<br />
+        <span class="topic small">eLife: Project Rephetio</span
+        ><span class="topic small">drug repurposing</span
+        ><span class="topic small">Hetionet v1.0</span
+        ><span class="topic small">data licensing</span
+        ><span class="topic small">realtime open science</span
+        ><span class="topic small">consensus LINCS L1000 signatures</span
+        ><span class="topic small">hetnets</span>
+        <span class="topic small">HNEP</span>
+      </p>
+    </div>
+    <div class="row">
+      <div class="col_text">
+        <span class="semibold"
+          >Heterogeneous Network Edge Prediction: A Data Integration Approach to
+          Prioritize Disease-Associated Genes</span
+        ><br />
+        Himmelstein DS, Baranzini SE<br />
+        <i>PLOS Computational Biology</i> (2015)
+        <a
+          href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004259"
+          >doi:10.1371/journal.pcbi.1004259</a
+        >
+      </div>
+      <div class="col_image">
+        <script
+          type="text/javascript"
+          src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"
+        ></script>
+        <div
+          class="altmetric-embed"
+          data-badge-popover="top"
+          data-badge-type="donut"
+          data-altmetric-id="4259520"
+        ></div>
+      </div>
+    </div>
+    <div class="row">
+      <p>
+        Cite for topics:<br />
+        <span class="topic small">PLOS: DWPC</span
+        ><span class="topic small">predicting disease-gene associations</span
+        ><span class="topic small">hetnet permutation</span
+        ><span class="topic small">HNEP</span>
+      </p>
+    </div>
+  </div>
+</section>
+<hr />
+<section id="contact">
+  <div class="section">
+    <h3>Contact</h3>
+    <p>
+      For questions or feedback regarding existing projects, please open an
+      issue on the relevant GitHub repository (under
+      <a href="https://github.com/hetio">@hetio</a> or
+      <a href="https://git.io/v5zvX">@dhimmel</a>). For other inquiries, send an
+      email to
+      <a
+        href="mailto:Daniel%20Himmelstein%20%3Cdaniel.himmelstein@gmail.com%3E"
+        target="_blank"
+        >daniel.himmelstein@gmail.com</a
+      >.
+    </p>
+  </div>
+</section>

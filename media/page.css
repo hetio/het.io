@@ -1,0 +1,62 @@
+#gallery {
+  display: grid;
+  grid-template-columns: repeat(5, 120px);
+  grid-template-rows: repeat(14, 120px);
+  grid-gap: 10px;
+}
+#gallery div {
+  position: relative;
+}
+#gallery a[data-tooltip]:after {
+  content: attr(data-tooltip);
+  background: rgba(0, 0, 0, 0.65);
+  color: #f0f0f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  padding: 20px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  opacity: 0;
+  text-shadow: 0 0 20px black, 0 0 20px black;
+  transition: opacity 0.25s ease;
+}
+#gallery a:hover:after,
+#gallery a:focus:after {
+  opacity: 1;
+}
+#gallery div img {
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+}
+#gallery i {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  color: white;
+  background: rgba(0, 0, 0, 0.75);
+  padding: 10px;
+  z-index: 10;
+}
+@media screen and (max-width: 740px) {
+  #gallery {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  #gallery div {
+    width: 100%;
+    margin: 10px 0;
+  }
+  #gallery div img {
+    object-fit: unset;
+    width: 100%;
+    height: unset;
+    margin: 0;
+  }
+}

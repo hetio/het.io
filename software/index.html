@@ -1,0 +1,84 @@
+---
+layout: default
+title: Software
+icon: fas fa-code
+category: software
+---
+
+<section id="hetio">
+  <div class="section">
+    <h3><code>hetio</code></h3>
+    <div class="row">
+      <div class="col_text">
+        <p>
+          <i>Hetio</i> is a Python 3 package for creating, querying, and
+          operating on hetnets. This software provides convenient data
+          structures for hetnets, as well as algorithms for
+          <a href="../hnep">edge prediction</a>. It is specifically tailored and
+          streamlined for hetnets compared to other more generic network
+          software.
+        </p>
+        <a href="https://github.com/hetio/hetio" class="button"
+          >View on GitHub<i class="fab fa-github" data-right></i
+        ></a>
+        <a href="https://pypi.org/project/hetio/" class="button"
+          >View on PyPI<i class="fab fa-python" data-right></i
+        ></a>
+      </div>
+      <div class="col_image">
+        <img src="hetnet.svg" height="100px" />
+      </div>
+    </div>
+  </div>
+</section>
+<hr />
+<section id="hetmatpy">
+  <div class="section">
+    <h3><code>hetmatpy</code></h3>
+    <div class="row">
+      <div class="col_text">
+        <p>
+          <i>Hetmatpy</i> is a Python 3 package storing and operating on hetnets
+          in matrix form. Representing the network in this way enables counting
+          paths using matrix multiplication, which provides dramatically better
+          performance compared to the equivalent <i>hetio</i> or Neo4j
+          implementations. <i>Hetmatpy</i> depends on <i>hetio</i> for
+          representing the metagraph (network schema), but is better-suited for
+          certain large-scale computations.
+        </p>
+        <a href="https://github.com/hetio/hetmatpy" class="button"
+          >View on GitHub<i class="fab fa-github" data-right></i
+        ></a>
+      </div>
+      <div class="col_image">
+        <img src="hetmat.svg" height="100px" />
+      </div>
+    </div>
+  </div>
+</section>
+<hr />
+<section id="xswap">
+  <div class="section">
+    <h3><code>xswap</code></h3>
+    <div class="row">
+      <div class="col_text">
+        <p>
+          <i>Xswap</i> is a Python for creating randomized degree-preserving
+          permutations of networks using the XSwap technique. Generating many
+          permuted networks enables creationg null distributions for network
+          metrics and computing the prior probability that an edge exists based
+          on its source and target degree. The computation-intensive portions of
+          the package are implemented in C/C++ to provide rapid permutation and
+          significantly better performance than the legacy <i>hetio</i> pure
+          Python implementation.
+        </p>
+        <a href="https://github.com/greenelab/xswap" class="button"
+          >View on GitHub<i class="fab fa-github" data-right></i
+        ></a>
+      </div>
+      <div class="col_image">
+        <img src="xswap.svg" height="100px" />
+      </div>
+    </div>
+  </div>
+</section>
