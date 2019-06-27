@@ -1,29 +1,7 @@
-/* * {
-  font-family: 'Montserrat', 'Raleway', sans-serif !important;
-}
 body {
-  background: #f0f0f0 !important;
+  padding-top: 50px;
 }
-h2 {
-  margin: 0 !important;
-  font-size: 22px !important;
+
+.tooltip-inner {
+    max-width: 380px;
 }
-h3 {
-  margin: 0;
-  margin-bottom: 20px;
-  font-size: 18px;
-  font-weight: 700;
-  text-align: left;
-  width: 100%;
-}
-p {
-  margin: 1em 0 !important;
-}
-table * {
-  white-space: normal !important;
-}
-.fa,
-.far,
-.fas {
-  font-family: 'Font Awesome 5 Free' !important;
-} */

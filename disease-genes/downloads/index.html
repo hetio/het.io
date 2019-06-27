@@ -6,94 +6,103 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <link href="../favicon.ico" rel="icon" type="image/x-icon" />
+    <link href="../../favicon.ico" rel="icon" type="image/x-icon" />
     <title>hetio &middot; Disease–Associated Genes Downloads</title>
     <meta name="description" content="Downloads for the het.io disease–associated genes project.">
 
     <!-- Bootstrap core CSS -->
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom styles for this template -->
-    <link href="../css/bootstrap-theme.css" rel="stylesheet">
+    <link href="../../css/bootstrap-theme.css" rel="stylesheet">
+
+<style type="text/css" title="currentStyle">
+  /* Move down content because we have a fixed navbar that is 50px tall */
+  body {
+    padding-top: 50px;
+  }
+</style>
 
 </head>
 
 <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">het.io</a>
-          </div>
-          <div class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#">het.io</a>
+      </div>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/hnep">HNEP</a>
+          </li>
+          <li>
+            <a href="/repurpose">Drug Repurposing</a>
+          </li>
+          <li class="active" class="dropdown">
+            <a href="../" class="dropdown-toggle" data-toggle="dropdown">
+              Disease Genes
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="../">About</a>
+              </li>
+              <li>
+                <a href="../browse">Browse</a>
+              </li>
               <li class="active">
-                <a href="/">Home</a>
-              </li>
-              <li>
-                <a href="/hnep">HNEP</a>
-              </li>
-              <li>
-                <a href="/repurpose">Drug Repurposing</a>
-              </li>
-              <li class="dropdown">
-                <a href="/disease-genes" class="dropdown-toggle" data-toggle="dropdown">
-                  Disease Genes
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="/disease-genes">About</a>
-                  </li>
-                  <li>
-                    <a href="/disease-genes/browse">Browse</a>
-                  </li>
-                  <li>
-                    <a href="/disease-genes/downloads">Downloads</a>
-                  </li>
-                </ul>
-              </li>
-    
-              <li>
-                <a href="/media">Media</a>
-              </li>
-              <li class="dropdown">
-                <a href="https://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
-                  Baranzini Lab
-                  <b class="caret"></b>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a href="https://baranzinilab.ucsf.edu/" target="_blank">Home</a>
-                  </li>
-                  <li class="divider"></li>
-                  <li>
-                    <a href="https://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
-                  </li>
-                  <li>
-                    <a href="https://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
-                  </li>
-                  <li>
-                    <a href="https://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
-                  </li>
-                  <li>
-                    <a href="https://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
-                  </li>
-                  <li>
-                    <a href="https://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
-                  </li>
-                </ul>
+                <a href="../downloads">Downloads</a>
               </li>
             </ul>
-          </div>
-          <!--/.navbar-collapse -->
-        </div>
+          </li>
+
+          <li>
+            <a href="/media">Media</a>
+          </li>
+          <li class="dropdown">
+            <a href="https://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
+              Baranzini Lab
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <a href="https://baranzinilab.ucsf.edu/" target="_blank">Home</a>
+              </li>
+              <li class="divider"></li>
+              <li>
+                <a href="https://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
+              </li>
+              <li>
+                <a href="https://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
+              </li>
+              <li>
+                <a href="https://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
+              </li>
+              <li>
+                <a href="https://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
+              </li>
+              <li>
+                <a href="https://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
       </div>
+      <!--/.navbar-collapse -->
+    </div>
+  </div>
+
 <!-- Main jumbotron for a primary marketing message or call to action -->
 <div class="jumbotron">
   <div class="container">
@@ -213,8 +222,8 @@
 </div>
 
 
-<script type="text/javascript" charset="utf-8" src="../js/jquery-2.1.0.min.js"></script>
-<script type="text/javascript" charset="utf-8" src="../js/bootstrap.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/jquery-2.1.0.min.js"></script>
+<script type="text/javascript" charset="utf-8" src="../../js/bootstrap.min.js"></script>
 
   <!-- Piwik -->
   <script type="text/javascript">
