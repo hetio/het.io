@@ -7,8 +7,8 @@
 #gallery div {
   position: relative;
 }
-#gallery a[title]:after {
-  content: attr(title);
+#gallery a[data-tooltip]:after {
+  content: attr(data-tooltip);
   background: rgba(0, 0, 0, 0.65);
   color: #f0f0f0;
   display: flex;
