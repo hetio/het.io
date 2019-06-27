@@ -1,6 +1,6 @@
 <nav>
   <a
-    href="{% if page.topLevel != true %}../{% endif %}about"
+    href="/about"
     class="nav_button"
     title="Learn more about the network"
     data-active="{% if page.category == 'about' %}true{% endif %}"
@@ -8,7 +8,7 @@
     endif %}</a
   >
   <a
-    href="{% if page.topLevel != true %}../{% endif %}explore"
+    href="/explore"
     class="nav_button"
     title="View, search, and play with the network"
     data-active="{% if page.category == 'explore' %}true{% endif %}"
@@ -16,7 +16,7 @@
     endif %}</a
   >
   <a
-    href="{% if page.topLevel != true %}../{% endif %}studies"
+    href="/studies"
     class="nav_button"
     title="Analyses and papers related to the network"
     data-active="{% if page.category == 'studies' %}true{% endif %}"
@@ -24,7 +24,7 @@
     >{% endif %}</a
   >
   <a
-    href="{% if page.topLevel != true %}../{% endif %}software"
+    href="/software"
     class="nav_button"
     title="Tools used to make the network"
     data-active="{% if page.category == 'software' %}true{% endif %}"
@@ -32,7 +32,7 @@
     endif %}</a
   >
   <a
-    href="{% if page.topLevel != true %}../{% endif %}media"
+    href="/media"
     class="nav_button"
     title="Publications, articles, and other related media"
     data-active="{% if page.category == 'media' %}true{% endif %}"
