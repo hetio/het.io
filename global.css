@@ -359,10 +359,6 @@ button[data-disabled='true'] {
   overflow: hidden;
   text-overflow: ellipsis;
 }
-br.flex {
-  width: 100%;
-  content: '';
-}
 .line_sides {
   display: flex;
   flex-direction: row;
