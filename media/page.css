@@ -9,7 +9,7 @@
 }
 #gallery a[data-tooltip]:after {
   content: attr(data-tooltip);
-  background: rgba(0, 0, 0, 0.65);
+  background: rgba(0, 0, 0, 0.85);
   color: #f0f0f0;
   display: flex;
   justify-content: center;
@@ -39,7 +39,7 @@
   right: 0;
   bottom: 0;
   color: white;
-  background: rgba(0, 0, 0, 0.75);
+  background: #202020;
   padding: 10px;
   z-index: 10;
 }
