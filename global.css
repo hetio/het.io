@@ -338,21 +338,21 @@ button[data-disabled='true'] {
 }
 .left,
 .left > * {
-  text-align: left;
-  justify-content: left;
-  justify-self: left;
+  text-align: left !important;
+  justify-content: left !important;
+  justify-self: left !important;
 }
 .center,
 .center > * {
-  text-align: center;
-  justify-content: center;
-  justify-self: center;
+  text-align: center !important;
+  justify-content: center !important;
+  justify-self: center !important;
 }
 .right,
 .right > * {
-  text-align: right;
-  justify-content: right;
-  justify-self: right;
+  text-align: right !important;
+  justify-content: right !important;
+  justify-self: right !important;
 }
 .nowrap {
   white-space: nowrap;
