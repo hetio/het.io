@@ -314,16 +314,16 @@ button > svg:not(:first-child) {
 button > svg:not(:last-child) {
   margin-right: 5px;
 }
-.button[data-disabled='true'],
-button[data-disabled='true'] {
-  opacity: 0.25;
-  filter: saturate(0.5);
-  /* text-decoration: line-through; */
-}
 
 /* -------------------------------------------------- */
 /* general utility styles */
 /* -------------------------------------------------- */
+*[data-disabled='true'],
+*[data-checked='false'] {
+  color: #000000;
+  opacity: 0.15;
+  filter: saturate(0);
+}
 .small {
   font-size: 0.8em;
 }
