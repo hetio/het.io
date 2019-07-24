@@ -270,6 +270,7 @@ nav {
 /* -------------------------------------------------- */
 input {
   font-family: 'Montserrat', 'Raleway', sans-serif !important;
+  font-size: 0.8em;
   background: #e0e0e0 !important;
   border: none;
   transition: background 0.25s ease;
@@ -277,10 +278,23 @@ input {
 input:focus {
   background: #c0ecf8 !important;
 }
+select {
+  font-size: 0.8em;
+  background: #e0e0e0 !important;
+  border: none;
+  transition: background 0.25s ease;
+}
+select:focus {
+  background: #c0ecf8 !important;
+}
 textarea {
-  font-size: 1em;
+  font-size: 0.8em;
   overflow: scroll;
   white-space: nowrap;
+  transition: background 0.25s ease;
+}
+textarea:focus {
+  background: #c0ecf8 !important;
 }
 .button,
 button {
@@ -381,22 +395,6 @@ button > svg:not(:last-child) {
 /* -------------------------------------------------- */
 /* table styles */
 /* -------------------------------------------------- */
-.table_container,
-.table_container_expanded {
-  text-align: center;
-  box-sizing: border-box;
-  max-height: 50vh;
-  overflow: auto;
-}
-@media screen and (min-width: 320px) {
-  .table_container_expanded {
-    overflow-x: auto;
-    width: calc(100vw - 20px - 20px);
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
 table {
   border-collapse: collapse;
   width: 100%;
@@ -418,6 +416,19 @@ td {
 }
 td > * {
   vertical-align: middle;
+}
+.table_container,
+.table_container_expanded {
+  text-align: center;
+  overflow-x: auto;
+}
+@media screen and (min-width: 320px) {
+  .table_container_expanded {
+    width: calc(100vw - 20px - 20px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* -------------------------------------------------- */
