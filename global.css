@@ -268,17 +268,21 @@ nav {
 /* -------------------------------------------------- */
 /* input and button styles */
 /* -------------------------------------------------- */
-input {
+input,
+select,
+textarea {
   font-family: 'Montserrat', 'Raleway', sans-serif !important;
+  font-size: 0.8em;
   background: #e0e0e0 !important;
   border: none;
   transition: background 0.25s ease;
 }
-input:focus {
+input:focus,
+select:focus, 
+textarea:focus {
   background: #c0ecf8 !important;
 }
 textarea {
-  font-size: 1em;
   overflow: scroll;
   white-space: nowrap;
 }
@@ -381,21 +385,6 @@ button > svg:not(:last-child) {
 /* -------------------------------------------------- */
 /* table styles */
 /* -------------------------------------------------- */
-.table_container {
-  text-align: center;
-  box-sizing: border-box;
-  max-height: 50vh;
-  overflow: auto;
-}
-@media screen and (min-width: 320px) {
-  .table_container[data-expanded='true'] {
-    overflow-x: auto;
-    width: calc(100vw - 20px - 20px);
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-}
 table {
   border-collapse: collapse;
   width: 100%;
@@ -417,6 +406,19 @@ td {
 }
 td > * {
   vertical-align: middle;
+}
+.table_container,
+.table_container_expanded {
+  text-align: center;
+  overflow-x: auto;
+}
+@media screen and (min-width: 320px) {
+  .table_container_expanded {
+    width: calc(100vw - 20px - 20px);
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+  }
 }
 
 /* -------------------------------------------------- */
