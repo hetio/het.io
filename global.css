@@ -268,33 +268,23 @@ nav {
 /* -------------------------------------------------- */
 /* input and button styles */
 /* -------------------------------------------------- */
-input {
+input,
+select,
+textarea {
   font-family: 'Montserrat', 'Raleway', sans-serif !important;
   font-size: 0.8em;
   background: #e0e0e0 !important;
   border: none;
   transition: background 0.25s ease;
 }
-input:focus {
-  background: #c0ecf8 !important;
-}
-select {
-  font-size: 0.8em;
-  background: #e0e0e0 !important;
-  border: none;
-  transition: background 0.25s ease;
-}
-select:focus {
+input:focus,
+select:focus, 
+textarea:focus {
   background: #c0ecf8 !important;
 }
 textarea {
-  font-size: 0.8em;
   overflow: scroll;
   white-space: nowrap;
-  transition: background 0.25s ease;
-}
-textarea:focus {
-  background: #c0ecf8 !important;
 }
 .button,
 button {
