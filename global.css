@@ -276,7 +276,6 @@ textarea {
   background: #e0e0e0 !important;
   border: none;
   transition: background 0.25s ease;
-  touch-action: none;
 }
 input:focus,
 select:focus, 
@@ -302,7 +301,6 @@ button {
   font-weight: 500;
   user-select: none;
   transition: background 0.25s ease, color 0.25s ease;
-  touch-action: none;
 }
 .button:hover,
 button:hover,
