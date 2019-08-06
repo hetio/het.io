@@ -395,10 +395,7 @@ table {
   margin: 0 auto;
 }
 th {
-  position: sticky;
-  top: 0;
   font-weight: 500;
-  z-index: 9;
 }
 th,
 td {
