@@ -278,7 +278,7 @@ textarea {
   transition: background 0.25s ease;
 }
 input:focus,
-select:focus, 
+select:focus,
 textarea:focus {
   background: #c0ecf8 !important;
 }
@@ -327,6 +327,9 @@ button > svg:not(:last-child) {
   color: #000000;
   opacity: 0.15;
   filter: saturate(0);
+}
+*[data-highlighted='true'] {
+  background: #c0ecf8 !important;
 }
 .small {
   font-size: 0.8em;
@@ -394,7 +397,6 @@ table {
 th {
   position: sticky;
   top: 0;
-  background: #f0f0f0;
   font-weight: 500;
   z-index: 9;
 }
@@ -406,6 +408,10 @@ td {
 }
 td > * {
   vertical-align: middle;
+}
+thead > tr,
+tr:nth-child(even) {
+  background: #eaeaea;
 }
 .table_container,
 .table_container_expanded {
