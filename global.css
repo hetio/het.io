@@ -411,7 +411,7 @@ td > * {
 }
 thead > tr,
 tr:nth-child(even) {
-  background: #e8e8e8;
+  background: #eaeaea;
 }
 .table_container,
 .table_container_expanded {
