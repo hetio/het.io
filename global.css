@@ -18,9 +18,10 @@ body {
   line-height: 1.25;
 
   --white: #fafafa;
-  --black: #303030;
   --light-gray: #eaeaea;
   --gray: #a0a0a0;
+  --dark-gray: #606060;
+  --black: #303030;
   --blue: #02b3e4;
   --medium-blue: #61d0ee;
   --light-blue: #c0ecf8;
