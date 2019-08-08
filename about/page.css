@@ -13,9 +13,6 @@ th,
 td {
   padding: 5px;
 }
-td {
-  border-bottom: solid 1px #e0e0e0;
-}
 .topic {
   display: inline-block;
   margin: 8px 12px 0 0;

@@ -1,7 +1,5 @@
 /* Google Fonts */
-/* use Montserrat for numbers, Raleyway for everything else */
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,700&text=0123456789');
-@import url('https://fonts.googleapis.com/css?family=Raleway:400,500,600,700');
+@import url('https://fonts.googleapis.com/css?family=Lato:400,500,600,700');
 @import url('https://fonts.googleapis.com/css?family=Roboto+Mono:500');
 
 /* Font Awesome */
@@ -16,10 +14,11 @@ body {
   padding: 0;
 }
 * {
-  font-family: 'Montserrat', 'Raleway', sans-serif;
+  font-family: 'Lato', sans-serif;
+  line-height: 1.25;
 }
 body {
-  background: #f0f0f0;
+  background: #fafafa;
   color: #303030;
   position: relative;
   min-height: 100vh;
@@ -70,7 +69,7 @@ code {
   font-family: 'Roboto Mono', monospace;
   font-weight: 500;
   font-size: 0.9em;
-  background: #e0e0e0;
+  background: #eaeaea;
   padding: 0 3px;
 }
 figure {
@@ -106,12 +105,12 @@ header,
 footer {
   text-align: center;
   background: #303030;
-  color: #f0f0f0;
+  color: #fafafa;
   padding: 30px;
 }
 header a,
 footer a {
-  color: #f0f0f0;
+  color: #fafafa;
 }
 header,
 main,
@@ -120,7 +119,7 @@ footer {
   width: 100%;
 }
 .title_section {
-  background: #e0e0e0;
+  background: #eaeaea;
 }
 .section {
   margin: 0 auto;
@@ -150,7 +149,7 @@ footer {
   text-align: center;
 }
 hr {
-  background: #e0e0e0;
+  background: #eaeaea;
   border: none;
   height: 2px;
   margin: 0 auto;
@@ -191,7 +190,7 @@ nav {
   justify-content: center;
   align-items: center;
   position: relative;
-  color: #f0f0f0;
+  color: #fafafa;
   text-decoration: none;
   width: 110px;
   height: 50px;
@@ -271,9 +270,9 @@ nav {
 input,
 select,
 textarea {
-  font-family: 'Montserrat', 'Raleway', sans-serif !important;
+  font-family: 'Lato', sans-serif !important;
   font-size: 0.8em;
-  background: #e0e0e0 !important;
+  background: #eaeaea !important;
   border: none;
   transition: background 0.25s ease;
 }
@@ -292,7 +291,7 @@ button {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  margin: 2px;
+  margin: 0;
   padding: 5px 10px;
   border: none;
   background: none;
@@ -306,7 +305,7 @@ button {
 button:hover,
 .button:focus,
 button:focus {
-  background: #e0e0e0;
+  background: #eaeaea;
   color: #303030;
   cursor: pointer;
 }
@@ -335,7 +334,7 @@ button > svg:not(:last-child) {
   font-size: 0.8em;
 }
 .light {
-  color: #808080;
+  color: #a0a0a0;
 }
 .blue {
   color: #02b3e4;
@@ -374,7 +373,7 @@ button > svg:not(:last-child) {
 .line_sides:after {
   content: '';
   flex-grow: 1;
-  background: #e0e0e0;
+  background: #eaeaea;
   height: 2px;
   margin: auto;
 }
@@ -405,10 +404,6 @@ td {
 }
 td > * {
   vertical-align: middle;
-}
-thead > tr,
-tr:nth-child(even) {
-  background: #eaeaea;
 }
 .table_container,
 .table_container_expanded {

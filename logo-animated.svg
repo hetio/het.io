@@ -49,7 +49,7 @@
     <path
       class="arcs"
       stroke-width="4"
-      stroke="#f0f0f0"
+      stroke="#fafafa"
       fill="none"
       d="
         M 50 21.13
@@ -59,7 +59,7 @@
     <path
       class="arcs"
       stroke-width="4"
-      stroke="#f0f0f0"
+      stroke="#fafafa"
       fill="none"
       d="
         M 75 64.43
@@ -69,7 +69,7 @@
     <path
       class="arcs"
       stroke-width="4"
-      stroke="#f0f0f0"
+      stroke="#fafafa"
       fill="none"
       d="
         M 25 64.43
@@ -79,7 +79,7 @@
     <path
       class="lines"
       stroke-width="4"
-      stroke="#f0f0f0"
+      stroke="#fafafa"
       fill="none"
       d="
         M 60.83 43.75
@@ -89,7 +89,7 @@
     <path
       class="lines"
       stroke-width="4"
-      stroke="#f0f0f0"
+      stroke="#fafafa"
       fill="none"
       d="
         M 50 62.5
@@ -99,7 +99,7 @@
     <path
       class="lines"
       stroke-width="4"
-      stroke="#f0f0f0"
+      stroke="#fafafa"
       fill="none"
       d="
         M 39.17 43.75

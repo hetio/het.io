@@ -10,7 +10,7 @@
 #gallery a[data-tooltip]:after {
   content: attr(data-tooltip);
   background: rgba(0, 0, 0, 0.85);
-  color: #f0f0f0;
+  color: #fafafa;
   display: flex;
   justify-content: center;
   align-items: center;
