@@ -1,6 +1,6 @@
 body {
-  background: #303030;
-  color: #fafafa;
+  background: var(--black);
+  color: var(--white);
 }
 canvas {
   position: absolute;
@@ -18,7 +18,7 @@ canvas {
   height: 120px;
 }
 #intro a {
-  color: #81d9f2;
+  color: var(--medium-blue)
 }
 @media screen and (max-width: 700px) {
   .nav_button {

@@ -16,10 +16,18 @@ body {
 * {
   font-family: 'Lato', sans-serif;
   line-height: 1.25;
+
+  --white: #fafafa;
+  --black: #303030;
+  --light-gray: #eaeaea;
+  --gray: #a0a0a0;
+  --blue: #02b3e4;
+  --medium-blue: #61d0ee;
+  --light-blue: #c0ecf8;
 }
 body {
-  background: #fafafa;
-  color: #303030;
+  background: var(--white);
+  color: var(--black);
   position: relative;
   min-height: 100vh;
   display: flex;
@@ -50,10 +58,7 @@ h3 {
   width: 100%;
 }
 a {
-  color: #c0ecf8;
-  color: #81d9f2;
-  color: #41c6eb;
-  color: #02b3e4;
+  color: var(--blue);
 }
 p:first-child,
 ul:first-child,
@@ -69,7 +74,7 @@ code {
   font-family: 'Roboto Mono', monospace;
   font-weight: 500;
   font-size: 0.9em;
-  background: #eaeaea;
+  background: var(--light-gray);
   padding: 0 3px;
 }
 figure {
@@ -104,13 +109,13 @@ main {
 header,
 footer {
   text-align: center;
-  background: #303030;
-  color: #fafafa;
+  background: var(--black);
+  color: var(--white);
   padding: 30px;
 }
 header a,
 footer a {
-  color: #fafafa;
+  color: var(--white);
 }
 header,
 main,
@@ -119,7 +124,7 @@ footer {
   width: 100%;
 }
 .title_section {
-  background: #eaeaea;
+  background: var(--light-gray);
 }
 .section {
   margin: 0 auto;
@@ -149,7 +154,7 @@ footer {
   text-align: center;
 }
 hr {
-  background: #eaeaea;
+  background: var(--light-gray);
   border: none;
   height: 2px;
   margin: 0 auto;
@@ -190,7 +195,7 @@ nav {
   justify-content: center;
   align-items: center;
   position: relative;
-  color: #fafafa;
+  color: var(--white);
   text-decoration: none;
   width: 110px;
   height: 50px;
@@ -234,7 +239,7 @@ nav {
   left: 0;
   right: 0;
   top: 100%;
-  background: #303030;
+  background: var(--black);
   padding: 10px 3px;
   opacity: 0;
   transition: opacity 0.25s ease;
@@ -272,14 +277,14 @@ select,
 textarea {
   font-family: 'Lato', sans-serif !important;
   font-size: 0.8em;
-  background: #eaeaea !important;
+  background: var(--light-gray) !important;
   border: none;
   transition: background 0.25s ease;
 }
 input:focus,
 select:focus,
 textarea:focus {
-  background: #c0ecf8 !important;
+  background: var(--light-blue) !important;
 }
 textarea {
   overflow: scroll;
@@ -305,8 +310,8 @@ button {
 button:hover,
 .button:focus,
 button:focus {
-  background: #eaeaea;
-  color: #303030;
+  background: var(--light-gray);
+  color: var(--black);
   cursor: pointer;
 }
 .button > svg:not(:first-child),
@@ -323,21 +328,21 @@ button > svg:not(:last-child) {
 /* -------------------------------------------------- */
 *[data-disabled='true'],
 *[data-checked='false'] {
-  color: #000000;
+  color: var(--black);
   opacity: 0.15;
   filter: saturate(0);
 }
 *[data-highlighted='true'] {
-  background: #c0ecf8 !important;
+  background: var(--light-blue) !important;
 }
 .small {
   font-size: 0.8em;
 }
 .light {
-  color: #a0a0a0;
+  color: var(--gray);
 }
 .blue {
-  color: #02b3e4;
+  color: var(--blue);
 }
 .semibold {
   font-weight: 500;
@@ -373,7 +378,7 @@ button > svg:not(:last-child) {
 .line_sides:after {
   content: '';
   flex-grow: 1;
-  background: #eaeaea;
+  background: var(--light-gray);
   height: 2px;
   margin: auto;
 }
@@ -464,7 +469,7 @@ h3:hover .anchor,
     background: none;
   }
   10% {
-    background: #c0ecf8;
+    background: var(--light-blue);
   }
   100% {
     background: none;

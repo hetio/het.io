@@ -10,7 +10,7 @@
 #gallery a[data-tooltip]:after {
   content: attr(data-tooltip);
   background: rgba(0, 0, 0, 0.85);
-  color: #fafafa;
+  color: var(--white);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -38,8 +38,8 @@
   position: absolute;
   right: 0;
   bottom: 0;
-  color: white;
-  background: #202020;
+  color: var(--white);
+  background: var(--black);
   padding: 10px;
   z-index: 10;
 }
