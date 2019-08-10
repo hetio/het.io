@@ -1,237 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
+---
+layout: default
+title: Project Rephetio
+icon: fas fa-prescription-bottle-alt
+category: studies
+---
 
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>hetio · Project Rephetio Browser · Drug Repurposing</title>
-  <meta name="description" content="Browse drug repuprosing predictions for 1,538 compounds and 136 diseases.">
-  <link href="/favicon.ico" rel="icon" type="image/x-icon" />
-
-  <link rel="stylesheet" href="/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/css/bootstrap-theme.css">
-  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.12/css/dataTables.bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.12/css/dataTables.jqueryui.min.css"/>
-  <link rel="stylesheet" href="css/rephetio.css"/>
-</head>
-
-<body>
-
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-          <span class="sr-only">Toggle navigation</span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">het.io</a>
+<section>
+  <div class="section">
+    <div class="row">
+      Browse drug repurposing predictions from Project Rephetio, published in:
+    </div>
+    <div class="row">
+      <div class="col_text small">
+        <span class="semibold"
+          >Systematic integration of biomedical knowledge prioritizes drugs for
+          repurposing</span
+        >
+        <br />
+        Himmelstein DS, Lizee A, Hessler C, Brueggeman L, Chen SL, Hadley D,
+        Green A, Khankhanian P, Baranzini SE
+        <br />
+        <i>eLife</i> (2017)
+        <a href="https://elifesciences.org/articles/26726"
+          >doi:10.7554/eLife.26726</a
+        >
       </div>
-      <div class="navbar-collapse collapse">
-        <ul class="nav navbar-nav">
-          <li>
-            <a href="/">Home</a>
-          </li>
-          <li>
-            <a href="/hnep">HNEP</a>
-          </li>
-          <li class='active'>
-            <a href="/repurpose">Drug Repurposing</a>
-          </li>
-          <li class="dropdown">
-            <a href="/disease-genes" class="dropdown-toggle" data-toggle="dropdown">
-              Disease Genes
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="/disease-genes">About</a>
-              </li>
-              <li>
-                <a href="/disease-genes/browse">Browse</a>
-              </li>
-              <li>
-                <a href="/disease-genes/downloads">Downloads</a>
-              </li>
-            </ul>
-          </li>
-
-          <li>
-            <a href="/media">Media</a>
-          </li>
-          <li class="dropdown">
-            <a href="https://baranzinilab.ucsf.edu/" target="_blank" class="dropdown-toggle" data-toggle="dropdown">
-              Baranzini Lab
-              <b class="caret"></b>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <a href="https://baranzinilab.ucsf.edu/" target="_blank">Home</a>
-              </li>
-              <li class="divider"></li>
-              <li>
-                <a href="https://baranzinilab.ucsf.edu/research" target="_blank">Research</a>
-              </li>
-              <li>
-                <a href="https://baranzinilab.ucsf.edu/publications" target="_blank">Publications</a>
-              </li>
-              <li>
-                <a href="https://baranzinilab.ucsf.edu/tools" target="_blank">Tools</a>
-              </li>
-              <li>
-                <a href="https://baranzinilab.ucsf.edu/links" target="_blank">Links</a>
-              </li>
-              <li>
-                <a href="https://baranzinilab.ucsf.edu/contact-sergio-e-baranzini-phd" target="_blank">Contact</a>
-              </li>
-            </ul>
-          </li>
-        </ul>
+      <div class="col_image">
+        <script
+          type="text/javascript"
+          src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"
+        ></script>
+        <div
+          class="altmetric-embed"
+          data-badge-popover="top"
+          data-badge-type="donut"
+          data-altmetric-id="26437680"
+        ></div>
       </div>
-      <!--/.navbar-collapse -->
+    </div>
+    <div class="row">
+      These predictions are based on predicting treatment edges in Hetionet
+      v1.0, an integrative network of biomedicine containing 2,250,197
+      relationships of 24 types. Our approach learns network patterns of drug
+      efficacy, translating the paths between a compound and disease into a
+      predicted probability of treatment.
+    </div>
+    <div class="row">
+      Navigate to your compound or disease of interest to see all of its
+      predictions.
     </div>
   </div>
+</section>
 
+<hr />
 
-  <!-- Main jumbotron for a primary marketing message or call to action -->
-  <div class="jumbotron">
-    <div class="container">
-      <h1>Project Rephetio Browser
-      </h1>
-      <p>Drug repurposing predictions</p>
-    </div>
-  </div>
+<section>
+  <div id="root" class="section"></div>
+</section>
 
-
-  <div class="container">
-
-    <h2>Project Rephetio</h2>
-    <p>
-      Project Rephetio is an open science project to predict new uses for existing compounds, which is called drug repurposing. Predictions are created from <a href="https://github.com/dhimmel/hetionet" title="Hetionet on GitHub">Hetionet v1.0</a>, an integrative network of biomedicine that contains 2,250,197 relationships of 24 types.
-    </p>
-    <p>
-      We use machine learning to systematically learn network patterns of drug efficacy. Our method translates the network paths between a compound and disease into a predicted probability of treatment. We make predictions for 1,538 approved small molecule compounds and 136 complex diseases, resulting in a total of 209,168 compound–disease pairs.
-    </p>
-
-    <h2>Browse</h2>
-
-    <p>
-    Navigate to your compound or disease of interest to see all of its predictions. <mark class="bg-info">Treatments</mark> refers to the number of disease-modifying therapies for a compound or disease. <mark class="bg-info">AUROC</mark> measures the ability of the predictions to prioritize these known treatments. <mark class="bg-info">Edges</mark> refers to the number of relationships in Hetionet v1.0 that connect the compound or disease. In general, the more edges, the more Hetionet <i>knows</i> about a node.
-    </p>
-
-    <p>
-    <form>
-      <div class="btn-group btn-group-justified" id="browse_by_button" data-toggle="buttons">
-        <label class="btn btn-default">
-          <input type="radio" value="compounds" name="browse-by" id="compounds">Compounds</label>
-        <label class="btn btn-default active">
-          <input type="radio" value="diseases" name="browse-by" id="diseases" checked="checked">Diseases</label>
-      </div>
-    </form>
-  </p>
-
-    <div id="dynamic-table">Generating Table...</div>
-
-    <h2>More information</h2>
-    <p>
-      For more information on Project Rephetio or for feedback, please see the <a href="https://doi.org/10.7554/eLife.26726" title="eLife · Systematic integration of biomedical knowledge prioritizes drugs for repurposing">project manuscript<a> and <a href="https://think-lab.github.io/p/rephetio/" title="Project Rephetio discussion and details on Thinklab"><i>Thinklab</i> page</a>.
-    </p>
-
-    <p>
-      Project Rephetio predictions are released under <a href="https://creativecommons.org/publicdomain/zero/1.0/" title="CC0 1.0 Universal · Public Domain Dedication">CC0 1.0</a>.
-      Compounds (identifiers, names, and desciptions) are from <a href="http://www.drugbank.ca/">DrugBank</a>, while diseases are from the <a href="http://disease-ontology.org/">Disease Ontology</a>.
-    </p>
-
-  </div>
-
-  <script type="text/javascript" charset="utf-8" src="/js/jquery-2.2.4.min.js"></script>
-  <script src="/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
-  <script type="text/javascript" src="https://cdn.datatables.net/1.10.12/js/dataTables.bootstrap.min.js"></script>
-
-  <script type="text/javascript" src="js/utilities.js"></script>
-
-  <script type="text/javascript">
-    $('.dropdown-toggle').dropdown();
-
-    var aoColumnDefs = [
-      {aTargets: [0], mRender: renderGoto},
-      {aTargets: [1], mRender: render_name},
-      {aTargets: [3], bSearchable: false},
-      {aTargets: [3, 5], bVisible: false},
-      {aTargets: [6], mRender: render_percent},
-      {aTargets: [2,3,4], mRender: render_integer}
-    ];
-
-    function renderGoto(data, type, full) {
-      var browseby = $('input[name=browse-by]').filter(':checked').val();
-      if (type != 'display') {return data};
-      var url = data.replace(':', '_');
-      var directory = browseby.substring(0, browseby.length - 1);
-      return `<a href="browse.html?id=${url}" class="btn btn-xs btn-default">See predictions for <code>${data}</code></a>`;
-    }
-
-    function renderTable() {
-      var browseby = $('input[name=browse-by]').filter(':checked').val();
-      console.log(browseby);
-      var table_id = 'table_' + browseby;
-      var url = `${data_url}${browseby}.json`;
-      var table_html = `
-      <table cellpadding="0" cellspacing="0" border="0" class="display table table-striped table-bordered" width="100%" id="${table_id}">
-        <thead>
-          <th></th>
-          <th>Name</th>
-          <th>Treatments</th>
-          <th>palliates</th>
-          <th>Edges</th>
-          <th>synonyms</th>
-          <th>AUROC</th>
-        </thead>
-        <tbody>
-        </tbody>
-      </table>
-      `
-
-      $('#dynamic-table').fadeOut(1).html(table_html).fadeIn(900);
-
-      $('#' + table_id).DataTable({
-        ajax: url,
-        aoColumnDefs: aoColumnDefs,
-        order: [[2, 'desc'], [1, 'desc']]
-      })
-    activate_tooltip();
-    }
-
-    renderTable()
-    $('body').on('mousedown', '#browse_by_button .btn', function(event) {
-      event.stopPropagation(); // prevent default bootstrap behavior
-      if ($(this).attr('data-toggle') != 'button') { // don't toggle if data-toggle="button"
-        $(this).button('toggle')
-      }
-      renderTable()
-    });
-
-  </script>
-
-  <!-- Piwik -->
-  <script type="text/javascript">
-    var _paq = _paq || [];
-    _paq.push(['trackPageView']);
-    _paq.push(['enableLinkTracking']);
-    (function() {
-      var u="//piwik.dhimmel.com/";
-      _paq.push(['setTrackerUrl', u+'piwik.php']);
-      _paq.push(['setSiteId', 3]);
-      var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
-      g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
-    })();
-  </script>
-  <noscript><p><img src="//piwik.dhimmel.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
-  <!-- End Piwik Code -->
-
-</body>
-
-</html>
+<script src="https://hetio.github.io/repurpose-frontend/static/js/main.js"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://hetio.github.io/repurpose-frontend/static/css/main.css"
+/>
