@@ -6,12 +6,83 @@ category: studies
 ---
 
 <section>
-  <div id="root" class="section"></div>
+  <div class="section">
+    <p>
+      This project was a study to make predictions about disease-gene
+      associations. Our approach learns what types of paths in a heterogeneous
+      network occur more frequently between genes and diseases that have been
+      associated by GWAS. Using <a href="/hnep">hetnet edge prediction</a> we
+      predict the probability that each gene associates with each disease.
+    </p>
+    <div class="center">
+      <a
+        href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1004259"
+        class="button"
+        >Read the paper<i class="fas fa-scroll" data-right></i
+      ></a>
+      <a href="/about/#cite" class="button"
+        >Cite these results<i class="fas fa-info-circle" data-right></i
+      ></a>
+      <a
+        href="https://github.com/dhimmel/het.io-dag-data/tree/master/downloads"
+        class="button"
+        >Download the data<i class="fab fa-github" data-right></i
+      ></a>
+    </div>
+    <p>
+      Applications of these results include:
+    </p>
+    <ul>
+      <li>
+        Using the predications as prior probabilities of association to increase
+        the power of GWAS analysis
+      </li>
+      <li>
+        Determining candidate causal genes within genomic regions identified by
+        GWAS
+      </li>
+      <li>Identifying genes of biological interest for a specific disease</li>
+      <li>Identifying diseases of interest for a specific gene</li>
+      <li>
+        Exploring a high-confidence, gene-centric translation of the GWAS
+        Catalog
+      </li>
+      <li>
+        Comparing the informativeness of various information domains for
+        identifying pathogenic variants
+      </li>
+      <li>
+        Viewing the contibution of each network-based feature composing an
+        association prediction
+      </li>
+    </ul>
+    <p>
+      Browse predictions by gene or disease and learn more about the
+      network-based features. Results include context-specific summaries and
+      performance assessments.
+    </p>
+
+    <!-- React app -->
+    <div id="root"></div>
+    <script src="https://hetio.github.io/disease-genes-frontend/static/js/main.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://hetio.github.io/disease-genes-frontend/static/css/main.css"
+    />
+  </div>
 </section>
 
-<script src="https://hetio.github.io/disease-genes-frontend/static/js/main.js"></script>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://hetio.github.io/disease-genes-frontend/static/css/main.css"
-/>
+<hr />
+
+<section>
+  <div class="section">
+    <h3>License</h3>
+    <p>
+      Project Rephetio predictions are released under
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.
+      Information included from external sources are released under their own
+      respective licenses.
+    </p>
+  </div>
+</section>

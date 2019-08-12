@@ -1,66 +1,57 @@
 ---
 layout: default
-title: Project Rephetio
+title: Project Rephetio (Drug Repurposing)
 icon: fas fa-prescription-bottle-alt
 category: studies
 ---
 
 <section>
   <div class="section">
-    <div class="row">
-      Browse drug repurposing predictions from Project Rephetio, published in:
+    <p>
+      Project Rephetio was an study to predict new uses for existing drugs.
+      Predictions are based on predicting treatment edges in
+      <a href="http://localhost:4000/about/#what-is-hetionet">Hetionet v1.0</a>.
+      Our approach learns network patterns of drug efficacy, translating the
+      paths between a compound and disease into a predicted probability of
+      treatment.
+    </p>
+    <div class="center">
+      <a href="https://elifesciences.org/articles/26726" class="button"
+        >Read the paper<i class="fas fa-scroll" data-right></i
+      ></a>
+      <a href="/about/#cite" class="button"
+        >Cite these results<i class="fas fa-info-circle" data-right></i
+      ></a>
     </div>
-    <div class="row">
-      <div class="col_text small">
-        <span class="semibold"
-          >Systematic integration of biomedical knowledge prioritizes drugs for
-          repurposing</span
-        >
-        <br />
-        Himmelstein DS, Lizee A, Hessler C, Brueggeman L, Chen SL, Hadley D,
-        Green A, Khankhanian P, Baranzini SE
-        <br />
-        <i>eLife</i> (2017)
-        <a href="https://elifesciences.org/articles/26726"
-          >doi:10.7554/eLife.26726</a
-        >
-      </div>
-      <div class="col_image">
-        <script
-          type="text/javascript"
-          src="https://d1bxh8uas1mnw7.cloudfront.net/assets/embed.js"
-        ></script>
-        <div
-          class="altmetric-embed"
-          data-badge-popover="top"
-          data-badge-type="donut"
-          data-altmetric-id="26437680"
-        ></div>
-      </div>
-    </div>
-    <div class="row">
-      These predictions are based on predicting treatment edges in Hetionet
-      v1.0, an integrative network of biomedicine containing 2,250,197
-      relationships of 24 types. Our approach learns network patterns of drug
-      efficacy, translating the paths between a compound and disease into a
-      predicted probability of treatment.
-    </div>
-    <div class="row">
-      Navigate to your compound or disease of interest to see all of its
-      predictions.
-    </div>
+    <p></p>
+    <p>
+      Navigate to the compound or disease of interest to see all of its
+      predictions:
+    </p>
+
+    <!-- React app -->
+    <div id="root"></div>
+    <script src="https://hetio.github.io/repurpose-frontend/static/js/main.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://hetio.github.io/repurpose-frontend/static/css/main.css"
+    />
   </div>
 </section>
+
 
 <hr />
 
 <section>
-  <div id="root" class="section"></div>
+  <div class="section">
+    <h3>License</h3>
+    <p>
+      Project Rephetio predictions are released under
+      <a href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.
+      Compounds and related info are sourced from
+      <a href="https://www.drugbank.ca/">DrugBank</a>. Diseases and related info
+      are from <a href="http://disease-ontology.org/">Disease Ontology</a>.
+    </p>
+  </div>
 </section>
-
-<script src="https://hetio.github.io/repurpose-frontend/static/js/main.js"></script>
-<link
-  rel="stylesheet"
-  type="text/css"
-  href="https://hetio.github.io/repurpose-frontend/static/css/main.css"
-/>
