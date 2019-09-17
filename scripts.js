@@ -7,8 +7,7 @@ function createAnchors() {
     while (!element.id && element !== document.body)
       element = element.parentElement;
     const id = element.id;
-    if (!id)
-      continue;
+    if (!id) continue;
 
     // create link object
     const link = document.createElement('a');
@@ -23,27 +22,13 @@ function createAnchors() {
 function onHashChange() {
   const id = window.location.hash.replace('#', '');
   const element = document.getElementById(id);
-  if (!element)
-    return;
+  if (!element) return;
 
   // start css glow animation
   element.setAttribute('data-glow', 'true');
   window.setTimeout(() => element.removeAttribute('data-glow'), 2000);
 }
 
-// prevent font awesome icons from wrapping to new line alone
-function wrapIcons() {
-  const icons = document.querySelectorAll('i.fas, i.fab');
-  for (const icon of icons) {
-    const parent = icon.parentNode;
-    const wrapper = document.createElement('span');
-    parent.replaceChild(wrapper, icon);
-    wrapper.classList.add('icon');
-    wrapper.appendChild(icon);
-  }
-}
-
 window.addEventListener('load', createAnchors);
 window.addEventListener('load', onHashChange);
-window.addEventListener('load', wrapIcons);
 window.addEventListener('hashchange', onHashChange);
