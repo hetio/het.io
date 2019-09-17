@@ -432,13 +432,9 @@ table *[data-disabled='false'],
 /* -------------------------------------------------- */
 /* icon styles */
 /* -------------------------------------------------- */
-/* prevent icon from wrapping to new line alone */
-.icon {
-  white-space: nowrap;
-}
-/* prevent icon from wrapping to new line alone */
-.icon:before {
-  content: '';
+.fas,
+.fab {
+  display: inline;
 }
 .fas[data-right],
 .fab[data-right] {
@@ -456,6 +452,7 @@ table *[data-disabled='false'],
   margin-left: 10px;
   opacity: 0;
   transition: opacity 0.25s ease;
+  text-decoration: none;
 }
 h3:hover .anchor,
 .anchor:focus {
