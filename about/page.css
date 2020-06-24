@@ -15,7 +15,27 @@ td {
 }
 .topic {
   display: inline-block;
-  margin: 8px 12px 0 0;
-  white-space: nowrap;
-  font-style: italic;
+  background-color: var(--light-gray);
+  margin-bottom: 2px;
+  padding: 0 4px;
+  border-radius: 2px;
+}
+
+/* override bad altmetric popup css */
+.altmetric-embed {
+  border-radius: 0 !important;
+}
+.altmetric-popover-inner,
+.altmetric-popover-content {
+  background: #fafafa !important;
+}
+.altmetric_arrow {
+  border-top-color: #fafafa !important;
+}
+.altmetric-popover-content > div > a {
+  top: 15px !important;
+  right: 15px !important;
+}
+.altmetric-popover-content > div > div:last-of-type {
+  display: none !important;
 }
