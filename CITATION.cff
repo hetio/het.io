@@ -1,0 +1,43 @@
+cff-version: 1.2.0
+title: >-
+  hetio/het.io repository:
+  Source code for het.io website
+message: >-
+  This citation is for the het.io website source code.
+  See <https://het.io/studies/> for studies covered by the Hetio research suite.
+  In most cases, one of these studies is a more appropriate citation than this repository.
+type: software
+authors:
+  - given-names: Vincent
+    family-names: Rubinetti
+    orcid: 'https://orcid.org/0000-0002-4655-3773'
+  - given-names: Daniel
+    family-names: Himmelstein
+    orcid: 'https://orcid.org/0000-0002-3012-7446'
+  - given-names: Dongbo
+    family-names: Hu
+    orcid: 'https://orcid.org/0000-0001-7870-8242'
+  - given-names: Sergio
+    family-names: Baranzini
+    orcid: 'https://orcid.org/0000-0003-0067-194X'
+  - given-names: Casey
+    family-names: Greene
+    orcid: 'https://orcid.org/0000-0001-8713-9213'
+identifiers:
+  - type: swh
+    value: 'swh:1:dir:ee968e17d66a3669dd38b51041c4b0fb30c12252'
+    description: Software Heritage Directory
+  - type: swh
+    value: 'swh:1:rev:8feb1e928a8ec903928d7305c93d5367161cbe79'
+    description: Software Heritage Revision
+repository-code: 'https://github.com/hetio/het.io'
+url: 'https://het.io/'
+abstract: Source code for the https://het.io/ website.
+keywords:
+  - github-pages
+  - website
+  - rephetio
+  - hetionet
+  - hetnet
+  - hetio
+license: CC-BY-4.0
